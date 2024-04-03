@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		20B50A212BBD58A300C78067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A202BBD58A300C78067 /* AppDelegate.swift */; };
+		20B50A232BBD58A300C78067 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A222BBD58A300C78067 /* SceneDelegate.swift */; };
+		20B50A252BBD58A300C78067 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A242BBD58A300C78067 /* ViewController.swift */; };
+		20B50A2B2BBD58A300C78067 /* cloudgarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A292BBD58A300C78067 /* cloudgarden.xcdatamodeld */; };
+		20B50A2D2BBD58A600C78067 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A2C2BBD58A600C78067 /* Assets.xcassets */; };
+		20B50A302BBD58A600C78067 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A2E2BBD58A600C78067 /* LaunchScreen.storyboard */; };
+		20B50A392BBD58FA00C78067 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A382BBD58FA00C78067 /* LoginController.swift */; };
+		20B50A3C2BBD590D00C78067 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A3B2BBD590D00C78067 /* Login.storyboard */; };
+		20B50A3F2BBD70C500C78067 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A3E2BBD70C500C78067 /* HomeViewController.swift */; };
+		20B50A412BBD70CE00C78067 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A402BBD70CE00C78067 /* Navigation.storyboard */; };
+		20B50A462BBD7B0000C78067 /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A452BBD7B0000C78067 /* DeviceViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		20B50A1D2BBD58A300C78067 /* cloudgarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cloudgarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20B50A202BBD58A300C78067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		20B50A222BBD58A300C78067 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		20B50A242BBD58A300C78067 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		20B50A2A2BBD58A300C78067 /* cloudgarden.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cloudgarden.xcdatamodel; sourceTree = "<group>"; };
+		20B50A2C2BBD58A600C78067 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		20B50A2F2BBD58A600C78067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		20B50A312BBD58A600C78067 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20B50A382BBD58FA00C78067 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		20B50A3B2BBD590D00C78067 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		20B50A3E2BBD70C500C78067 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		20B50A402BBD70CE00C78067 /* Navigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
+		20B50A452BBD7B0000C78067 /* DeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		20B50A1A2BBD58A300C78067 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		20B50A142BBD58A300C78067 = {
+			isa = PBXGroup;
+			children = (
+				20B50A1F2BBD58A300C78067 /* cloudgarden */,
+				20B50A1E2BBD58A300C78067 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		20B50A1E2BBD58A300C78067 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20B50A1D2BBD58A300C78067 /* cloudgarden.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20B50A1F2BBD58A300C78067 /* cloudgarden */ = {
+			isa = PBXGroup;
+			children = (
+				20B50A422BBD7AE200C78067 /* Devices */,
+				20B50A3D2BBD70B900C78067 /* Home */,
+				20B50A372BBD58E600C78067 /* Login */,
+				20B50A202BBD58A300C78067 /* AppDelegate.swift */,
+				20B50A222BBD58A300C78067 /* SceneDelegate.swift */,
+				20B50A242BBD58A300C78067 /* ViewController.swift */,
+				20B50A402BBD70CE00C78067 /* Navigation.storyboard */,
+				20B50A2C2BBD58A600C78067 /* Assets.xcassets */,
+				20B50A2E2BBD58A600C78067 /* LaunchScreen.storyboard */,
+				20B50A312BBD58A600C78067 /* Info.plist */,
+				20B50A292BBD58A300C78067 /* cloudgarden.xcdatamodeld */,
+			);
+			path = cloudgarden;
+			sourceTree = "<group>";
+		};
+		20B50A372BBD58E600C78067 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				20B50A382BBD58FA00C78067 /* LoginController.swift */,
+				20B50A3B2BBD590D00C78067 /* Login.storyboard */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		20B50A3D2BBD70B900C78067 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				20B50A3E2BBD70C500C78067 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		20B50A422BBD7AE200C78067 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				20B50A452BBD7B0000C78067 /* DeviceViewController.swift */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20B50A1C2BBD58A300C78067 /* cloudgarden */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20B50A342BBD58A600C78067 /* Build configuration list for PBXNativeTarget "cloudgarden" */;
+			buildPhases = (
+				20B50A192BBD58A300C78067 /* Sources */,
+				20B50A1A2BBD58A300C78067 /* Frameworks */,
+				20B50A1B2BBD58A300C78067 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cloudgarden;
+			productName = cloudgarden;
+			productReference = 20B50A1D2BBD58A300C78067 /* cloudgarden.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20B50A152BBD58A300C78067 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					20B50A1C2BBD58A300C78067 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 20B50A182BBD58A300C78067 /* Build configuration list for PBXProject "cloudgarden" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 20B50A142BBD58A300C78067;
+			productRefGroup = 20B50A1E2BBD58A300C78067 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20B50A1C2BBD58A300C78067 /* cloudgarden */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		20B50A1B2BBD58A300C78067 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20B50A3C2BBD590D00C78067 /* Login.storyboard in Resources */,
+				20B50A412BBD70CE00C78067 /* Navigation.storyboard in Resources */,
+				20B50A302BBD58A600C78067 /* LaunchScreen.storyboard in Resources */,
+				20B50A2D2BBD58A600C78067 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		20B50A192BBD58A300C78067 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20B50A2B2BBD58A300C78067 /* cloudgarden.xcdatamodeld in Sources */,
+				20B50A462BBD7B0000C78067 /* DeviceViewController.swift in Sources */,
+				20B50A252BBD58A300C78067 /* ViewController.swift in Sources */,
+				20B50A212BBD58A300C78067 /* AppDelegate.swift in Sources */,
+				20B50A232BBD58A300C78067 /* SceneDelegate.swift in Sources */,
+				20B50A392BBD58FA00C78067 /* LoginController.swift in Sources */,
+				20B50A3F2BBD70C500C78067 /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		20B50A2E2BBD58A600C78067 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20B50A2F2BBD58A600C78067 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		20B50A322BBD58A600C78067 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		20B50A332BBD58A600C78067 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		20B50A352BBD58A600C78067 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = cloudgarden/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CloudGarden;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Login;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cloudgarden;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		20B50A362BBD58A600C78067 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = cloudgarden/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CloudGarden;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Login;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cloudgarden;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20B50A182BBD58A300C78067 /* Build configuration list for PBXProject "cloudgarden" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20B50A322BBD58A600C78067 /* Debug */,
+				20B50A332BBD58A600C78067 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20B50A342BBD58A600C78067 /* Build configuration list for PBXNativeTarget "cloudgarden" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20B50A352BBD58A600C78067 /* Debug */,
+				20B50A362BBD58A600C78067 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		20B50A292BBD58A300C78067 /* cloudgarden.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				20B50A2A2BBD58A300C78067 /* cloudgarden.xcdatamodel */,
+			);
+			currentVersion = 20B50A2A2BBD58A300C78067 /* cloudgarden.xcdatamodel */;
+			path = cloudgarden.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 20B50A152BBD58A300C78067 /* Project object */;
+}
