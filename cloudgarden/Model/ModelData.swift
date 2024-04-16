@@ -9,7 +9,8 @@ import Foundation
 
 @Observable
 class ModelData {
-    var plants: [Plant] = load("data.json")
+    var plants: [Plant] = load("plants.json")
+    var devices: [Device] = load("devices.json")
 }
 
 func load<Plant: Decodable>(_ filename: String) -> Plant {

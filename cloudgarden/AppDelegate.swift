@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let contentView = ContentView()
         
-        let loginHostingController = UIHostingController(rootView: contentView)
+        let contentHostingController = UIHostingController(rootView: contentView)
         
-        window.rootViewController = loginHostingController
+        window.rootViewController = contentHostingController
         
         self.window = window
         window.makeKeyAndVisible()

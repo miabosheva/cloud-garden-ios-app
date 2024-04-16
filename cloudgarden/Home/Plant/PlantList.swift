@@ -18,7 +18,7 @@ struct PlantList: View {
             .animation(.default, value: modelData.plants)
             .navigationTitle("Plants")
         } detail: {
-            //            Text("Plants")
+            Text("Plants")
         }
     }
 }

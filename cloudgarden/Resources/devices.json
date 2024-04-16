@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Bedroom",
+        "numberOfPlants": 3,
+    },
+    {
+        "title": "Kitchen",
+        "numberOfPlants": 1,
+    },
+    {
+        "title": "Living Room",
+        "numberOfPlants": 3,
+    },
+    {
+        "title": "Balcony",
+        "numberOfPlants": 2,
+    },
+]

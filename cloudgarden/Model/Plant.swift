@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 struct Plant: Hashable, Codable, Identifiable, Equatable {
     var id = UUID() //Id
     var plantId: Int

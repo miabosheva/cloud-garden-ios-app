@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlantDetail: View {
     
-    var plant: Plant
+    let plant: Plant
     
     var body: some View {
         Text(plant.title)
@@ -17,7 +17,7 @@ struct PlantDetail: View {
 }
 
 #Preview {
-    var plants = ModelData().plants
+    let plants = ModelData().plants
     
     return Group {
         PlantDetail(plant: plants[1])
