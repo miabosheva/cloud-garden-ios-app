@@ -9,10 +9,10 @@ import Foundation
 
 @Observable
 class ModelData {
-    var plants: [PlantDTO] = load("data.json")
+    var plants: [Plant] = load("data.json")
 }
 
-func load<T: Decodable>(_ filename: String) -> T {
+func load<Plant: Decodable>(_ filename: String) -> Plant {
     let data: Data
     
     guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
@@ -27,9 +27,15 @@ func load<T: Decodable>(_ filename: String) -> T {
     }
     
     do {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+
         let decoder = JSONDecoder()
-        return try decoder.decode(T.self, from: data)
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        
+        return try decoder.decode(Plant.self, from: data)
     } catch {
-        fatalError("Couldnt parse \(filename) as \(T.self): \n\(error)")
+        fatalError("Couldnt parse \(filename) as \(Plant.self): \n\(error)")
     }
 }

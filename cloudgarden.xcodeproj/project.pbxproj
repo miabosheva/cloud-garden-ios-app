@@ -7,33 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		204EE9152BCF0C160037A2AE /* PlantList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9142BCF0C160037A2AE /* PlantList.swift */; };
+		204EE9172BCF10CB0037A2AE /* PlantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9162BCF10CB0037A2AE /* PlantDetail.swift */; };
+		204EE9192BCF16950037A2AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9182BCF16950037A2AE /* ContentView.swift */; };
+		20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27DFF2BC406F2000A8B0A /* LoginView.swift */; };
+		20A27E052BC41355000A8B0A /* PlantRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E042BC41355000A8B0A /* PlantRow.swift */; };
+		20A27E0B2BC426DF000A8B0A /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E0A2BC426DF000A8B0A /* Plant.swift */; };
+		20A27E0F2BC42955000A8B0A /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 20A27E0E2BC42955000A8B0A /* data.json */; };
+		20A27E112BC42AF8000A8B0A /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E102BC42AF8000A8B0A /* ModelData.swift */; };
 		20B50A212BBD58A300C78067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A202BBD58A300C78067 /* AppDelegate.swift */; };
 		20B50A232BBD58A300C78067 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A222BBD58A300C78067 /* SceneDelegate.swift */; };
-		20B50A252BBD58A300C78067 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A242BBD58A300C78067 /* ViewController.swift */; };
 		20B50A2B2BBD58A300C78067 /* cloudgarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A292BBD58A300C78067 /* cloudgarden.xcdatamodeld */; };
 		20B50A2D2BBD58A600C78067 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A2C2BBD58A600C78067 /* Assets.xcassets */; };
 		20B50A302BBD58A600C78067 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A2E2BBD58A600C78067 /* LaunchScreen.storyboard */; };
-		20B50A392BBD58FA00C78067 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A382BBD58FA00C78067 /* LoginController.swift */; };
-		20B50A3C2BBD590D00C78067 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A3B2BBD590D00C78067 /* Login.storyboard */; };
 		20B50A3F2BBD70C500C78067 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A3E2BBD70C500C78067 /* HomeViewController.swift */; };
-		20B50A412BBD70CE00C78067 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A402BBD70CE00C78067 /* Navigation.storyboard */; };
 		20B50A462BBD7B0000C78067 /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A452BBD7B0000C78067 /* DeviceViewController.swift */; };
+		20EAB7582BCD661500307A1A /* LauchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EAB7572BCD661500307A1A /* LauchScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		204EE9142BCF0C160037A2AE /* PlantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantList.swift; sourceTree = "<group>"; };
+		204EE9162BCF10CB0037A2AE /* PlantDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetail.swift; sourceTree = "<group>"; };
+		204EE9182BCF16950037A2AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		20A27DFF2BC406F2000A8B0A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		20A27E042BC41355000A8B0A /* PlantRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRow.swift; sourceTree = "<group>"; };
+		20A27E0A2BC426DF000A8B0A /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		20A27E0E2BC42955000A8B0A /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		20A27E102BC42AF8000A8B0A /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		20B50A1D2BBD58A300C78067 /* cloudgarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cloudgarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B50A202BBD58A300C78067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20B50A222BBD58A300C78067 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		20B50A242BBD58A300C78067 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		20B50A2A2BBD58A300C78067 /* cloudgarden.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cloudgarden.xcdatamodel; sourceTree = "<group>"; };
 		20B50A2C2BBD58A600C78067 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20B50A2F2BBD58A600C78067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20B50A312BBD58A600C78067 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20B50A382BBD58FA00C78067 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		20B50A3B2BBD590D00C78067 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		20B50A3E2BBD70C500C78067 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		20B50A402BBD70CE00C78067 /* Navigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
 		20B50A452BBD7B0000C78067 /* DeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
+		20EAB7572BCD661500307A1A /* LauchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauchScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +57,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20A27E012BC4130A000A8B0A /* PlantHome */ = {
+			isa = PBXGroup;
+			children = (
+				20A27E042BC41355000A8B0A /* PlantRow.swift */,
+				204EE9142BCF0C160037A2AE /* PlantList.swift */,
+				204EE9162BCF10CB0037A2AE /* PlantDetail.swift */,
+			);
+			path = PlantHome;
+			sourceTree = "<group>";
+		};
+		20A27E082BC42649000A8B0A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				20A27E0E2BC42955000A8B0A /* data.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		20A27E092BC426D3000A8B0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				20A27E0A2BC426DF000A8B0A /* Plant.swift */,
+				20A27E102BC42AF8000A8B0A /* ModelData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		20B50A142BBD58A300C78067 = {
 			isa = PBXGroup;
 			children = (
@@ -66,15 +103,16 @@
 		20B50A1F2BBD58A300C78067 /* cloudgarden */ = {
 			isa = PBXGroup;
 			children = (
+				20A27E092BC426D3000A8B0A /* Model */,
+				20A27E082BC42649000A8B0A /* Resources */,
 				20B50A422BBD7AE200C78067 /* Devices */,
 				20B50A3D2BBD70B900C78067 /* Home */,
 				20B50A372BBD58E600C78067 /* Login */,
 				20B50A202BBD58A300C78067 /* AppDelegate.swift */,
 				20B50A222BBD58A300C78067 /* SceneDelegate.swift */,
-				20B50A242BBD58A300C78067 /* ViewController.swift */,
-				20B50A402BBD70CE00C78067 /* Navigation.storyboard */,
+				204EE9182BCF16950037A2AE /* ContentView.swift */,
 				20B50A2C2BBD58A600C78067 /* Assets.xcassets */,
-				20B50A2E2BBD58A600C78067 /* LaunchScreen.storyboard */,
+				20EAB7592BCD662B00307A1A /* LaunchScreen */,
 				20B50A312BBD58A600C78067 /* Info.plist */,
 				20B50A292BBD58A300C78067 /* cloudgarden.xcdatamodeld */,
 			);
@@ -84,8 +122,7 @@
 		20B50A372BBD58E600C78067 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				20B50A382BBD58FA00C78067 /* LoginController.swift */,
-				20B50A3B2BBD590D00C78067 /* Login.storyboard */,
+				20A27DFF2BC406F2000A8B0A /* LoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -93,6 +130,7 @@
 		20B50A3D2BBD70B900C78067 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				20A27E012BC4130A000A8B0A /* PlantHome */,
 				20B50A3E2BBD70C500C78067 /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -104,6 +142,15 @@
 				20B50A452BBD7B0000C78067 /* DeviceViewController.swift */,
 			);
 			path = Devices;
+			sourceTree = "<group>";
+		};
+		20EAB7592BCD662B00307A1A /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				20EAB7572BCD661500307A1A /* LauchScreenViewController.swift */,
+				20B50A2E2BBD58A600C78067 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,9 +211,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20B50A3C2BBD590D00C78067 /* Login.storyboard in Resources */,
-				20B50A412BBD70CE00C78067 /* Navigation.storyboard in Resources */,
 				20B50A302BBD58A600C78067 /* LaunchScreen.storyboard in Resources */,
+				20A27E0F2BC42955000A8B0A /* data.json in Resources */,
 				20B50A2D2BBD58A600C78067 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,11 +225,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				20B50A2B2BBD58A300C78067 /* cloudgarden.xcdatamodeld in Sources */,
+				20EAB7582BCD661500307A1A /* LauchScreenViewController.swift in Sources */,
+				20A27E052BC41355000A8B0A /* PlantRow.swift in Sources */,
+				20A27E0B2BC426DF000A8B0A /* Plant.swift in Sources */,
+				20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */,
+				20A27E112BC42AF8000A8B0A /* ModelData.swift in Sources */,
+				204EE9172BCF10CB0037A2AE /* PlantDetail.swift in Sources */,
+				204EE9152BCF0C160037A2AE /* PlantList.swift in Sources */,
 				20B50A462BBD7B0000C78067 /* DeviceViewController.swift in Sources */,
-				20B50A252BBD58A300C78067 /* ViewController.swift in Sources */,
 				20B50A212BBD58A300C78067 /* AppDelegate.swift in Sources */,
+				204EE9192BCF16950037A2AE /* ContentView.swift in Sources */,
 				20B50A232BBD58A300C78067 /* SceneDelegate.swift in Sources */,
-				20B50A392BBD58FA00C78067 /* LoginController.swift in Sources */,
 				20B50A3F2BBD70C500C78067 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,7 +385,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = CloudGarden;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Login;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -361,7 +413,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = CloudGarden;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Login;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

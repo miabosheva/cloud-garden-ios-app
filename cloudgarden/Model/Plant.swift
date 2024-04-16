@@ -9,19 +9,17 @@ import Foundation
 import SwiftUI
 
 
-struct PlantDTO: Decodable {
-    var id: Int //Id
+struct Plant: Hashable, Codable, Identifiable, Equatable {
+    var id = UUID() //Id
+    var plantId: Int
     var title: String //Title
-//    var lastWatering: Date //LastWatering
-//    var nextWatering: Date //NextWatering
-    
-    // MARK: - DTO elements
-    
+//    var lastWatering: Date? //LastWatering
+//    var nextWatering: Date? //NextWatering
     var plantTypeId: Int //PlantTypeId
     var deviceId: Int //DeviceId
     
     enum CodingKeys: String, CodingKey {
-            case id = "Id"
+            case plantId = "Id"
             case title = "Title"
 //            case lastWatering = "LastWatering"
 //            case nextWatering = "NextWatering"
