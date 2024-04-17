@@ -16,6 +16,9 @@
 		204EE9252BCF1C6D0037A2AE /* devices.json in Resources */ = {isa = PBXBuildFile; fileRef = 204EE9242BCF1C6D0037A2AE /* devices.json */; };
 		204EE9272BCF1D150037A2AE /* DeviceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9262BCF1D150037A2AE /* DeviceRow.swift */; };
 		204EE92B2BCF2E0A0037A2AE /* DeviceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE92A2BCF2E0A0037A2AE /* DeviceDetail.swift */; };
+		20700B922BCFEEA70029A384 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20700B912BCFEEA70029A384 /* ProfileView.swift */; };
+		20700B942BCFEEC70029A384 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 20700B932BCFEEC70029A384 /* users.json */; };
+		20700B962BCFEED10029A384 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20700B952BCFEED10029A384 /* User.swift */; };
 		20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27DFF2BC406F2000A8B0A /* LoginView.swift */; };
 		20A27E052BC41355000A8B0A /* PlantRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E042BC41355000A8B0A /* PlantRow.swift */; };
 		20A27E0B2BC426DF000A8B0A /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E0A2BC426DF000A8B0A /* Plant.swift */; };
@@ -40,6 +43,9 @@
 		204EE9242BCF1C6D0037A2AE /* devices.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = devices.json; sourceTree = "<group>"; };
 		204EE9262BCF1D150037A2AE /* DeviceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRow.swift; sourceTree = "<group>"; };
 		204EE92A2BCF2E0A0037A2AE /* DeviceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetail.swift; sourceTree = "<group>"; };
+		20700B912BCFEEA70029A384 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		20700B932BCFEEC70029A384 /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
+		20700B952BCFEED10029A384 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		20A27DFF2BC406F2000A8B0A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		20A27E042BC41355000A8B0A /* PlantRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRow.swift; sourceTree = "<group>"; };
 		20A27E0A2BC426DF000A8B0A /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
@@ -77,6 +83,14 @@
 			path = Device;
 			sourceTree = "<group>";
 		};
+		20700B902BCFEE550029A384 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				20700B912BCFEEA70029A384 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		20A27E012BC4130A000A8B0A /* Plant */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +106,7 @@
 			children = (
 				20A27E0E2BC42955000A8B0A /* plants.json */,
 				204EE9242BCF1C6D0037A2AE /* devices.json */,
+				20700B932BCFEEC70029A384 /* users.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -99,6 +114,7 @@
 		20A27E092BC426D3000A8B0A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				20700B952BCFEED10029A384 /* User.swift */,
 				204EE9222BCF1BE90037A2AE /* Device.swift */,
 				20A27E0A2BC426DF000A8B0A /* Plant.swift */,
 				20A27E102BC42AF8000A8B0A /* ModelData.swift */,
@@ -152,6 +168,7 @@
 		20B50A3D2BBD70B900C78067 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				20700B902BCFEE550029A384 /* Profile */,
 				204EE91D2BCF1A5C0037A2AE /* Device */,
 				20A27E012BC4130A000A8B0A /* Plant */,
 				204EE91B2BCF1A450037A2AE /* HomeNavigationView.swift */,
@@ -238,6 +255,7 @@
 				20A27E0F2BC42955000A8B0A /* plants.json in Resources */,
 				20B50A2D2BBD58A600C78067 /* Assets.xcassets in Resources */,
 				204EE9252BCF1C6D0037A2AE /* devices.json in Resources */,
+				20700B942BCFEEC70029A384 /* users.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +276,7 @@
 				20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */,
 				204EE9232BCF1BE90037A2AE /* Device.swift in Sources */,
 				20A27E112BC42AF8000A8B0A /* ModelData.swift in Sources */,
+				20700B922BCFEEA70029A384 /* ProfileView.swift in Sources */,
 				204EE9172BCF10CB0037A2AE /* PlantDetail.swift in Sources */,
 				204EE9152BCF0C160037A2AE /* PlantList.swift in Sources */,
 				20B50A462BBD7B0000C78067 /* DeviceViewController.swift in Sources */,
@@ -265,6 +284,7 @@
 				20B50A212BBD58A300C78067 /* AppDelegate.swift in Sources */,
 				204EE9192BCF16950037A2AE /* ContentView.swift in Sources */,
 				20B50A232BBD58A300C78067 /* SceneDelegate.swift in Sources */,
+				20700B962BCFEED10029A384 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

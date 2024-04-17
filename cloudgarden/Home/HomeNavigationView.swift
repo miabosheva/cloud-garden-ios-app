@@ -23,6 +23,11 @@ struct HomeNavigationView: View {
                 .tabItem {
                     Label("Plants", systemImage: "leaf.fill")
                 }
+            
+            ProfileView().environment(modelData)
+                .tabItem {
+                    Label("Profile", systemImage: "desktopcomputer")
+                }
         }
     }
 }

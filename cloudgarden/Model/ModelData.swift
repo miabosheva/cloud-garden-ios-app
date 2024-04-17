@@ -11,6 +11,7 @@ import Foundation
 class ModelData {
     var plants: [Plant] = load("plants.json")
     var devices: [Device] = load("devices.json")
+    var users: [User] = load("users.json")
 }
 
 func load<Plant: Decodable>(_ filename: String) -> Plant {

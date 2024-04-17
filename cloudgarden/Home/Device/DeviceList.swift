@@ -25,7 +25,7 @@ struct DeviceList: View {
             .animation(.default, value: modelData.devices)
             .navigationTitle("Devices")
         } detail: {
-//            Text("Devices")
+            Text("Devices")
         }
     }
 }
