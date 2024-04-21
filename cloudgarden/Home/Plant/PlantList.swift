@@ -20,6 +20,8 @@ struct PlantList: View {
         } detail: {
             Text("Plants")
         }
+        
+        // TODO: - Add a button + View for adding a Plant
     }
 }
 

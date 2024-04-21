@@ -27,6 +27,8 @@ struct DeviceList: View {
         } detail: {
             Text("Devices")
         }
+        
+        // TODO: - Add button for adding Device + View
     }
 }
 

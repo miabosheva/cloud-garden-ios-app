@@ -31,9 +31,11 @@
 		20B50A302BBD58A600C78067 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A2E2BBD58A600C78067 /* LaunchScreen.storyboard */; };
 		20B50A462BBD7B0000C78067 /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A452BBD7B0000C78067 /* DeviceViewController.swift */; };
 		20EAB7582BCD661500307A1A /* LauchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EAB7572BCD661500307A1A /* LauchScreenViewController.swift */; };
+		EE9BEADF888DA33745DEC71F /* Pods_cloudgarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF37150522AA3E0F3E7B60A /* Pods_cloudgarden.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D8887708AEFFC5C6E7AD6BE /* Pods-cloudgarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cloudgarden.debug.xcconfig"; path = "Target Support Files/Pods-cloudgarden/Pods-cloudgarden.debug.xcconfig"; sourceTree = "<group>"; };
 		204EE9142BCF0C160037A2AE /* PlantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantList.swift; sourceTree = "<group>"; };
 		204EE9162BCF10CB0037A2AE /* PlantDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetail.swift; sourceTree = "<group>"; };
 		204EE9182BCF16950037A2AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,8 @@
 		20B50A312BBD58A600C78067 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20B50A452BBD7B0000C78067 /* DeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
 		20EAB7572BCD661500307A1A /* LauchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauchScreenViewController.swift; sourceTree = "<group>"; };
+		3B254534DEBC88FBCEDCA9A2 /* Pods-cloudgarden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cloudgarden.release.xcconfig"; path = "Target Support Files/Pods-cloudgarden/Pods-cloudgarden.release.xcconfig"; sourceTree = "<group>"; };
+		BCF37150522AA3E0F3E7B60A /* Pods_cloudgarden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cloudgarden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE9BEADF888DA33745DEC71F /* Pods_cloudgarden.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +132,8 @@
 			children = (
 				20B50A1F2BBD58A300C78067 /* cloudgarden */,
 				20B50A1E2BBD58A300C78067 /* Products */,
+				738C217FD21A5EE476D3F23C /* Pods */,
+				C16D6997D75B2618EFC39C32 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,6 +200,23 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		738C217FD21A5EE476D3F23C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0D8887708AEFFC5C6E7AD6BE /* Pods-cloudgarden.debug.xcconfig */,
+				3B254534DEBC88FBCEDCA9A2 /* Pods-cloudgarden.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C16D6997D75B2618EFC39C32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCF37150522AA3E0F3E7B60A /* Pods_cloudgarden.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,6 +224,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20B50A342BBD58A600C78067 /* Build configuration list for PBXNativeTarget "cloudgarden" */;
 			buildPhases = (
+				077CDA43AD5043F317D6DCF6 /* [CP] Check Pods Manifest.lock */,
 				20B50A192BBD58A300C78067 /* Sources */,
 				20B50A1A2BBD58A300C78067 /* Frameworks */,
 				20B50A1B2BBD58A300C78067 /* Resources */,
@@ -260,6 +285,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		077CDA43AD5043F317D6DCF6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cloudgarden-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		20B50A192BBD58A300C78067 /* Sources */ = {
@@ -423,11 +473,13 @@
 		};
 		20B50A352BBD58A600C78067 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D8887708AEFFC5C6E7AD6BE /* Pods-cloudgarden.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A8H55S5G6Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cloudgarden/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CloudGarden;
@@ -451,11 +503,13 @@
 		};
 		20B50A362BBD58A600C78067 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B254534DEBC88FBCEDCA9A2 /* Pods-cloudgarden.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A8H55S5G6Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cloudgarden/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CloudGarden;

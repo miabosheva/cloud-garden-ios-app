@@ -16,6 +16,20 @@ struct LoginView: View {
             appBackground.ignoresSafeArea()
             
             VStack {
+                
+                Image("logo")
+                    .resizable()
+                    .frame(width: 80, height: 120)
+                    .padding(.top, 30)
+                    .padding(.bottom, 16)
+                
+                Text("Welcome\n to Cloud Garden")
+                    .multilineTextAlignment(.center)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(.bottom, 40)
+                
                 HStack {
                     Text("Username")
                         .foregroundColor(.white)
@@ -44,18 +58,24 @@ struct LoginView: View {
                         SecureField("Password", text: $password).padding()
                     }
                 
+                // TODO: - Fix the button
+                
                 Button("Log In") {
                     self.isLoggedIn = true
                 }
                 .navigationTitle("Home")
-                .buttonBorderShape(.capsule)
+                .buttonStyle(.bordered)
                 .frame(width: 350, height: 44, alignment: .center)
-                .foregroundColor(.white)
-                .background(
-                    RoundedRectangle(
-                        cornerRadius: 15,
-                        style: .continuous).fill(Color("customDarkGreen")))
-                .padding()
+//                .foregroundColor(.white)
+//                .background(
+//                    RoundedRectangle(
+//                        cornerRadius: 15,
+//                        style: .continuous).fill(Color("customDarkGreen")))
+                .padding(.bottom, 150)
+                .padding(.top, 16)
+                
+                
+                
             }
         }
     }
