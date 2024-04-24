@@ -10,7 +10,7 @@ struct EnterIDView: View {
     // TODO: save the response in this var
     var device = ModelData().devices[0]
     
-    var progress = 0.75
+    var progress = 1.0
     
     var body: some View {
         NavigationView{
@@ -36,9 +36,9 @@ struct EnterIDView: View {
                     .foregroundColor(.black)
                 
                 RoundedRectangle(cornerRadius: 27)
-                    .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
+                    .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
                     .foregroundColor(.white)
-                    .shadow(radius: 3, x: 0, y: 0)
+                    .shadow(radius: 2, x: 0, y: 0)
                     .overlay{
                         TextField("Device ID", text: $deviceId).padding()
                     }
@@ -77,7 +77,7 @@ struct EnterIDView: View {
                 .padding(.horizontal, 32)
                 
                 NavigationLink(
-                    destination: DeviceDetail(device: self.device).navigationBarBackButtonHidden(true),
+                    destination: DeviceOnboardingView(device: self.device).navigationBarBackButtonHidden(true),
                     isActive: $goToNextScreen){}
                 
                 Spacer()

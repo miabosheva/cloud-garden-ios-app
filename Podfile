@@ -4,10 +4,11 @@
 target 'cloudgarden' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  
   # Pods for cloudgarden
-#  pod "Alamofire"
-#  pod 'Kingfisher'
-#  pod 'KeychainAccess'
-
+  pod 'lottie-ios'
+  #  pod "Alamofire"
+  #  pod 'Kingfisher'
+  #  pod 'KeychainAccess'
+  
 end
