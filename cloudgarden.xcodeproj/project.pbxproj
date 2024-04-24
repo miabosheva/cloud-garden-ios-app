@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D2C8D062BD938B80075DC39 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C8D052BD938B80075DC39 /* UserViewModel.swift */; };
 		203E12DD2BD53F95009F6D8D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203E12DC2BD53F95009F6D8D /* WelcomeView.swift */; };
 		204EE9152BCF0C160037A2AE /* PlantList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9142BCF0C160037A2AE /* PlantList.swift */; };
 		204EE9172BCF10CB0037A2AE /* PlantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9162BCF10CB0037A2AE /* PlantDetail.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D2C8D052BD938B80075DC39 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		0D8887708AEFFC5C6E7AD6BE /* Pods-cloudgarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cloudgarden.debug.xcconfig"; path = "Target Support Files/Pods-cloudgarden/Pods-cloudgarden.debug.xcconfig"; sourceTree = "<group>"; };
 		203E12DC2BD53F95009F6D8D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		204EE9142BCF0C160037A2AE /* PlantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantList.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			children = (
 				20A27DFF2BC406F2000A8B0A /* LoginView.swift */,
 				20BE7F802BD541B900442B7F /* RegisterView.swift */,
+				0D2C8D052BD938B80075DC39 /* UserViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				20B50A212BBD58A300C78067 /* AppDelegate.swift in Sources */,
 				204EE9192BCF16950037A2AE /* ContentView.swift in Sources */,
 				20B50A232BBD58A300C78067 /* SceneDelegate.swift in Sources */,
+				0D2C8D062BD938B80075DC39 /* UserViewModel.swift in Sources */,
 				20700B962BCFEED10029A384 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

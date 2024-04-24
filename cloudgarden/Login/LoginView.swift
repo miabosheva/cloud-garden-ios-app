@@ -2,6 +2,8 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @StateObject private var userModel = UserViewModel()
+    
     @Binding var isLoggedIn: Bool
     
     @State var username = ""
@@ -10,72 +12,88 @@ struct LoginView: View {
     var appBackground: LinearGradient = LinearGradient(gradient: Gradient(colors: [Color("customLemon"), Color("customGreen")]), startPoint: .top, endPoint: .bottom)
     
     var body: some View {
-        
-        ZStack {
+        NavigationView {
             
-            appBackground.ignoresSafeArea()
-            
-            VStack {
+            ZStack {
                 
-                Image("logo")
-                    .resizable()
-                    .frame(width: 80, height: 120)
-                    .padding(.top, 30)
-                    .padding(.bottom, 16)
+                appBackground.ignoresSafeArea()
                 
-                Text("Welcome\n to Cloud Garden")
-                    .multilineTextAlignment(.center)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .padding(.bottom, 40)
-                
-                HStack {
-                    Text("Username")
+                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
+                    
+                    Image("logo")
+                        .resizable()
+                        .frame(maxWidth: .infinity)
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.horizontal, 155)
+                        .padding(.bottom, 8)
+                    
+                    Text("CloudGarden")
+                        .font(.title)
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
-                    Spacer()
-                }
-                .frame(width:350)
-                
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(width: 350, height: 44, alignment: .center)
-                    .foregroundColor(.white)
-                    .overlay{
-                        TextField("Username", text: $username).padding()
-                    }
-                
-                HStack {
-                    Text("Password")
+                    
+                    Text("Your Digital Plant Assistant")
+                        .padding(.horizontal, 32)
+                        .multilineTextAlignment(.center)
                         .foregroundColor(.white)
-                    Spacer()
-                }
-                .frame(width:350)
-                
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(width: 350, height: 44, alignment: .center)
-                    .foregroundColor(.white)
-                    .overlay{
-                        SecureField("Password", text: $password).padding()
+                        .padding(.bottom, 16)
+                    
+                    HStack {
+                        Text("Username")
+                            .foregroundColor(.white)
+                        Spacer()
                     }
-                
-                // TODO: - Fix the button
-                
-                Button("Log In") {
-                    self.isLoggedIn = true
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 16)
+                    
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
+                        .foregroundColor(.white)
+                        .overlay{
+                            TextField("Username", text: $username).padding()
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 8)
+                    
+                    HStack {
+                        Text("Password")
+                            .foregroundColor(.white)
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 16)
+                    
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
+                        .foregroundColor(.white)
+                        .overlay{
+                            SecureField("Password", text: $password).padding()
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 8)
+                    
+                    Button {
+                        // TODO: - Implement login functionality
+                        self.isLoggedIn = true
+                    } label: {
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
+                            .foregroundColor(Color("customGreen"))
+                            .overlay{
+                                Text("Log In")
+                                    .foregroundColor(.white)
+                            }
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 4)
+                    
+                    NavigationLink(destination: RegisterView()){
+                        // TODO: - Go to registerView
+                        Text("Dont have an account?")
+                            .foregroundColor(.white)
+                        Text("Sign In").underline().foregroundColor(.white)
+                    }
                 }
-                .navigationTitle("Home")
-                .buttonStyle(.bordered)
-                .frame(width: 350, height: 44, alignment: .center)
-//                .foregroundColor(.white)
-//                .background(
-//                    RoundedRectangle(
-//                        cornerRadius: 15,
-//                        style: .continuous).fill(Color("customDarkGreen")))
-                .padding(.bottom, 150)
-                .padding(.top, 16)
-                
-                
-                
             }
         }
     }
