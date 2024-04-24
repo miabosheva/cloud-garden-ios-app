@@ -77,7 +77,7 @@ struct EnterIDView: View {
                 .padding(.horizontal, 32)
                 
                 NavigationLink(
-                    destination: DeviceOnboardingView(device: self.device).navigationBarBackButtonHidden(true),
+                    destination: AddDevice().navigationBarBackButtonHidden(true),
                     isActive: $goToNextScreen){}
                 
                 Spacer()

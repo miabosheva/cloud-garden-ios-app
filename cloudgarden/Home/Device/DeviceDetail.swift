@@ -97,7 +97,7 @@ struct DeviceDetail: View {
                         }
                 }
                 .padding(.horizontal, 32)
-                .padding(.top, 8)
+                .padding(.vertical, 8)
                 
                 NavigationLink(
                     destination: HomeNavigationView().navigationBarBackButtonHidden(true),
@@ -105,7 +105,7 @@ struct DeviceDetail: View {
             }
         }
         .sheet(isPresented: $goToAddPlant, content:{
-            PlantDetail(plant: ModelData().plants[0])
+            AddEditPlant()
         })
     }
 }

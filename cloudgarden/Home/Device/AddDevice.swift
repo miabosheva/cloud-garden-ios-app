@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct DeviceOnboardingView: View {
+struct AddDevice: View {
     
-    let device: Device
+//    let device: Device
     @State var newName: String = "Untitled Device"
     @State var goToAddPlant: Bool = false
     @State var goToHome: Bool = false
@@ -97,7 +97,7 @@ struct DeviceOnboardingView: View {
                         }
                 }
                 .padding(.horizontal, 32)
-                .padding(.top, 8)
+                .padding(.vertical, 8)
                 
                 NavigationLink(
                     destination: HomeNavigationView().navigationBarBackButtonHidden(true),
@@ -114,7 +114,7 @@ struct DeviceOnboardingView: View {
             }
         }
         .sheet(isPresented: $goToAddPlant, content:{
-            PlantDetail(plant: ModelData().plants[0])
+            AddEditPlant()
         })
     }
 }
@@ -123,6 +123,6 @@ struct DeviceOnboardingView: View {
     let devices = ModelData().devices
     
     return Group {
-        DeviceOnboardingView(device: devices[0])
+        AddDevice()
     }
 }
