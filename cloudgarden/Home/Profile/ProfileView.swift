@@ -13,38 +13,71 @@ struct ProfileView: View {
             
             Spacer()
             
-            Text("Change password")
             
-            TextField("**********", text: $passwordChanged)
-                .background(Color("customGrey"))
-                .frame(width: 300, height: 44, alignment: .leading)
-            
-            Button ("Change Password"){
-                // TODO: - Change password functionality
-            }
-            .buttonStyle(.bordered)
-            .frame(width: 300, height: 44, alignment: .center)
-            
-            VStack(alignment: .leading) {
-                
-                Text("Devices connected: \(modelData.devices.count)")
-                
-                Text("Total Plants: \(modelData.plants.count)")
-                
-                Button("Help"){
-                    // TODO: - Go to help screen
+            GroupBox {
+                HStack {
+                    Text("Change password")
+                        .padding(.leading, 16)
+                    Spacer()
                 }
                 
-                Button("Reset Data"){
-                    // TODO: - Reset data, "confirm reset data" screen overlay
+                RoundedRectangle(cornerRadius: 27)
+                    .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
+                    .foregroundColor(.white)
+                    .shadow(radius: 2, x: 0, y: 0)
+                    .overlay{
+                        TextField("**********", text: $passwordChanged)
+                            .padding(.horizontal, 8)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 8)
+                
+                Button {
+                    // TODO: - Change password functionality
+                } label: {
+                    RoundedRectangle(cornerRadius: 27)
+                        .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
+                        .foregroundColor(Color("customLemon"))
+                        .overlay{
+                            Text("Change Password")
+                                .foregroundColor(.white)
+                        }
+                }
+                .padding(.horizontal, 16)
+                .padding(.bottom, 16)
+                
+                VStack(alignment: .center) {
+                    
+                    Text("Devices connected: \(modelData.devices.count)")
+                    
+                    Text("Total Plants: \(modelData.plants.count)")
+                    
+                    Button("Help"){
+                        // TODO: - Go to help screen
+                    }
+                    
+                    Button("Reset Data"){
+                        // TODO: - Reset data, "confirm reset data" screen overlay
+                    }
                 }
             }
+            
             
             Spacer()
             
-            Button ("Log Out") {
-                // TODO: - Log Out funcitonality
-            }.buttonStyle(.borderedProminent)
+            Button {
+                // TODO: - Logout fucntionality
+            } label: {
+                RoundedRectangle(cornerRadius: 27)
+                    .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
+                    .foregroundColor(Color("customRed"))
+                    .overlay{
+                        Text("Log Out")
+                            .foregroundColor(.white)
+                    }
+            }
+            .padding(.horizontal, 32)
+            .padding(.bottom, 16)
         }
     }
 }

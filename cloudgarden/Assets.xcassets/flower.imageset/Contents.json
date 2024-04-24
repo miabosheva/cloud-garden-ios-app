@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "fi-rs-flower-tulip.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
