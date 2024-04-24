@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		203E12DD2BD53F95009F6D8D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203E12DC2BD53F95009F6D8D /* WelcomeView.swift */; };
 		204EE9152BCF0C160037A2AE /* PlantList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9142BCF0C160037A2AE /* PlantList.swift */; };
 		204EE9172BCF10CB0037A2AE /* PlantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9162BCF10CB0037A2AE /* PlantDetail.swift */; };
 		204EE9192BCF16950037A2AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9182BCF16950037A2AE /* ContentView.swift */; };
@@ -29,13 +30,14 @@
 		20B50A2B2BBD58A300C78067 /* cloudgarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A292BBD58A300C78067 /* cloudgarden.xcdatamodeld */; };
 		20B50A2D2BBD58A600C78067 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A2C2BBD58A600C78067 /* Assets.xcassets */; };
 		20B50A302BBD58A600C78067 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A2E2BBD58A600C78067 /* LaunchScreen.storyboard */; };
-		20B50A462BBD7B0000C78067 /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A452BBD7B0000C78067 /* DeviceViewController.swift */; };
+		20BE7F812BD541B900442B7F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE7F802BD541B900442B7F /* RegisterView.swift */; };
 		20EAB7582BCD661500307A1A /* LauchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EAB7572BCD661500307A1A /* LauchScreenViewController.swift */; };
 		EE9BEADF888DA33745DEC71F /* Pods_cloudgarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF37150522AA3E0F3E7B60A /* Pods_cloudgarden.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D8887708AEFFC5C6E7AD6BE /* Pods-cloudgarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cloudgarden.debug.xcconfig"; path = "Target Support Files/Pods-cloudgarden/Pods-cloudgarden.debug.xcconfig"; sourceTree = "<group>"; };
+		203E12DC2BD53F95009F6D8D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		204EE9142BCF0C160037A2AE /* PlantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantList.swift; sourceTree = "<group>"; };
 		204EE9162BCF10CB0037A2AE /* PlantDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetail.swift; sourceTree = "<group>"; };
 		204EE9182BCF16950037A2AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,7 +62,7 @@
 		20B50A2C2BBD58A600C78067 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20B50A2F2BBD58A600C78067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20B50A312BBD58A600C78067 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20B50A452BBD7B0000C78067 /* DeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
+		20BE7F802BD541B900442B7F /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		20EAB7572BCD661500307A1A /* LauchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauchScreenViewController.swift; sourceTree = "<group>"; };
 		3B254534DEBC88FBCEDCA9A2 /* Pods-cloudgarden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cloudgarden.release.xcconfig"; path = "Target Support Files/Pods-cloudgarden/Pods-cloudgarden.release.xcconfig"; sourceTree = "<group>"; };
 		BCF37150522AA3E0F3E7B60A /* Pods_cloudgarden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cloudgarden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		203E12DB2BD53F7E009F6D8D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				203E12DC2BD53F95009F6D8D /* WelcomeView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		204EE91D2BCF1A5C0037A2AE /* Device */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,8 +160,8 @@
 			children = (
 				20A27E092BC426D3000A8B0A /* Model */,
 				20A27E082BC42649000A8B0A /* Resources */,
-				20B50A422BBD7AE200C78067 /* Devices */,
 				20B50A3D2BBD70B900C78067 /* Home */,
+				203E12DB2BD53F7E009F6D8D /* Onboarding */,
 				20B50A372BBD58E600C78067 /* Login */,
 				204EE9182BCF16950037A2AE /* ContentView.swift */,
 				20B50A202BBD58A300C78067 /* AppDelegate.swift */,
@@ -168,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				20A27DFF2BC406F2000A8B0A /* LoginView.swift */,
+				20BE7F802BD541B900442B7F /* RegisterView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -175,20 +186,12 @@
 		20B50A3D2BBD70B900C78067 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				204EE91B2BCF1A450037A2AE /* HomeNavigationView.swift */,
 				20700B902BCFEE550029A384 /* Profile */,
 				204EE91D2BCF1A5C0037A2AE /* Device */,
 				20A27E012BC4130A000A8B0A /* Plant */,
-				204EE91B2BCF1A450037A2AE /* HomeNavigationView.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		20B50A422BBD7AE200C78067 /* Devices */ = {
-			isa = PBXGroup;
-			children = (
-				20B50A452BBD7B0000C78067 /* DeviceViewController.swift */,
-			);
-			path = Devices;
 			sourceTree = "<group>";
 		};
 		20EAB7592BCD662B00307A1A /* LaunchScreen */ = {
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				204EE91F2BCF1A750037A2AE /* DeviceList.swift in Sources */,
+				20BE7F812BD541B900442B7F /* RegisterView.swift in Sources */,
 				20B50A2B2BBD58A300C78067 /* cloudgarden.xcdatamodeld in Sources */,
 				204EE9272BCF1D150037A2AE /* DeviceRow.swift in Sources */,
 				204EE91C2BCF1A450037A2AE /* HomeNavigationView.swift in Sources */,
@@ -329,8 +333,8 @@
 				20700B922BCFEEA70029A384 /* ProfileView.swift in Sources */,
 				204EE9172BCF10CB0037A2AE /* PlantDetail.swift in Sources */,
 				204EE9152BCF0C160037A2AE /* PlantList.swift in Sources */,
-				20B50A462BBD7B0000C78067 /* DeviceViewController.swift in Sources */,
 				204EE92B2BCF2E0A0037A2AE /* DeviceDetail.swift in Sources */,
+				203E12DD2BD53F95009F6D8D /* WelcomeView.swift in Sources */,
 				20B50A212BBD58A300C78067 /* AppDelegate.swift in Sources */,
 				204EE9192BCF16950037A2AE /* ContentView.swift in Sources */,
 				20B50A232BBD58A300C78067 /* SceneDelegate.swift in Sources */,

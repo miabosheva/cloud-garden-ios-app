@@ -6,9 +6,8 @@ target 'cloudgarden' do
   use_frameworks!
 
   # Pods for cloudgarden
-  pod 'MBProgressHUD'
-  pod "Alamofire"
-  pod 'Kingfisher'
-  pod 'KeychainAccess'
+#  pod "Alamofire"
+#  pod 'Kingfisher'
+#  pod 'KeychainAccess'
 
 end
