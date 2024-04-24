@@ -19,13 +19,13 @@ struct RegisterView: View {
                 
                 VStack(alignment: .center) {
                     
-                    Text("Welcome to")
+                    Text("Let's start by")
                         .padding(.horizontal, 32)
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .foregroundColor(.white)
                     
-                    Text("Cloud Garden")
+                    Text("logging you in.")
                         .padding(.horizontal, 32)
                         .multilineTextAlignment(.center)
                         .font(.title)

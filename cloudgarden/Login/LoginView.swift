@@ -4,7 +4,7 @@ struct LoginView: View {
     
     @StateObject private var userModel = UserViewModel()
     
-    @Binding var isLoggedIn: Bool
+    @State var isLoggedIn: Bool = false
     
     @State var username = ""
     @State var password = ""
@@ -32,7 +32,7 @@ struct LoginView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     
-                    Text("Your Digital Plant Assistant")
+                    Text("Gardening made easier.")
                         .padding(.horizontal, 32)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.white)
@@ -93,6 +93,15 @@ struct LoginView: View {
                             .foregroundColor(.white)
                         Text("Sign In").underline().foregroundColor(.white)
                     }
+                    
+                    // TODO: - Bug when the homeview loads
+                    
+                    NavigationLink(destination: HomeNavigationView().navigationBarBackButtonHidden(true)
+                        .navigationBarHidden(true),
+                                   isActive: $isLoggedIn,
+                                   label: {
+                        EmptyView()
+                    })
                 }
             }
         }
@@ -100,5 +109,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(isLoggedIn: .constant(true))
+    LoginView()
 }
