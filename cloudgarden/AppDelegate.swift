@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  cloudgarden
-//
-//  Created by Mia Bosheva on 3.4.24.
-//
-
 import UIKit
 import CoreData
 import SwiftUI

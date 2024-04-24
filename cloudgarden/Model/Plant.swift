@@ -1,10 +1,3 @@
-//
-//  Plant.swift
-//  cloudgarden
-//
-//  Created by Mia Bosheva on 8.4.24.
-//
-
 import Foundation
 import SwiftUI
 

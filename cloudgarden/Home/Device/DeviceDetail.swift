@@ -1,10 +1,3 @@
-//
-//  DeviceDetail.swift
-//  cloudgarden
-//
-//  Created by Mia Bosheva on 17.4.24.
-//
-
 import SwiftUI
 
 struct DeviceDetail: View {

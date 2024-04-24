@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0E937E2BD947C100728BC7 /* ConnectToWifiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0E937D2BD947C100728BC7 /* ConnectToWifiView.swift */; };
+		0D0E93802BD95E0E00728BC7 /* ClickOnTheLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0E937F2BD95E0E00728BC7 /* ClickOnTheLinkView.swift */; };
+		0D0E93822BD95FD700728BC7 /* EnterIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0E93812BD95FD700728BC7 /* EnterIDView.swift */; };
 		0D2C8D062BD938B80075DC39 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C8D052BD938B80075DC39 /* UserViewModel.swift */; };
+		0D2C8D092BD940D20075DC39 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C8D082BD940D20075DC39 /* Colors.swift */; };
 		203E12DD2BD53F95009F6D8D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203E12DC2BD53F95009F6D8D /* WelcomeView.swift */; };
 		204EE9152BCF0C160037A2AE /* PlantList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9142BCF0C160037A2AE /* PlantList.swift */; };
 		204EE9172BCF10CB0037A2AE /* PlantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9162BCF10CB0037A2AE /* PlantDetail.swift */; };
@@ -32,12 +36,15 @@
 		20B50A2D2BBD58A600C78067 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A2C2BBD58A600C78067 /* Assets.xcassets */; };
 		20B50A302BBD58A600C78067 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B50A2E2BBD58A600C78067 /* LaunchScreen.storyboard */; };
 		20BE7F812BD541B900442B7F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE7F802BD541B900442B7F /* RegisterView.swift */; };
-		20EAB7582BCD661500307A1A /* LauchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EAB7572BCD661500307A1A /* LauchScreenViewController.swift */; };
 		EE9BEADF888DA33745DEC71F /* Pods_cloudgarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF37150522AA3E0F3E7B60A /* Pods_cloudgarden.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D0E937D2BD947C100728BC7 /* ConnectToWifiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectToWifiView.swift; sourceTree = "<group>"; };
+		0D0E937F2BD95E0E00728BC7 /* ClickOnTheLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickOnTheLinkView.swift; sourceTree = "<group>"; };
+		0D0E93812BD95FD700728BC7 /* EnterIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterIDView.swift; sourceTree = "<group>"; };
 		0D2C8D052BD938B80075DC39 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		0D2C8D082BD940D20075DC39 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0D8887708AEFFC5C6E7AD6BE /* Pods-cloudgarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cloudgarden.debug.xcconfig"; path = "Target Support Files/Pods-cloudgarden/Pods-cloudgarden.debug.xcconfig"; sourceTree = "<group>"; };
 		203E12DC2BD53F95009F6D8D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		204EE9142BCF0C160037A2AE /* PlantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantList.swift; sourceTree = "<group>"; };
@@ -65,7 +72,6 @@
 		20B50A2F2BBD58A600C78067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20B50A312BBD58A600C78067 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20BE7F802BD541B900442B7F /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		20EAB7572BCD661500307A1A /* LauchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauchScreenViewController.swift; sourceTree = "<group>"; };
 		3B254534DEBC88FBCEDCA9A2 /* Pods-cloudgarden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cloudgarden.release.xcconfig"; path = "Target Support Files/Pods-cloudgarden/Pods-cloudgarden.release.xcconfig"; sourceTree = "<group>"; };
 		BCF37150522AA3E0F3E7B60A /* Pods_cloudgarden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cloudgarden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,10 +88,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D2C8D072BD940C10075DC39 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				0D2C8D082BD940D20075DC39 /* Colors.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
 		203E12DB2BD53F7E009F6D8D /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				203E12DC2BD53F95009F6D8D /* WelcomeView.swift */,
+				0D0E937D2BD947C100728BC7 /* ConnectToWifiView.swift */,
+				0D0E937F2BD95E0E00728BC7 /* ClickOnTheLinkView.swift */,
+				0D0E93812BD95FD700728BC7 /* EnterIDView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -160,6 +177,7 @@
 		20B50A1F2BBD58A300C78067 /* cloudgarden */ = {
 			isa = PBXGroup;
 			children = (
+				0D2C8D072BD940C10075DC39 /* UIComponents */,
 				20A27E092BC426D3000A8B0A /* Model */,
 				20A27E082BC42649000A8B0A /* Resources */,
 				20B50A3D2BBD70B900C78067 /* Home */,
@@ -169,7 +187,7 @@
 				20B50A202BBD58A300C78067 /* AppDelegate.swift */,
 				20B50A222BBD58A300C78067 /* SceneDelegate.swift */,
 				20B50A2C2BBD58A600C78067 /* Assets.xcassets */,
-				20EAB7592BCD662B00307A1A /* LaunchScreen */,
+				20B50A2E2BBD58A600C78067 /* LaunchScreen.storyboard */,
 				20B50A312BBD58A600C78067 /* Info.plist */,
 				20B50A292BBD58A300C78067 /* cloudgarden.xcdatamodeld */,
 			);
@@ -195,15 +213,6 @@
 				20A27E012BC4130A000A8B0A /* Plant */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		20EAB7592BCD662B00307A1A /* LaunchScreen */ = {
-			isa = PBXGroup;
-			children = (
-				20EAB7572BCD661500307A1A /* LauchScreenViewController.swift */,
-				20B50A2E2BBD58A600C78067 /* LaunchScreen.storyboard */,
-			);
-			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		738C217FD21A5EE476D3F23C /* Pods */ = {
@@ -322,12 +331,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0E93802BD95E0E00728BC7 /* ClickOnTheLinkView.swift in Sources */,
 				204EE91F2BCF1A750037A2AE /* DeviceList.swift in Sources */,
+				0D0E93822BD95FD700728BC7 /* EnterIDView.swift in Sources */,
+				0D2C8D092BD940D20075DC39 /* Colors.swift in Sources */,
 				20BE7F812BD541B900442B7F /* RegisterView.swift in Sources */,
 				20B50A2B2BBD58A300C78067 /* cloudgarden.xcdatamodeld in Sources */,
 				204EE9272BCF1D150037A2AE /* DeviceRow.swift in Sources */,
 				204EE91C2BCF1A450037A2AE /* HomeNavigationView.swift in Sources */,
-				20EAB7582BCD661500307A1A /* LauchScreenViewController.swift in Sources */,
 				20A27E052BC41355000A8B0A /* PlantRow.swift in Sources */,
 				20A27E0B2BC426DF000A8B0A /* Plant.swift in Sources */,
 				20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */,
@@ -341,6 +352,7 @@
 				20B50A212BBD58A300C78067 /* AppDelegate.swift in Sources */,
 				204EE9192BCF16950037A2AE /* ContentView.swift in Sources */,
 				20B50A232BBD58A300C78067 /* SceneDelegate.swift in Sources */,
+				0D0E937E2BD947C100728BC7 /* ConnectToWifiView.swift in Sources */,
 				0D2C8D062BD938B80075DC39 /* UserViewModel.swift in Sources */,
 				20700B962BCFEED10029A384 /* User.swift in Sources */,
 			);

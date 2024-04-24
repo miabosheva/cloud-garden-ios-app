@@ -15,7 +15,7 @@ struct RegisterView: View {
             
             ZStack {
                 
-                appBackground.ignoresSafeArea()
+                Colors.appBackground.ignoresSafeArea()
                 
                 VStack(alignment: .center) {
                     
@@ -72,9 +72,9 @@ struct RegisterView: View {
                         // if the user is succesfully logged in then:
                         showOnboarding = true
                     } label: {
-                        RoundedRectangle(cornerRadius: 15)
+                        RoundedRectangle(cornerRadius: 27)
                             .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
-                            .foregroundColor(Color("customGreen"))
+                            .foregroundColor(Color("customDarkGreen"))
                             .overlay{
                                 Text("Sign Up")
                                     .foregroundColor(.white)
@@ -84,11 +84,7 @@ struct RegisterView: View {
                     
                     NavigationLink(
                         destination: WelcomeView().navigationBarBackButtonHidden(true),
-                        isActive: $showOnboarding,
-                        label: {
-                            EmptyView()
-                        }
-                    )
+                        isActive: $showOnboarding){}
                 }
             }
         }

@@ -9,14 +9,12 @@ struct LoginView: View {
     @State var username = ""
     @State var password = ""
     
-    var appBackground: LinearGradient = LinearGradient(gradient: Gradient(colors: [Color("customLemon"), Color("customGreen")]), startPoint: .top, endPoint: .bottom)
-    
     var body: some View {
         NavigationView {
             
             ZStack {
                 
-                appBackground.ignoresSafeArea()
+                Colors.appBackground.ignoresSafeArea()
                 
                 VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
                     
@@ -76,9 +74,9 @@ struct LoginView: View {
                         // TODO: - Implement login functionality
                         self.isLoggedIn = true
                     } label: {
-                        RoundedRectangle(cornerRadius: 15)
+                        RoundedRectangle(cornerRadius: 27)
                             .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
-                            .foregroundColor(Color("customGreen"))
+                            .foregroundColor(Color("customDarkGreen"))
                             .overlay{
                                 Text("Log In")
                                     .foregroundColor(.white)
@@ -86,6 +84,8 @@ struct LoginView: View {
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 4)
+                    
+                    // TODO: - Fix back button on nav to Register
                     
                     NavigationLink(destination: RegisterView()){
                         // TODO: - Go to registerView
@@ -98,10 +98,7 @@ struct LoginView: View {
                     
                     NavigationLink(destination: HomeNavigationView().navigationBarBackButtonHidden(true)
                         .navigationBarHidden(true),
-                                   isActive: $isLoggedIn,
-                                   label: {
-                        EmptyView()
-                    })
+                                   isActive: $isLoggedIn){}
                 }
             }
         }
