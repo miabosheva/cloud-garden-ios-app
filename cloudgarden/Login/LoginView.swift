@@ -93,6 +93,7 @@ struct LoginView: View {
                             .foregroundColor(.white)
                         Text("Sign In").underline().foregroundColor(.white)
                     }
+                    .padding(.bottom, 80)
                     
                     // TODO: - Bug when the homeview loads
                     

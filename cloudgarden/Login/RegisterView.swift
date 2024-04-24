@@ -80,6 +80,7 @@ struct RegisterView: View {
                                     .foregroundColor(.white)
                             }
                     }
+                    .padding(.bottom, 80)
                     .padding(.horizontal, 16)
                     
                     NavigationLink(
