@@ -84,7 +84,7 @@ struct RegisterView: View {
                     .padding(.horizontal, 16)
                     
                     NavigationLink(
-                        destination: WelcomeView().navigationBarBackButtonHidden(true),
+                        destination: OnboardingView().navigationBarBackButtonHidden(true),
                         isActive: $showOnboarding){}
                 }
             }

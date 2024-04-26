@@ -19,7 +19,6 @@
 		203E12DD2BD53F95009F6D8D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203E12DC2BD53F95009F6D8D /* WelcomeView.swift */; };
 		204EE9152BCF0C160037A2AE /* PlantList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9142BCF0C160037A2AE /* PlantList.swift */; };
 		204EE9172BCF10CB0037A2AE /* PlantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9162BCF10CB0037A2AE /* PlantDetail.swift */; };
-		204EE9192BCF16950037A2AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9182BCF16950037A2AE /* ContentView.swift */; };
 		204EE91C2BCF1A450037A2AE /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE91B2BCF1A450037A2AE /* HomeNavigationView.swift */; };
 		204EE91F2BCF1A750037A2AE /* DeviceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE91E2BCF1A750037A2AE /* DeviceList.swift */; };
 		204EE9232BCF1BE90037A2AE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9222BCF1BE90037A2AE /* Device.swift */; };
@@ -29,6 +28,8 @@
 		20700B922BCFEEA70029A384 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20700B912BCFEEA70029A384 /* ProfileView.swift */; };
 		20700B942BCFEEC70029A384 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 20700B932BCFEEC70029A384 /* users.json */; };
 		20700B962BCFEED10029A384 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20700B952BCFEED10029A384 /* User.swift */; };
+		209BC5CA2BDB850E00E4C216 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BC5C92BDB850E00E4C216 /* LoginModel.swift */; };
+		209BC5CD2BDB8AF400E4C216 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BC5CC2BDB8AF400E4C216 /* OnboardingView.swift */; };
 		20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27DFF2BC406F2000A8B0A /* LoginView.swift */; };
 		20A27E052BC41355000A8B0A /* PlantRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E042BC41355000A8B0A /* PlantRow.swift */; };
 		20A27E0B2BC426DF000A8B0A /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E0A2BC426DF000A8B0A /* Plant.swift */; };
@@ -57,7 +58,6 @@
 		203E12DC2BD53F95009F6D8D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		204EE9142BCF0C160037A2AE /* PlantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantList.swift; sourceTree = "<group>"; };
 		204EE9162BCF10CB0037A2AE /* PlantDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetail.swift; sourceTree = "<group>"; };
-		204EE9182BCF16950037A2AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		204EE91B2BCF1A450037A2AE /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
 		204EE91E2BCF1A750037A2AE /* DeviceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceList.swift; sourceTree = "<group>"; };
 		204EE9222BCF1BE90037A2AE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -67,6 +67,8 @@
 		20700B912BCFEEA70029A384 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		20700B932BCFEEC70029A384 /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		20700B952BCFEED10029A384 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		209BC5C92BDB850E00E4C216 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		209BC5CC2BDB8AF400E4C216 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		20A27DFF2BC406F2000A8B0A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		20A27E042BC41355000A8B0A /* PlantRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRow.swift; sourceTree = "<group>"; };
 		20A27E0A2BC426DF000A8B0A /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
@@ -109,10 +111,8 @@
 		203E12DB2BD53F7E009F6D8D /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				203E12DC2BD53F95009F6D8D /* WelcomeView.swift */,
-				0D0E937D2BD947C100728BC7 /* ConnectToWifiView.swift */,
-				0D0E937F2BD95E0E00728BC7 /* ClickOnTheLinkView.swift */,
-				0D0E93812BD95FD700728BC7 /* EnterIDView.swift */,
+				209BC5CB2BDB8ADD00E4C216 /* TabViewPages */,
+				209BC5CC2BDB8AF400E4C216 /* OnboardingView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -134,6 +134,17 @@
 				20700B912BCFEEA70029A384 /* ProfileView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		209BC5CB2BDB8ADD00E4C216 /* TabViewPages */ = {
+			isa = PBXGroup;
+			children = (
+				203E12DC2BD53F95009F6D8D /* WelcomeView.swift */,
+				0D0E937D2BD947C100728BC7 /* ConnectToWifiView.swift */,
+				0D0E937F2BD95E0E00728BC7 /* ClickOnTheLinkView.swift */,
+				0D0E93812BD95FD700728BC7 /* EnterIDView.swift */,
+			);
+			path = TabViewPages;
 			sourceTree = "<group>";
 		};
 		20A27E012BC4130A000A8B0A /* Plant */ = {
@@ -195,7 +206,6 @@
 				20B50A3D2BBD70B900C78067 /* Home */,
 				203E12DB2BD53F7E009F6D8D /* Onboarding */,
 				20B50A372BBD58E600C78067 /* Login */,
-				204EE9182BCF16950037A2AE /* ContentView.swift */,
 				20B50A202BBD58A300C78067 /* AppDelegate.swift */,
 				20B50A222BBD58A300C78067 /* SceneDelegate.swift */,
 				20B50A2C2BBD58A600C78067 /* Assets.xcassets */,
@@ -212,6 +222,7 @@
 				20A27DFF2BC406F2000A8B0A /* LoginView.swift */,
 				20BE7F802BD541B900442B7F /* RegisterView.swift */,
 				0D2C8D052BD938B80075DC39 /* UserViewModel.swift */,
+				209BC5C92BDB850E00E4C216 /* LoginModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -363,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D0E93802BD95E0E00728BC7 /* ClickOnTheLinkView.swift in Sources */,
+				209BC5CA2BDB850E00E4C216 /* LoginModel.swift in Sources */,
 				204EE91F2BCF1A750037A2AE /* DeviceList.swift in Sources */,
 				0D0E93822BD95FD700728BC7 /* EnterIDView.swift in Sources */,
 				0D2C8D092BD940D20075DC39 /* Colors.swift in Sources */,
@@ -374,6 +386,7 @@
 				20A27E0B2BC426DF000A8B0A /* Plant.swift in Sources */,
 				20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */,
 				204EE9232BCF1BE90037A2AE /* Device.swift in Sources */,
+				209BC5CD2BDB8AF400E4C216 /* OnboardingView.swift in Sources */,
 				20A27E112BC42AF8000A8B0A /* ModelData.swift in Sources */,
 				20700B922BCFEEA70029A384 /* ProfileView.swift in Sources */,
 				204EE9172BCF10CB0037A2AE /* PlantDetail.swift in Sources */,
@@ -382,7 +395,6 @@
 				204EE92B2BCF2E0A0037A2AE /* DeviceDetail.swift in Sources */,
 				203E12DD2BD53F95009F6D8D /* WelcomeView.swift in Sources */,
 				20B50A212BBD58A300C78067 /* AppDelegate.swift in Sources */,
-				204EE9192BCF16950037A2AE /* ContentView.swift in Sources */,
 				20B50A232BBD58A300C78067 /* SceneDelegate.swift in Sources */,
 				0D0E93862BD9708600728BC7 /* LottieView.swift in Sources */,
 				0D0E937E2BD947C100728BC7 /* ConnectToWifiView.swift in Sources */,

@@ -3,6 +3,7 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject private var userModel = UserViewModel()
+    //@StateObject var model: LoginModel
     
     @State var isLoggedIn: Bool = false
     
@@ -72,6 +73,8 @@ struct LoginView: View {
                     
                     Button {
                         // TODO: - Implement login functionality
+                        // ucomment when adding login func
+                        //model.logIn()
                         self.isLoggedIn = true
                     } label: {
                         RoundedRectangle(cornerRadius: 27)

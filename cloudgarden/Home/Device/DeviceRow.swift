@@ -28,27 +28,35 @@ struct DeviceRow: View {
                     .foregroundStyle(.secondary)
                 
                 
-                
                 HStack {
                     
-                    Button ("Add Plant") {
-                        
+                    Button{
+                        // TODO: - Popup add device
+                    } label: {
+                        RoundedRectangle(cornerRadius: 27)
+                            .frame(maxWidth: .infinity, maxHeight: 30, alignment: .center)
+                            .foregroundColor(Color("customGreen"))
+                            .overlay{
+                                Text("Add Device")
+                                    .fontWeight(.semibold)
+                                    .font(.caption)
+                                    .foregroundColor(.white)
+                            }
                     }
-                    // TODO: - Design
-//                    .frame(width: 80, height:37)
-                    .background(Color("customGreen"))
-                    .buttonStyle(.bordered)
-                    .foregroundColor(.white)
-//                    .padding(.leading, 8)
                     
-                    Button ("Delete Device") {
-                        
+                    Button{
+                        // TODO: - Popup are you sure you want to delete?
+                    } label: {
+                        RoundedRectangle(cornerRadius: 27)
+                            .frame(maxWidth: .infinity, maxHeight: 30, alignment: .center)
+                            .foregroundColor(Color("customRed"))
+                            .overlay{
+                                Text("Delete Device")
+                                    .fontWeight(.semibold)
+                                    .font(.caption)
+                                    .foregroundColor(.white)
+                            }
                     }
-                    // TODO: - Design
-//                    .frame(width: 80, height:37)
-                    .foregroundColor(.white)
-                    .background(Color("customRed"))
-                    .buttonStyle(.bordered)
                     
                 }
             }

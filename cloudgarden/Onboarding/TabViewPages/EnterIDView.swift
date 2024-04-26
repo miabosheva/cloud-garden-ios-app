@@ -1,28 +1,32 @@
 import SwiftUI
 
-struct ClickOnTheLinkView: View {
+struct EnterIDView: View {
     
-    @Binding var isPresented: Bool
     @State var goToNextScreen: Bool = false
+    @Binding var tab: OnboardingTab
     
-    var progress = 0.75
+    @State var deviceId = ""
+
+    // TODO: save the response in this var
+    var device = ModelData().devices[0]
+    
+    var progress = 1.0
     
     var body: some View {
-        NavigationView{
             VStack{
                 
                 Spacer()
                 
-                Text("Step 2: Click on the button")
+                Text("Step 3: Enter the ID you see on the Device")
                     .font(.title2)
                     .fontWeight(.bold)
                     .padding(.horizontal, 32)
                     .padding(.bottom, 8)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color("customDarkGreen"))
-                    .padding(.top, 80)
+                    .padding(.top, 70)
                 
-                Text("The button will take you to a site where you need to enter your home Wi-Fi credentials. This will help your home device connect to the internet. After filling the form in the browser, come back to the app and click next.")
+                Text("Your device comes with a unique ID. You can find it written on the device. Enter the ID below.")
                     .font(.footnote)
                     .foregroundColor(Color("customDarkGreen"))
                     .padding(.horizontal, 32)
@@ -30,22 +34,19 @@ struct ClickOnTheLinkView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.black)
                 
-                Button {
-                    // TODO: - Navigate to web site
-                } label: {
-                    RoundedRectangle(cornerRadius: 27)
-                        .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
-                        .foregroundColor(Color("customRed"))
-                        .overlay{
-                            Text("Very Important Button")
-                                .foregroundColor(.white)
-                        }
-                }
-                .padding(.horizontal, 32)
+                RoundedRectangle(cornerRadius: 27)
+                    .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
+                    .foregroundColor(.white)
+                    .shadow(radius: 2, x: 0, y: 0)
+                    .overlay{
+                        TextField("Device ID", text: $deviceId).padding()
+                    }
+                    .padding(.horizontal, 32)
+                    .padding(.bottom, 8)
                 
                 HStack (spacing: 16) {
                     Button {
-                        self.isPresented = false
+                        self.tab = .step3
                     } label: {
                         RoundedRectangle(cornerRadius: 27)
                             .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
@@ -57,6 +58,10 @@ struct ClickOnTheLinkView: View {
                     }
                     
                     Button {
+                        // TODO: - API Call Add a Device with DeviceID
+                        // Open up the view from the specified DeviceID
+                        // call get device by deviceid
+                        // Call DeviceDetail(device)
                         self.goToNextScreen.toggle()
                     } label: {
                         RoundedRectangle(cornerRadius: 27)
@@ -71,7 +76,7 @@ struct ClickOnTheLinkView: View {
                 .padding(.horizontal, 32)
                 
                 NavigationLink(
-                    destination: EnterIDView(isPresented: $goToNextScreen).navigationBarBackButtonHidden(true),
+                    destination: AddDevice().navigationBarBackButtonHidden(true),
                     isActive: $goToNextScreen){}
                 
                 Spacer()
@@ -106,9 +111,8 @@ struct ClickOnTheLinkView: View {
                 .padding(.bottom, 32)
             }
         }
-    }
 }
 
 #Preview {
-    ClickOnTheLinkView(isPresented: .constant(true))
+    EnterIDView(tab: .constant(OnboardingTab.step4))
 }
