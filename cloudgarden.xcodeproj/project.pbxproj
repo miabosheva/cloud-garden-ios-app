@@ -30,6 +30,8 @@
 		20700B962BCFEED10029A384 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20700B952BCFEED10029A384 /* User.swift */; };
 		209BC5CA2BDB850E00E4C216 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BC5C92BDB850E00E4C216 /* LoginModel.swift */; };
 		209BC5CD2BDB8AF400E4C216 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BC5CC2BDB8AF400E4C216 /* OnboardingView.swift */; };
+		209BC5D22BDBA9EA00E4C216 /* AddWateringEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BC5D12BDBA9EA00E4C216 /* AddWateringEntry.swift */; };
+		209BC5D42BDBA9F400E4C216 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BC5D32BDBA9F400E4C216 /* AnalyticsView.swift */; };
 		20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27DFF2BC406F2000A8B0A /* LoginView.swift */; };
 		20A27E052BC41355000A8B0A /* PlantRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E042BC41355000A8B0A /* PlantRow.swift */; };
 		20A27E0B2BC426DF000A8B0A /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E0A2BC426DF000A8B0A /* Plant.swift */; };
@@ -69,6 +71,8 @@
 		20700B952BCFEED10029A384 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		209BC5C92BDB850E00E4C216 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		209BC5CC2BDB8AF400E4C216 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		209BC5D12BDBA9EA00E4C216 /* AddWateringEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWateringEntry.swift; sourceTree = "<group>"; };
+		209BC5D32BDBA9F400E4C216 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		20A27DFF2BC406F2000A8B0A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		20A27E042BC41355000A8B0A /* PlantRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRow.swift; sourceTree = "<group>"; };
 		20A27E0A2BC426DF000A8B0A /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
@@ -147,12 +151,22 @@
 			path = TabViewPages;
 			sourceTree = "<group>";
 		};
+		209BC5D02BDBA9D800E4C216 /* PlantDetail */ = {
+			isa = PBXGroup;
+			children = (
+				209BC5D12BDBA9EA00E4C216 /* AddWateringEntry.swift */,
+				209BC5D32BDBA9F400E4C216 /* AnalyticsView.swift */,
+			);
+			path = PlantDetail;
+			sourceTree = "<group>";
+		};
 		20A27E012BC4130A000A8B0A /* Plant */ = {
 			isa = PBXGroup;
 			children = (
+				204EE9162BCF10CB0037A2AE /* PlantDetail.swift */,
+				209BC5D02BDBA9D800E4C216 /* PlantDetail */,
 				20A27E042BC41355000A8B0A /* PlantRow.swift */,
 				204EE9142BCF0C160037A2AE /* PlantList.swift */,
-				204EE9162BCF10CB0037A2AE /* PlantDetail.swift */,
 				0D0E938A2BD9791F00728BC7 /* AddEditPlant.swift */,
 			);
 			path = Plant;
@@ -376,6 +390,7 @@
 				0D0E93802BD95E0E00728BC7 /* ClickOnTheLinkView.swift in Sources */,
 				209BC5CA2BDB850E00E4C216 /* LoginModel.swift in Sources */,
 				204EE91F2BCF1A750037A2AE /* DeviceList.swift in Sources */,
+				209BC5D42BDBA9F400E4C216 /* AnalyticsView.swift in Sources */,
 				0D0E93822BD95FD700728BC7 /* EnterIDView.swift in Sources */,
 				0D2C8D092BD940D20075DC39 /* Colors.swift in Sources */,
 				20BE7F812BD541B900442B7F /* RegisterView.swift in Sources */,
@@ -384,6 +399,7 @@
 				204EE91C2BCF1A450037A2AE /* HomeNavigationView.swift in Sources */,
 				20A27E052BC41355000A8B0A /* PlantRow.swift in Sources */,
 				20A27E0B2BC426DF000A8B0A /* Plant.swift in Sources */,
+				209BC5D22BDBA9EA00E4C216 /* AddWateringEntry.swift in Sources */,
 				20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */,
 				204EE9232BCF1BE90037A2AE /* Device.swift in Sources */,
 				209BC5CD2BDB8AF400E4C216 /* OnboardingView.swift in Sources */,

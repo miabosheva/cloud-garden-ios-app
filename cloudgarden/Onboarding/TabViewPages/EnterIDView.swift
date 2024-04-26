@@ -13,6 +13,7 @@ struct EnterIDView: View {
     var progress = 1.0
     
     var body: some View {
+        
             VStack{
                 
                 Spacer()
@@ -36,7 +37,7 @@ struct EnterIDView: View {
                 
                 RoundedRectangle(cornerRadius: 27)
                     .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
-                    .foregroundColor(.white)
+                    .foregroundColor(Colors.white)
                     .shadow(radius: 2, x: 0, y: 0)
                     .overlay{
                         TextField("Device ID", text: $deviceId).padding()

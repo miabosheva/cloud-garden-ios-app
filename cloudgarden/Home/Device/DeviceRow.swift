@@ -23,7 +23,7 @@ struct DeviceRow: View {
                 Text(device.title)
                     .font(.title2)
                 
-                Text("Plants: \(device.numberOfPlants)")
+                Text("Number of plants: \(device.numberOfPlants)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 
