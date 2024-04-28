@@ -1,18 +1,30 @@
 [
     {
-        "title": "Bedroom",
-        "numberOfPlants": 3,
+        "code": "23423432",
+        "macAddress": "device 1",
+        "user": "",
+        "plants": [],
+        "Id": 1,
     },
     {
-        "title": "Kitchen",
-        "numberOfPlants": 1,
+        "code": "456674",
+        "macAddress": "device 2",
+        "user": "",
+        "plants": [],
+        "Id": 2,
     },
     {
-        "title": "Living Room",
-        "numberOfPlants": 3,
+        "code": "7522",
+        "macAddress": "device 3",
+        "user": "",
+        "plants": [],
+        "Id": 3,
     },
     {
-        "title": "Balcony",
-        "numberOfPlants": 2,
+        "code": "666666",
+        "macAddress": "device 4",
+        "user": "",
+        "plants": [],
+        "Id": 4,
     },
 ]

@@ -7,7 +7,7 @@ target 'cloudgarden' do
   
   # Pods for cloudgarden
   pod 'lottie-ios'
-  #  pod "Alamofire"
+  pod "Alamofire"
   #  pod 'Kingfisher'
   #  pod 'KeychainAccess'
   

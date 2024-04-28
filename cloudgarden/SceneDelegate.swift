@@ -13,9 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let model = LoginModel(window: window)
-            //let loginView = LoginView(model: model)
-            let loginView = LoginView()
+            let userModel = UserModel(window: window)
+            let loginView = LoginView(userModel: userModel)
             window.rootViewController = UIHostingController(rootView: loginView) // Use UIHostingController to wrap the SwiftUI view
             self.window = window
             window.makeKeyAndVisible()
