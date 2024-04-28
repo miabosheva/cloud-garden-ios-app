@@ -88,7 +88,7 @@ struct LoginView: View {
                     NavigationLink(destination: RegisterView(userModel: userModel).tint(.customOffWhite)){
                         Text("Dont have an account?")
                             .foregroundColor(.white)
-                        Text("Sign In").underline().foregroundColor(.white)
+                        Text("Sign Up").underline().foregroundColor(.white)
                     }
                     .padding(.bottom, 80)
                 }

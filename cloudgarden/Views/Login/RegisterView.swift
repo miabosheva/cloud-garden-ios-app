@@ -27,7 +27,7 @@ struct RegisterView: View {
                         .font(.title)
                         .foregroundColor(.white)
                     
-                    Text("logging you in.")
+                    Text("signing you up.")
                         .padding(.horizontal, 32)
                         .multilineTextAlignment(.center)
                         .font(.title)
