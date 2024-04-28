@@ -6,13 +6,13 @@ class DeviceAndPlantModel: ObservableObject {
     var modelData: ModelData = ModelData()
     
     private weak var window: UIWindow!
-    var authInfo: AuthInfo?
+    var user: User
     
     var devices: [Device] = []
     var plants: [Plant] = []
     
-    init(authInfo: AuthInfo?){
-        self.authInfo = authInfo
+    init(user: User){
+        self.user = user
     }
     
     // MARK: - Helper methods - Device

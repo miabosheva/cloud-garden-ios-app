@@ -70,8 +70,9 @@ struct RegisterView: View {
                         .padding(.bottom, 8)
                     
                     Button {
-                        userModel.register(username: username, password: password)
-                        showOnboarding = true
+                        if userModel.register(username: username, password: password){
+                            showOnboarding = true
+                        }
                     } label: {
                         RoundedRectangle(cornerRadius: 27)
                             .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)

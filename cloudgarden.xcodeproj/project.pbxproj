@@ -214,7 +214,6 @@
 				20700B952BCFEED10029A384 /* User.swift */,
 				204EE9222BCF1BE90037A2AE /* Device.swift */,
 				20A27E0A2BC426DF000A8B0A /* Plant.swift */,
-				20A27E102BC42AF8000A8B0A /* ModelData.swift */,
 				0D93EB822BDD8D6D00C32C8E /* UserResponse.swift */,
 				0D93EB842BDD8D7500C32C8E /* AuthInfo.swift */,
 			);
@@ -242,6 +241,7 @@
 		20B50A1F2BBD58A300C78067 /* cloudgarden */ = {
 			isa = PBXGroup;
 			children = (
+				20A27E102BC42AF8000A8B0A /* ModelData.swift */,
 				0D2C8D072BD940C10075DC39 /* UIComponents */,
 				20A27E092BC426D3000A8B0A /* Models */,
 				20A27E082BC42649000A8B0A /* Resources */,

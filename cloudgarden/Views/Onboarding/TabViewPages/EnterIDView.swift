@@ -16,7 +16,7 @@ struct EnterIDView: View {
         self.tab = tab
         self.userModel = userModel
 //        self.deviceAndPlantModel = DeviceAndPlantModel(authInfo: userModel.authInfo!)
-        self.deviceAndPlantModel = DeviceAndPlantModel(authInfo: nil)
+        self.deviceAndPlantModel = DeviceAndPlantModel(user: userModel.getUser())
     }
     
     var body: some View {

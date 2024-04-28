@@ -1,5 +1,6 @@
 import UIKit
 import SwiftUI
+import KeychainAccess
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -12,12 +13,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         if let windowScene = scene as? UIWindowScene {
+            //            let keychain = Keychain(service: "com.finki.cloudgarden")
+            //            guard let savedAuthInfo = try? keychain.getData("authInfo") else { return }
+            //            let decoder = JSONDecoder()
+            //            if let authInfo = try? decoder.decode(User.self, from: savedAuthInfo) {
+            //                let userModel = UserModel(window: window!)
+            //                let deviceAndPlantModel = DeviceAndPlantModel(user: authInfo)
+            //                let homeView = HomeNavigationView(userModel: userModel, deviceAndPlantModel: deviceAndPlantModel)
+            //                window?.rootViewController = UIHostingController(rootView: homeView)
+            //                window?.makeKeyAndVisible()
+            //            } else {
             let window = UIWindow(windowScene: windowScene)
             let userModel = UserModel(window: window)
             let loginView = LoginView(userModel: userModel)
-            window.rootViewController = UIHostingController(rootView: loginView) // Use UIHostingController to wrap the SwiftUI view
+            window.rootViewController = UIHostingController(rootView: loginView)
             self.window = window
             window.makeKeyAndVisible()
+            //            }
         }
     }
     

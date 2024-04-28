@@ -7,9 +7,6 @@ struct HomeNavigationView: View {
     @StateObject var userModel: UserModel
     @StateObject var deviceAndPlantModel: DeviceAndPlantModel
     
-    var authInfo: AuthInfo?
-    var userResponse: UserResponse?
-    
     var body: some View {
         TabView(selection: $selection) {
             

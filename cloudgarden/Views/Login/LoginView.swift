@@ -72,7 +72,7 @@ struct LoginView: View {
                         .padding(.bottom, 8)
                     
                     Button {
-                        userModel.logIn()
+                        userModel.logIn(username: self.username, password: self.password)
                     } label: {
                         RoundedRectangle(cornerRadius: 27)
                             .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
