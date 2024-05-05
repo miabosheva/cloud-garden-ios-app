@@ -1,4 +1,6 @@
 import SwiftUI
+import ProgressHUD
+import NotificationBannerSwift
 
 struct RegisterView: View {
     
@@ -69,24 +71,7 @@ struct RegisterView: View {
                         .padding(.horizontal, 16)
                         .padding(.bottom, 8)
                     
-                    Button {
-                        if username != "" || password != "" {
-                            Task {
-                                do {
-                                    let success = try await userModel.register(username: username, password: password)
-                                    if success {
-                                        showOnboarding = true
-                                    } else {
-                                        // show register failed error
-                                    }
-                                } catch {
-                                    // show unknown error
-                                }
-                            }
-                        } else {
-                            // show credentials invalid error
-                        }
-                    } label: {
+                    Button (action: signUpButtonTapped) {
                         RoundedRectangle(cornerRadius: 27)
                             .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                             .foregroundColor(Color("customDarkGreen"))
@@ -102,6 +87,40 @@ struct RegisterView: View {
                         destination: OnboardingView(userModel: userModel).navigationBarBackButtonHidden(true),
                         isActive: $showOnboarding){}
                 }
+            }
+        }
+    }
+    
+    func signUpButtonTapped(){
+        ProgressHUD.animate()
+        let bannerFailed = NotificationBanner(title: "Sign Up Failed. Try Again", style: .danger)
+        if username != "" && password != "" {
+            Task {
+                do {
+                    let success = try await userModel.register(username: username, password: password)
+                    if success {
+                        showOnboarding = true
+                        DispatchQueue.main.async {
+                            ProgressHUD.dismiss()
+                            userModel.setupViews(user: User(username: username, password: password))
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            ProgressHUD.dismiss()
+                            bannerFailed.show()
+                        }
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        ProgressHUD.dismiss()
+                        bannerFailed.show()
+                    }
+                }
+            }
+        } else {
+            DispatchQueue.main.async {
+                ProgressHUD.dismiss()
+                bannerFailed.show()
             }
         }
     }

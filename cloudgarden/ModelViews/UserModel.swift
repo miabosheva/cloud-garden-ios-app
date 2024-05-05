@@ -59,8 +59,6 @@ class UserModel: ObservableObject {
     
     func register(username: String, password: String) async throws -> Bool {
         
-        await ProgressHUD.animate("Please wait...", .ballVerticalBounce)
-        
         let url = URL(string: "https://cloudplant.azurewebsites.net/authentication/signup")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -74,7 +72,7 @@ class UserModel: ObservableObject {
         
         request.httpBody = bodyData
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (_, response) = try await URLSession.shared.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse else {
             throw AuthentiactionError.invalidResponse
@@ -84,18 +82,10 @@ class UserModel: ObservableObject {
             throw AuthentiactionError.httpError(statusCode: httpResponse.statusCode)
         }
         
-        let responseData = data
-        
-        //        do {
-        //            let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
-        // save user credentials
         let responseUser = User(username: username, password: password)
         saveToKeychain(user: responseUser)
         
         return true
-        //        } catch {
-        //            throw AuthentiactionError.jsonParsingError
-        //        }
     }
     
     
@@ -124,7 +114,7 @@ class UserModel: ObservableObject {
         
         request.httpBody = bodyData
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (_, response) = try await URLSession.shared.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse else {
             throw AuthentiactionError.invalidResponse
@@ -134,17 +124,9 @@ class UserModel: ObservableObject {
             throw AuthentiactionError.httpError(statusCode: httpResponse.statusCode)
         }
         
-        let responseData = data
-        
-        //        do {
-        // save user credentials
-        //            let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
         let responseUser = User(username: username, password: password)
         saveToKeychain(user: responseUser)
         return true
-        //        } catch {
-        //            throw AuthentiactionError.jsonParsingError
-        //        }
     }
     
     func setupViews(user: User) {

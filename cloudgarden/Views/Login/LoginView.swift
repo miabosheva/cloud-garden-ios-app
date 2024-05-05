@@ -7,7 +7,6 @@ struct LoginView: View {
     var userModel: UserModel
     @State var username = ""
     @State var password = ""
-    @State private var isLoggingIn: Bool = false
     
     init(userModel: UserModel){
         self.userModel = userModel
@@ -103,12 +102,11 @@ struct LoginView: View {
     func logInButtonTapped(){
         ProgressHUD.animate()
         let bannerFailed = NotificationBanner(title: "Login Failed. Try Again", style: .danger)
-        if username != "" || password != "" {
+        if username != "" && password != "" {
             Task {
                 do {
                     let success = try await userModel.logIn(username: self.username, password: self.password)
                     if success {
-                        
                         DispatchQueue.main.async {
                             ProgressHUD.dismiss()
                             userModel.setupViews(user: User(username: username, password: password))
@@ -132,6 +130,5 @@ struct LoginView: View {
                 bannerFailed.show()
             }
         }
-        
     }
 }
