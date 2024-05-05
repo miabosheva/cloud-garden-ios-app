@@ -89,7 +89,3 @@ struct ConnectToWifiView: View {
             }
         }
 }
-
-#Preview {
-    ConnectToWifiView(tab: .constant(OnboardingTab.step2))
-}

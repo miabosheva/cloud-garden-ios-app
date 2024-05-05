@@ -93,9 +93,10 @@ struct LoginView: View {
                     }
                     .padding(.bottom, 80)
                 }
-                
+                .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
             }
-            
         }
     }
     

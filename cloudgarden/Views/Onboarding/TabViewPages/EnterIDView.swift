@@ -1,4 +1,6 @@
 import SwiftUI
+import NotificationBannerSwift
+import ProgressHUD
 
 struct EnterIDView: View {
     
@@ -15,13 +17,12 @@ struct EnterIDView: View {
     init(tab: OnboardingTab, userModel: UserModel){
         self.tab = tab
         self.userModel = userModel
-//        self.deviceAndPlantModel = DeviceAndPlantModel(authInfo: userModel.authInfo!)
-        self.deviceAndPlantModel = DeviceAndPlantModel(user: userModel.getUser())
+        self.deviceAndPlantModel = DeviceAndPlantModel(user: userModel.user!)
     }
     
     var body: some View {
         
-        VStack{
+        VStack {
             
             Spacer()
             
@@ -65,10 +66,7 @@ struct EnterIDView: View {
                         }
                 }
                 
-                Button {
-                    deviceAndPlantModel.addNewDevice(deviceId: deviceId)
-                    userModel.navigateToHomeFromOnboarding(deviceAndPlantModel: deviceAndPlantModel)
-                } label: {
+                Button (action: processAddNewDevice) {
                     RoundedRectangle(cornerRadius: 27)
                         .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                         .foregroundColor(Color("customLimeGreen"))
@@ -110,6 +108,39 @@ struct EnterIDView: View {
                     .padding(.trailing, 24)
             }
             .padding(.bottom, 32)
+        }
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+    }
+    
+    func processAddNewDevice(){
+        ProgressHUD.animate()
+        let banner = GrowingNotificationBanner(title: "Please Enter a Valid ID", style: .danger)
+        if deviceId != "" {
+            Task {
+                do {
+                    let result = try await deviceAndPlantModel.addNewDevice(deviceId: deviceId)
+                    if result {
+                        DispatchQueue.main.async {
+                            ProgressHUD.dismiss()
+                            userModel.dismissView()
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            banner.show()
+                            ProgressHUD.dismiss()
+                        }
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        banner.show()
+                        ProgressHUD.dismiss()
+                    }
+                }
+            }
+        } else {
+            banner.show()
         }
     }
 }

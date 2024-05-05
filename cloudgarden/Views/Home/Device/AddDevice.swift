@@ -64,7 +64,7 @@ struct AddDevice: View {
                     .padding(.bottom, 8)
                 
                 Button {
-                    model.addNewDevice(deviceId: deviceIdPlaceholder)
+//                    model.addNewDevice(deviceId: deviceIdPlaceholder)
                 } label: {
                     RoundedRectangle(cornerRadius: 27)
                         .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)

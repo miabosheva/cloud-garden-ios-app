@@ -18,9 +18,11 @@ struct OnboardingView: View {
     @State var selection: OnboardingTab = .step1
     
     var userModel: UserModel
+    var deviceAndPlantModel: DeviceAndPlantModel
     
-    init(userModel: UserModel){
+    init(userModel: UserModel, deviceAndPlantModel: DeviceAndPlantModel){
         self.userModel = userModel
+        self.deviceAndPlantModel = deviceAndPlantModel
     }
     
     var body: some View {
@@ -35,7 +37,6 @@ struct OnboardingView: View {
                 .tag(OnboardingTab.step4)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-        //no animation
         .indexViewStyle(.page(backgroundDisplayMode: .always))
     }
 }

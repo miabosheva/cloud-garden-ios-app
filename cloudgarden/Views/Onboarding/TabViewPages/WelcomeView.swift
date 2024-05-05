@@ -75,7 +75,3 @@ struct WelcomeView: View {
             }
         }
 }
-
-#Preview {
-    WelcomeView(tab: .constant(OnboardingTab.step1))
-}

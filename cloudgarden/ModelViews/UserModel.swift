@@ -100,7 +100,6 @@ class UserModel: ObservableObject {
     
     func logIn(username: String, password: String) async throws -> Bool {
         
-        
         let url = URL(string: "https://cloudplant.azurewebsites.net/authentication/signin")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -131,11 +130,23 @@ class UserModel: ObservableObject {
     
     func setupViews(user: User) {
         let deviceAndPlantModel = DeviceAndPlantModel(user: user)
-        let userModel = UserModel(window: self.window)
         
-        let view = HomeNavigationView(userModel: userModel, deviceAndPlantModel: deviceAndPlantModel).navigationBarBackButtonHidden(true).navigationBarHidden(true)
+        let view = HomeNavigationView(userModel: self, deviceAndPlantModel: deviceAndPlantModel)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
         window.rootViewController = UIHostingController(rootView: view)
-        print(window.rootViewController as Any)
+    }
+    
+    func setupOnboardingView(user: User){
+        let deviceAndPlantModel = DeviceAndPlantModel(user: user)
+        
+        let view = HomeNavigationView(userModel: self, deviceAndPlantModel: deviceAndPlantModel)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
+        window.rootViewController = UIHostingController(rootView: view)
+        
+        let onboardingView = OnboardingView(userModel: self, deviceAndPlantModel: deviceAndPlantModel)
+        window.rootViewController?.present(UIHostingController(rootView: onboardingView), animated: true, completion: nil)
     }
     
     func navigateToHomeFromOnboarding(deviceAndPlantModel: DeviceAndPlantModel) {
@@ -144,6 +155,12 @@ class UserModel: ObservableObject {
         
         let view = HomeNavigationView(userModel: userModel, deviceAndPlantModel: deviceAndPlantModel).navigationBarBackButtonHidden(true).navigationBarHidden(true)
         window.rootViewController = UIHostingController(rootView: view)
-        print(window.rootViewController as Any)
+    }
+    
+    func dismissView() {
+        guard let presentingViewController = UIApplication.shared.windows.first?.rootViewController else {
+            return
+        }
+        presentingViewController.dismiss(animated: true, completion: nil)
     }
 }

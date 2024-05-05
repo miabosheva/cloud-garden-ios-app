@@ -82,10 +82,9 @@ struct RegisterView: View {
                     }
                     .padding(.bottom, 80)
                     .padding(.horizontal, 16)
-                    
-                    NavigationLink(
-                        destination: OnboardingView(userModel: userModel).navigationBarBackButtonHidden(true),
-                        isActive: $showOnboarding){}
+                }
+                .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }
             }
         }
@@ -99,10 +98,9 @@ struct RegisterView: View {
                 do {
                     let success = try await userModel.register(username: username, password: password)
                     if success {
-                        showOnboarding = true
                         DispatchQueue.main.async {
+                            userModel.setupOnboardingView(user: User(username: username, password: password))
                             ProgressHUD.dismiss()
-                            userModel.setupViews(user: User(username: username, password: password))
                         }
                     } else {
                         DispatchQueue.main.async {

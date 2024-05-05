@@ -21,8 +21,8 @@ class DeviceAndPlantModel: ObservableObject {
         return 
     }
     
-    func addNewDevice(deviceId: String) {
-        return
+    func addNewDevice(deviceId: String) async throws -> Bool {
+        return true
     }
     
     func getAllDevices() -> [Device] {

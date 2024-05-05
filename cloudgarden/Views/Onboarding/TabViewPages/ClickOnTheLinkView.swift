@@ -104,7 +104,3 @@ struct ClickOnTheLinkView: View {
             }
         }
 }
-
-#Preview {
-    ClickOnTheLinkView(tab: .constant(OnboardingTab.step3))
-}
