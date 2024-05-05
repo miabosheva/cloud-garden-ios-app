@@ -120,16 +120,11 @@ struct EnterIDView: View {
         if deviceId != "" {
             Task {
                 do {
-                    let result = try await deviceAndPlantModel.addNewDevice(deviceId: deviceId)
+                    let result = try await deviceAndPlantModel.addNewDeviceAndUser(deviceId: deviceId)
                     if result {
                         DispatchQueue.main.async {
                             ProgressHUD.dismiss()
                             userModel.dismissView()
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            banner.show()
-                            ProgressHUD.dismiss()
                         }
                     }
                 } catch {
@@ -141,6 +136,7 @@ struct EnterIDView: View {
             }
         } else {
             banner.show()
+            ProgressHUD.dismiss()
         }
     }
 }
