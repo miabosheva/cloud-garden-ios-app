@@ -7,7 +7,8 @@ target 'cloudgarden' do
   # Pods for cloudgarden
   pod 'lottie-ios'
   pod "Alamofire"
-#  pod 'MBProgressHUD'
+  pod 'ProgressHUD'
   pod 'KeychainAccess'
+  pod 'NotificationBannerSwift', '~> 3.0.0'
   
 end

@@ -1,11 +1,13 @@
 import SwiftUI
-//import MBProgressHUD
+import ProgressHUD
+import NotificationBannerSwift
 
 struct LoginView: View {
     
     var userModel: UserModel
     @State var username = ""
     @State var password = ""
+    @State private var isLoggingIn: Bool = false
     
     init(userModel: UserModel){
         self.userModel = userModel
@@ -72,24 +74,7 @@ struct LoginView: View {
                         .padding(.horizontal, 16)
                         .padding(.bottom, 8)
                     
-                    Button {
-                        if username != "" || password != "" {
-                            Task {
-                                do {
-                                    let success = try await userModel.logIn(username: self.username, password: self.password)
-                                    if success {
-                                        userModel.setupViews(user: User(username: username, password: password))
-                                    } else {
-                                        // show login failed error
-                                    }
-                                } catch {
-                                    // show unknown error
-                                }
-                            }
-                        } else {
-                            // show credentials invalid error
-                        }
-                    } label: {
+                    Button (action: logInButtonTapped){
                         RoundedRectangle(cornerRadius: 27)
                             .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                             .foregroundColor(Color("customDarkGreen"))
@@ -97,6 +82,7 @@ struct LoginView: View {
                                 Text("Log In")
                                     .foregroundColor(.white)
                             }
+                        
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 4)
@@ -108,7 +94,44 @@ struct LoginView: View {
                     }
                     .padding(.bottom, 80)
                 }
+                
+            }
+            
+        }
+    }
+    
+    func logInButtonTapped(){
+        ProgressHUD.animate()
+        let bannerFailed = NotificationBanner(title: "Login Failed. Try Again", style: .danger)
+        if username != "" || password != "" {
+            Task {
+                do {
+                    let success = try await userModel.logIn(username: self.username, password: self.password)
+                    if success {
+                        
+                        DispatchQueue.main.async {
+                            ProgressHUD.dismiss()
+                            userModel.setupViews(user: User(username: username, password: password))
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            ProgressHUD.dismiss()
+                            bannerFailed.show()
+                        }
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        ProgressHUD.dismiss()
+                        bannerFailed.show()
+                    }
+                }
+            }
+        } else {
+            DispatchQueue.main.async {
+                ProgressHUD.dismiss()
+                bannerFailed.show()
             }
         }
+        
     }
 }

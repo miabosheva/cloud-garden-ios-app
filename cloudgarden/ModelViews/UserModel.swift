@@ -1,8 +1,8 @@
 import Foundation
 import SwiftUI
 import UIKit
-import Alamofire
 import KeychainAccess
+import ProgressHUD
 
 enum AuthentiactionError: Error {
     case serializationError
@@ -58,6 +58,9 @@ class UserModel: ObservableObject {
     }
     
     func register(username: String, password: String) async throws -> Bool {
+        
+        await ProgressHUD.animate("Please wait...", .ballVerticalBounce)
+        
         let url = URL(string: "https://cloudplant.azurewebsites.net/authentication/signup")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -83,16 +86,16 @@ class UserModel: ObservableObject {
         
         let responseData = data
         
-        do {
-            let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
-            // save user credentials
-            let responseUser = User(username: username, password: password)
-            saveToKeychain(user: responseUser)
-            
-            return true
-        } catch {
-            throw AuthentiactionError.jsonParsingError
-        }
+        //        do {
+        //            let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
+        // save user credentials
+        let responseUser = User(username: username, password: password)
+        saveToKeychain(user: responseUser)
+        
+        return true
+        //        } catch {
+        //            throw AuthentiactionError.jsonParsingError
+        //        }
     }
     
     
@@ -107,36 +110,7 @@ class UserModel: ObservableObject {
     
     func logIn(username: String, password: String) async throws -> Bool {
         
-        //        print("loading... LOGIN")
-        //
-        //        let parameters: [String: String] = [
-        //            "username": username,
-        //            "password": password
-        //        ]
-        //
-        //        print(parameters)
-        //
-        //        AF
-        //            .request(
-        //                "https://cloudplant.azurewebsites.net/user/getuserbyusername",
-        //                method: .get,
-        //                parameters: parameters
-        //            )
-        //            .validate()
-        //            .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
-        //                guard let self = self else { return }
-        //                //                MBProgressHUD.hide(for: self.view, animated: true)
-        //                switch dataResponse.result {
-        //                case .success(_):
-        //                    let responseUser = User(username: username, password: password)
-        //                    saveToKeychain(user: responseUser)
-        //                    setupViews(user: self.user!)
-        //                    print("SUCESSFUL LOGIN")
-        //                case .failure(let error):
-        //                    // show error message on screen
-        //                    print(error)
-        //                }
-        //            }
+        
         let url = URL(string: "https://cloudplant.azurewebsites.net/authentication/signin")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -162,16 +136,15 @@ class UserModel: ObservableObject {
         
         let responseData = data
         
-        do {
-            let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
-            // save user credentials
-            let responseUser = User(username: username, password: password)
-            saveToKeychain(user: responseUser)
-            print("SUCESSFUL LOGIN")
-            return true
-        } catch {
-            throw AuthentiactionError.jsonParsingError
-        }
+        //        do {
+        // save user credentials
+        //            let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
+        let responseUser = User(username: username, password: password)
+        saveToKeychain(user: responseUser)
+        return true
+        //        } catch {
+        //            throw AuthentiactionError.jsonParsingError
+        //        }
     }
     
     func setupViews(user: User) {
