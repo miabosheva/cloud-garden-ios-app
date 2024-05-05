@@ -70,8 +70,21 @@ struct RegisterView: View {
                         .padding(.bottom, 8)
                     
                     Button {
-                        if userModel.register(username: username, password: password){
-                            showOnboarding = true
+                        if username != "" || password != "" {
+                            Task {
+                                do {
+                                    let success = try await userModel.register(username: username, password: password)
+                                    if success {
+                                        showOnboarding = true
+                                    } else {
+                                        // show register failed error
+                                    }
+                                } catch {
+                                    // show unknown error
+                                }
+                            }
+                        } else {
+                            // show credentials invalid error
                         }
                     } label: {
                         RoundedRectangle(cornerRadius: 27)

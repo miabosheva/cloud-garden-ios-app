@@ -1,4 +1,5 @@
 import SwiftUI
+//import MBProgressHUD
 
 struct LoginView: View {
     
@@ -72,12 +73,27 @@ struct LoginView: View {
                         .padding(.bottom, 8)
                     
                     Button {
-                        userModel.logIn(username: self.username, password: self.password)
+                        if username != "" || password != "" {
+                            Task {
+                                do {
+                                    let success = try await userModel.logIn(username: self.username, password: self.password)
+                                    if success {
+                                        userModel.setupViews(user: User(username: username, password: password))
+                                    } else {
+                                        // show login failed error
+                                    }
+                                } catch {
+                                    // show unknown error
+                                }
+                            }
+                        } else {
+                            // show credentials invalid error
+                        }
                     } label: {
                         RoundedRectangle(cornerRadius: 27)
                             .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                             .foregroundColor(Color("customDarkGreen"))
-                            .overlay{
+                            .overlay {
                                 Text("Log In")
                                     .foregroundColor(.white)
                             }
@@ -85,7 +101,7 @@ struct LoginView: View {
                     .padding(.horizontal, 16)
                     .padding(.bottom, 4)
                     
-                    NavigationLink(destination: RegisterView(userModel: userModel).tint(.customOffWhite)){
+                    NavigationLink(destination: RegisterView(userModel: userModel).tint(.customOffWhite)) {
                         Text("Dont have an account?")
                             .foregroundColor(.white)
                         Text("Sign Up").underline().foregroundColor(.white)
