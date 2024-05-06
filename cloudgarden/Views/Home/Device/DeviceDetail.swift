@@ -2,13 +2,14 @@ import SwiftUI
 
 struct DeviceDetail: View {
     
-    @State var newName: String
-    @State var goToAddPlant: Bool = false
-    @State var goToHome: Bool = false
+    // MARK: - Properties
+    @State private var newName: String
+    @State private var goToAddPlant: Bool = false
+    @State private var goToHome: Bool = false
+    private let device: Device
+    private var model: DeviceAndPlantModel
     
-    let device: Device
-    var model: DeviceAndPlantModel
-    
+    // MARK: - Init
     init(device: Device, model: DeviceAndPlantModel){
         self.device = device
         self.model = model
@@ -62,22 +63,16 @@ struct DeviceDetail: View {
                 
                 Spacer()
                 
-                // Check if list of plants is empty and prompt user to add more
                 if (device.plants != nil) {
                     Text("\(newName)'s Plants")
                         .font(.title3)
                         .bold()
-//                    NavigationStack {
-                        List{
-                            ForEach(device.plants!) { plant in
-//                                NavigationLink {
-////                                    PlantDetail(plant: plant, model: DeviceAndPlantModel)
-//                                } label: {
-                                    PlantRow(plant: plant)
-//                                }
-                            }
+                    List{
+                        ForEach(device.plants!) { plant in
+                            PlantRow(plant: plant)
+                            
                         }
-//                    }
+                    }
                 } else {
                     LottieView(animationFileName: "empty.json", loopMode: .loop)
                         .aspectRatio(contentMode: .fit)

@@ -2,9 +2,11 @@ import SwiftUI
 
 struct PlantList: View {
     
-    @State var goToAddEmptyPlant: Bool = false
-    var model: DeviceAndPlantModel
+    // MARK: - Properties
+    @State private var goToAddEmptyPlant: Bool = false
+    private var model: DeviceAndPlantModel
     
+    // MARK: - Init
     init(model: DeviceAndPlantModel){
         self.model = model
     }

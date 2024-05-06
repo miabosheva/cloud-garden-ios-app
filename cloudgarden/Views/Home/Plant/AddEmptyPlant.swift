@@ -1,15 +1,10 @@
-//
-//  AddEmptyPlant.swift
-//  cloudgarden
-//
-//  Created by Mia on 4/28/24.
-//
-
 import SwiftUI
 
 struct AddEmptyPlant: View {
-    var model: DeviceAndPlantModel
+    // MARK: - Properties
+    private var model: DeviceAndPlantModel
     
+    // MARK: - Init
     init(model: DeviceAndPlantModel){
         self.model = model
     }

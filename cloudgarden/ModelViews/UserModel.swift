@@ -15,9 +15,9 @@ enum AuthentiactionError: Error {
 class UserModel: ObservableObject {
     
     // MARK: - Properties
-    var modelData: ModelData = ModelData()
+    private var modelData: ModelData = ModelData()
     private weak var window: UIWindow!
-    var user: User?
+    public var user: User?
     
     // MARK: - Init
     init(window: UIWindow) {
@@ -35,14 +35,6 @@ class UserModel: ObservableObject {
         let loginView = LoginView(userModel: model)
         self.window.rootViewController = UIHostingController(rootView: loginView)
         print(window.rootViewController as Any)
-    }
-    
-    func getUser() -> User {
-        if self.user == nil {
-            print("somethings wrong with the user fetching")
-            self.user = modelData.users[0]
-        }
-        return self.user!
     }
     
     func changePasswordForUser(newPassword: String) {

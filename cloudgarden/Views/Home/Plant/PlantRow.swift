@@ -2,14 +2,13 @@ import SwiftUI
 
 struct PlantRow: View {
     
-    var plant: Plant
-    
-    var plantHealth = 0.6
-    var imageName = "defaultPlant"
-    var plantName = "Plant Name"
-    var deviceName = "Device Name"
-    var plantHealthBarDescription = "In good health"
-    
+    // MARK: - Properties
+    private var plant: Plant
+    private var plantHealth = 0.6
+    private var imageName = "defaultPlant"
+    private var plantName = "Plant Name"
+    private var deviceName = "Device Name"
+    private var plantHealthBarDescription = "In good health"
     
     var body: some View {
         

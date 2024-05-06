@@ -2,14 +2,14 @@ import SwiftUI
 
 struct PlantDetail: View {
     
-    let plant: Plant
-    let imageName: String = "defaultPlant"
-    let status: String = "well watered"
-    
+    // MARK: - Properties
+    private let plant: Plant
+    private let imageName: String = "defaultPlant"
+    private let status: String = "well watered"
     @State private var date = Date()
+    private var model: DeviceAndPlantModel
     
-    var model: DeviceAndPlantModel
-    
+    // MARK: - Init
     init(plant: Plant, model: DeviceAndPlantModel) {
         self.plant = plant
         self.model = model
@@ -70,10 +70,7 @@ struct PlantDetail: View {
                     .ignoresSafeArea()
                     Spacer()
                 }
-                
             }
         }
-        
-        
     }
 }

@@ -12,9 +12,9 @@ class RefreshManager: ObservableObject {
 struct DeviceList: View {
     
     // MARK: - Properties
+    private var model: DeviceAndPlantModel
     @StateObject private var refreshManager = RefreshManager()
-    @State var goToAddDevice: Bool = false
-    var model: DeviceAndPlantModel
+    @State private var goToAddDevice: Bool = false
     @State private var devices: [Device] = []
     @State private var refresh: Bool = false
     
@@ -92,6 +92,8 @@ struct DeviceList: View {
         }
     }
     
+    
+    // MARK: - Helper Methods
     func getAllDevices() async {
         do {
             let devices = try await model.getDevicesByUsernameRequest()

@@ -3,14 +3,11 @@ import SwiftUI
 struct DeviceRow: View {
     
     // MARK: - Properties
-    
-    var imageName = "defaultPlant"
-    
-    var device: Device
-    var model: DeviceAndPlantModel
+    private var imageName = "defaultPlant"
+    private var device: Device
+    private var model: DeviceAndPlantModel
     
     // MARK: - Init
-    
     init(device: Device, model: DeviceAndPlantModel){
         self.device = device
         self.model = model

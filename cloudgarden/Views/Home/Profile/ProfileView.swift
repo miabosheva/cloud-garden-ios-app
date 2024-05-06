@@ -2,8 +2,9 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @State var newPassword: String = ""
-    var model: UserModel
+    // MARK: - Properites
+    @State private var newPassword: String = ""
+    private var model: UserModel
     
     init(model: UserModel){
         self.model = model

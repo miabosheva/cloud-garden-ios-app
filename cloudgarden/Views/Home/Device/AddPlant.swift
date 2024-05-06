@@ -2,8 +2,9 @@ import SwiftUI
 
 struct AddPlant: View {
     
-    var model: DeviceAndPlantModel
-    var deviceId: Int
+    // MARK: - UNDER CONSTRUCTION
+    private var model: DeviceAndPlantModel
+    private var deviceId: Int
     
     init(model: DeviceAndPlantModel, deviceId: Int){
         self.model = model

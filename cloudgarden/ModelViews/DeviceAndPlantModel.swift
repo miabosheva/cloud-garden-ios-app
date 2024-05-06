@@ -3,13 +3,10 @@ import UIKit
 
 class DeviceAndPlantModel: ObservableObject {
     
-    var modelData: ModelData = ModelData()
-    
     private weak var window: UIWindow!
-    var user: User
-    
-    var devices: [Device] = []
-    var plants: [Plant] = []
+    public var user: User
+    public var devices: [Device] = []
+    public var plants: [Plant] = []
     
     init(user: User){
         self.user = user
@@ -166,7 +163,7 @@ class DeviceAndPlantModel: ObservableObject {
     func getAllPlants() -> [Plant] {
         if self.plants.count > 0 {
             // do an api call
-            self.plants = modelData.plants
+            self.plants = []
         }
         return self.plants
     }
