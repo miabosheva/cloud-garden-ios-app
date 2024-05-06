@@ -107,7 +107,7 @@ class DeviceAndPlantModel: ObservableObject {
                 throw URLError(.unknown)
             }
             let deviceResponse = try decoder.decode([Device].self, from: data)
-            print(deviceResponse)
+//            print(deviceResponse)
             return deviceResponse
         } catch {
             print(error)
@@ -116,7 +116,7 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func deleteDevice(deviceId: Int) async throws -> Bool {
-        // TODO: -
+        // TODO: - Implement after backend implementation
         return true
     }
     

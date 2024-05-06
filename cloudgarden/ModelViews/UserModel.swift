@@ -15,7 +15,6 @@ enum AuthentiactionError: Error {
 class UserModel: ObservableObject {
     
     // MARK: - Properties
-    private var modelData: ModelData = ModelData()
     private weak var window: UIWindow!
     public var user: User?
     

@@ -97,11 +97,11 @@ struct LoginView: View {
                 .onTapGesture {
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }
-                .onAppear{
-                    Task.detached{ @MainActor in
-                        authenticationWithFaceId()
-                    }
-                }
+            }
+        }
+        .onAppear{
+            Task.detached{ @MainActor in
+                authenticationWithFaceId()
             }
         }
     }
@@ -127,7 +127,7 @@ struct LoginView: View {
                             if success {
                                 DispatchQueue.main.async {
                                     ProgressHUD.dismiss()
-                                    userModel.setupViews(user: User(username: username, password: password))
+                                    userModel.setupViews(user: User(username: authInfo.username, password: authInfo.password))
                                 }
                             }
                         } catch {
