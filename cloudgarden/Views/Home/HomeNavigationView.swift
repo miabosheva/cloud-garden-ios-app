@@ -4,8 +4,8 @@ struct HomeNavigationView: View {
     
     // MARK: - Properites
     @State private var selection = 0
-    @StateObject private var userModel: UserModel
-    @StateObject private var deviceAndPlantModel: DeviceAndPlantModel
+    @StateObject var userModel: UserModel
+    @StateObject var deviceAndPlantModel: DeviceAndPlantModel
     
     var body: some View {
         TabView(selection: $selection) {

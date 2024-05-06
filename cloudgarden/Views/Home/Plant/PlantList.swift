@@ -1,10 +1,14 @@
 import SwiftUI
+import NotificationBannerSwift
 
 struct PlantList: View {
     
     // MARK: - Properties
+    @StateObject private var refreshManager = RefreshManager()
+    @State private var plants: [Plant] = []
     @State private var goToAddEmptyPlant: Bool = false
     private var model: DeviceAndPlantModel
+    
     
     // MARK: - Init
     init(model: DeviceAndPlantModel){
@@ -16,15 +20,35 @@ struct PlantList: View {
         NavigationSplitView {
             ZStack {
                 List{
-                    
-                    ForEach(model.getAllPlants()) { plant in
-                        NavigationLink {
-                            PlantDetail(plant: plant, model: model)
-                        } label: {
-                            PlantRow(plant: plant)
+                    if plants.count > 0 {
+                        ForEach(plants) { plant in
+                            NavigationLink {
+                                PlantDetail(plant: plant, model: model)
+                            } label: {
+                                PlantRow(plant: plant)
+                            }
+                        }
+                        .onDelete(perform: deletePlant)
+                    } else {
+                        EmptyLottieView(keyword: "plants")
+                    }
+                }
+                .onAppear {
+                    Task {
+                        await getAllPlants()
+                    }
+                }
+                .refreshable {
+                    Task {
+                        await getAllPlants()
+                    }
+                }
+                .onReceive(refreshManager.$shouldRefresh) { shouldRefresh in
+                    if shouldRefresh {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            refreshManager.shouldRefresh = false
                         }
                     }
-                    .onDelete(perform: deletePlant)
                 }
                 .animation(.default, value: model.plants)
                 .navigationTitle("Plants")
@@ -49,9 +73,6 @@ struct PlantList: View {
                         .padding(.trailing, 16)
                         .padding(.bottom, 16)
                     }
-                    
-//                    NavigationLink(destination: AddEmptyPlant(model: model),
-//                                   isActive: $goToAddEmptyPlant) {}
                 }
             }
             .sheet(isPresented: $goToAddEmptyPlant) {
@@ -62,11 +83,41 @@ struct PlantList: View {
         }
     }
     
+    // MARK: - Helper Methods
+    func getAllPlants() async {
+        do {
+            let plants = try await model.getAllPlantsByUsername(username: self.model.user.username)
+            self.plants = plants
+        } catch {
+            print("Error loading plants: \(error)")
+            DispatchQueue.main.async {
+                let banner = NotificationBanner(title: "Error occured. Refresh the page.", style: .warning)
+                banner.show()
+            }
+        }
+    }
+    
     func deletePlant(at offsets: IndexSet) {
         for index in offsets {
-            let deletedItemId = model.plants[index].title
-            //            items.remove(at: index)
-            print("Deleted item with ID:", deletedItemId)
+            let deletedItemId = plants[index].plantId
+            Task {
+                do {
+                    // TODO: - implement function
+                    let result = try await model.deletePlant(plantId: deletedItemId)
+                    if result {
+                        DispatchQueue.main.async {
+                            let banner = NotificationBanner(title: "Sucessfuly deleted Plant \(plants[index].title)", style: .success)
+                            banner.show()
+                        }
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        let banner = NotificationBanner(title: "Failed to delete plant", style: .danger)
+                        banner.show()
+                    }
+                }
+            }
+            print("Deleted plant with ID:", deletedItemId)
         }
     }
 }

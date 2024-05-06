@@ -1,6 +1,8 @@
 import SwiftUI
 import ProgressHUD
 import NotificationBannerSwift
+import LocalAuthentication
+import KeychainAccess
 
 struct LoginView: View {
     
@@ -73,7 +75,7 @@ struct LoginView: View {
                         .padding(.horizontal, 16)
                         .padding(.bottom, 8)
                     
-                    Button (action: logInButtonTapped){
+                    Button(action: logInButtonTapped) {
                         RoundedRectangle(cornerRadius: 27)
                             .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                             .foregroundColor(Color("customDarkGreen"))
@@ -81,7 +83,6 @@ struct LoginView: View {
                                 Text("Log In")
                                     .foregroundColor(.white)
                             }
-                        
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 4)
@@ -96,13 +97,55 @@ struct LoginView: View {
                 .onTapGesture {
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }
+                .onAppear{
+                    Task.detached{ @MainActor in
+                        authenticationWithFaceId()
+                    }
+                }
             }
         }
+    }
+    
+    func authenticationWithFaceId() {
+        
+        let context = LAContext()
+        var error: NSError?
+        
+        let keychain = Keychain(service: "com.finki.cloudgarden")
+        guard let savedAuthInfo = try? keychain.getData("authInfo") else { return }
+        let decoder = JSONDecoder()
+        guard let authInfo = try? decoder.decode(User.self, from: savedAuthInfo) else { return }
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error){
+            let reason = "Authenticate to access the app"
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason){ success, authenticationError in
+                if success {
+                    ProgressHUD.animate()
+                    Task {
+                        do {
+                            let success = try await userModel.logIn(username: authInfo.username, password: authInfo.password)
+                            if success {
+                                DispatchQueue.main.async {
+                                    ProgressHUD.dismiss()
+                                    userModel.setupViews(user: User(username: username, password: password))
+                                }
+                            }
+                        } catch {
+                            print(error)
+                        }
+                    }
+                }
+            }
+        } else {
+            print("Biometric authentication unavailable")
+        }
+        ProgressHUD.dismiss()
     }
     
     func logInButtonTapped(){
         ProgressHUD.animate()
         let bannerFailed = NotificationBanner(title: "Login Failed. Try Again", style: .danger)
+        
         if username != "" && password != "" {
             Task {
                 do {

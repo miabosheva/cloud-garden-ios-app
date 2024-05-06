@@ -16,8 +16,7 @@ struct DeviceList: View {
     @StateObject private var refreshManager = RefreshManager()
     @State private var goToAddDevice: Bool = false
     @State private var devices: [Device] = []
-    @State private var refresh: Bool = false
-    
+
     // MARK: - Init
     init(model: DeviceAndPlantModel){
         self.model = model
@@ -28,14 +27,18 @@ struct DeviceList: View {
         NavigationSplitView {
             ZStack {
                 List{
-                    ForEach(devices) { device in
-                        NavigationLink {
-                            DeviceDetail(device: device, model: model)
-                        } label: {
-                            DeviceRow(device: device, model: model)
+                    if devices.count > 0 {
+                        ForEach(devices) { device in
+                            NavigationLink {
+                                DeviceDetail(device: device, model: model)
+                            } label: {
+                                DeviceRow(device: device, model: model)
+                            }
                         }
+                        .onDelete(perform: deleteDevice)
+                    } else {
+                        EmptyLottieView(keyword: "devices")
                     }
-                    .onDelete(perform: deleteDevice)
                 }
                 .onAppear {
                     Task {
@@ -56,11 +59,6 @@ struct DeviceList: View {
                 }
                 .animation(.default, value: model.devices)
                 .navigationTitle("Devices")
-                
-                VStack {
-                    
-                }
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
                 
                 VStack {
                     Spacer()
@@ -116,18 +114,18 @@ struct DeviceList: View {
                     let result = try await model.deleteDevice(deviceId: deletedItemId)
                     if result {
                         DispatchQueue.main.async {
-                            let banner = NotificationBanner(title: "Sucessfuly deleted Plant \(devices[index].code)", style: .success)
+                            let banner = NotificationBanner(title: "Sucessfuly deleted Device \(devices[index].code)", style: .success)
                             banner.show()
                         }
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        let banner = NotificationBanner(title: "Failed to delete plant", style: .danger)
+                        let banner = NotificationBanner(title: "Failed to delete device.", style: .danger)
                         banner.show()
                     }
                 }
             }
-            print("Deleted item with ID:", deletedItemId)
+            print("Deleted device with ID:", deletedItemId)
         }
     }
 }

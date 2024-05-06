@@ -10,6 +10,11 @@ struct PlantRow: View {
     private var deviceName = "Device Name"
     private var plantHealthBarDescription = "In good health"
     
+    // MARK: - Init
+    init(plant: Plant){
+        self.plant = plant
+    }
+    
     var body: some View {
         
         HStack {

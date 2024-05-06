@@ -70,20 +70,10 @@ struct DeviceDetail: View {
                     List{
                         ForEach(device.plants!) { plant in
                             PlantRow(plant: plant)
-                            
                         }
                     }
                 } else {
-                    LottieView(animationFileName: "empty.json", loopMode: .loop)
-                        .aspectRatio(contentMode: .fit)
-                        .padding(.horizontal, 64)
-                        .frame(maxWidth: .infinity)
-                    Text("You havent yet added a plant for this device.")
-                        .font(.caption)
-                        .fontWeight(.light)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 32)
-                        .padding(.bottom, 100)
+                    
                 }
                 
                 Button{

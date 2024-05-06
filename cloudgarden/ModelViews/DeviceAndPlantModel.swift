@@ -116,15 +116,36 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func deleteDevice(deviceId: Int) async throws -> Bool {
+        // TODO: -
         return true
     }
     
-    func deletePlant(deviceId: Int) async throws -> Bool {
+    func getPlantCount(deviceId: Int) -> Optional<Int> {
+        // TODO:
+        return 0
+    }
+    
+    // MARK: - Helper Methods - Plant
+    
+    func addPlant(deviceId: Int){
+        return
+    }
+    
+    func getAllPlantsByUsername(username: String) async throws -> [Plant] {
+        // TODO: - implement function when its done on backend
+        if self.plants.count > 0 {
+            // do an api call
+            self.plants = []
+        }
+        return self.plants
+    }
+    
+    func deletePlant(plantId: Int) async throws -> Bool {
         guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/Plant") else {
             throw URLError(.badURL)
         }
         urlComponents.queryItems = [
-            URLQueryItem(name: "id", value: String(deviceId))
+            URLQueryItem(name: "id", value: String(plantId))
         ]
         guard let url = urlComponents.url else {
             throw URLError(.badURL)
@@ -147,24 +168,5 @@ class DeviceAndPlantModel: ObservableObject {
             return false
         }
         return true
-    }
-    
-    func getPlantCount(deviceId: Int) -> Optional<Int> {
-        // TODO
-        return 0
-    }
-    
-    // MARK: - Helper Methods - Plant
-    
-    func addPlant(deviceId: Int){
-        return
-    }
-    
-    func getAllPlants() -> [Plant] {
-        if self.plants.count > 0 {
-            // do an api call
-            self.plants = []
-        }
-        return self.plants
     }
 }
