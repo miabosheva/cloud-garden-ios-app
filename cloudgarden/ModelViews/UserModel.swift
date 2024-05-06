@@ -45,7 +45,7 @@ class UserModel: ObservableObject {
         return self.user!
     }
     
-    func changePasswordForUser(user: User, newPassword: String) {
+    func changePasswordForUser(newPassword: String) {
         return
     }
     

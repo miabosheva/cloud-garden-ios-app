@@ -11,7 +11,7 @@ struct ProfileView: View {
     
     var body: some View {
         VStack {
-            Text(model.getUser().username)
+            Text(model.user!.username)
                 .font(.title)
                 .fontWeight(.bold)
                 .padding(.top, 16)
@@ -38,7 +38,7 @@ struct ProfileView: View {
                 
                 Button {
                     // TODO: - Change password functionality
-                    model.changePasswordForUser(user: model.getUser(), newPassword: newPassword)
+                    model.changePasswordForUser(newPassword: newPassword)
                 } label: {
                     RoundedRectangle(cornerRadius: 27)
                         .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)

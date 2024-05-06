@@ -83,16 +83,73 @@ class DeviceAndPlantModel: ObservableObject {
         }
     }
     
-    func getAllDevices() -> [Device] {
-        if self.devices.isEmpty {
-            self.devices = modelData.devices
+    func getDevicesByUsernameRequest() async throws -> [Device] {
+        guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/User/GetDevices") else {
+            throw URLError(.badURL)
         }
-        return self.devices
+        let username = user.username
+        urlComponents.queryItems = [
+            URLQueryItem(name: "username", value: username)
+        ]
+        guard let url = urlComponents.url else {
+            throw URLError(.badURL)
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let decoder = JSONDecoder()
+            
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw URLError(.badServerResponse)
+            }
+            guard (200...299).contains(httpResponse.statusCode) else {
+                throw URLError(.unknown)
+            }
+            let deviceResponse = try decoder.decode([Device].self, from: data)
+            print(deviceResponse)
+            return deviceResponse
+        } catch {
+            print(error)
+            return []
+        }
     }
     
-    func deletePlant(deviceId: Int) {
-        // TODO
-        return
+    func deleteDevice(deviceId: Int) async throws -> Bool {
+        return true
+    }
+    
+    func deletePlant(deviceId: Int) async throws -> Bool {
+        guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/Plant") else {
+            throw URLError(.badURL)
+        }
+        urlComponents.queryItems = [
+            URLQueryItem(name: "id", value: String(deviceId))
+        ]
+        guard let url = urlComponents.url else {
+            throw URLError(.badURL)
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let (_, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw URLError(.badServerResponse)
+            }
+            guard (200...299).contains(httpResponse.statusCode) else {
+                throw URLError(.unknown)
+            }
+        } catch {
+            print(error)
+            return false
+        }
+        return true
     }
     
     func getPlantCount(deviceId: Int) -> Optional<Int> {
@@ -107,7 +164,7 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func getAllPlants() -> [Plant] {
-        if self.plants.isEmpty {
+        if self.plants.count > 0 {
             // do an api call
             self.plants = modelData.plants
         }

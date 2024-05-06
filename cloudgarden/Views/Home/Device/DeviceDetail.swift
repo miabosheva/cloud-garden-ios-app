@@ -12,7 +12,7 @@ struct DeviceDetail: View {
     init(device: Device, model: DeviceAndPlantModel){
         self.device = device
         self.model = model
-        newName = device.macAddress
+        newName = device.code
     }
     
     var body: some View {
@@ -20,7 +20,7 @@ struct DeviceDetail: View {
         NavigationView {
             VStack (alignment: .center){
                 
-                Text(device.macAddress)
+                Text(device.code)
                     .font(.title)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .padding(.top, 8)
@@ -63,13 +63,13 @@ struct DeviceDetail: View {
                 Spacer()
                 
                 // Check if list of plants is empty and prompt user to add more
-                if !device.plants.isEmpty {
+                if (device.plants != nil) {
                     Text("\(newName)'s Plants")
                         .font(.title3)
                         .bold()
 //                    NavigationStack {
                         List{
-                            ForEach(device.plants) { plant in
+                            ForEach(device.plants!) { plant in
 //                                NavigationLink {
 ////                                    PlantDetail(plant: plant, model: DeviceAndPlantModel)
 //                                } label: {

@@ -29,7 +29,7 @@ struct DeviceRow: View {
             VStack (alignment: .leading) {
                 
                 // TODO: - When you add a title to the model change this
-                Text(device.macAddress)
+                Text(device.code)
                     .font(.title2)
                 
                 Text("Number of plants: \(model.getPlantCount(deviceId: device.deviceId) ?? 0)")

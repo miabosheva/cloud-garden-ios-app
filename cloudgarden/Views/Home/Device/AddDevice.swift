@@ -1,15 +1,21 @@
 import SwiftUI
+import NotificationBannerSwift
+import ProgressHUD
 
 struct AddDevice: View {
     
-    @State var newNamePlaceholder: String = "Untitled Device"
-    @State var deviceIdPlaceholder: String = "Enter the Device ID"
-    @State var goToAddPlant: Bool = false
+    // MARK: - Properites
+    @Environment(\.presentationMode) var presentationMode
+    @State private var newNamePlaceholder: String = ""
+    @State private var deviceIdPlaceholder: String = ""
+    @State private var goToAddPlant: Bool = false
+    @ObservedObject var refreshManager: RefreshManager
+    private var model: DeviceAndPlantModel
     
-    var model: DeviceAndPlantModel
-
-    init(model: DeviceAndPlantModel){
+    // MARK: - Init
+    init(model: DeviceAndPlantModel, refreshManager: RefreshManager){
         self.model = model
+        self.refreshManager = refreshManager
     }
     
     var body: some View {
@@ -17,7 +23,7 @@ struct AddDevice: View {
         NavigationView {
             VStack (alignment: .center) {
                 
-                Text(newNamePlaceholder)
+                Text("Add a New Device")
                     .font(.title)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .padding(.top, 32)
@@ -34,17 +40,16 @@ struct AddDevice: View {
                     .foregroundColor(.white)
                     .shadow(radius: 2, x: 0, y: 0)
                     .overlay{
-                        TextField("\(deviceIdPlaceholder)", text: $deviceIdPlaceholder).padding()
+                        TextField("Enter Device ID", text: $deviceIdPlaceholder).padding()
                     }
                     .padding(.horizontal, 32)
                 
                 Text("The device ID can be found written on top of the physical device.")
                     .font(.caption)
                     .foregroundColor(Color.secondary)
-//                    .padding(.horizontal, 16)
+                    .padding(.horizontal, 8)
                     .padding(.top, 4)
                     .padding(.bottom, 8)
-                
                 
                 HStack {
                     Text("Device Name")
@@ -58,14 +63,12 @@ struct AddDevice: View {
                     .foregroundColor(.white)
                     .shadow(radius: 2, x: 0, y: 0)
                     .overlay{
-                        TextField("\(newNamePlaceholder)", text: $newNamePlaceholder).padding()
+                        TextField("Enter Device Name", text: $newNamePlaceholder).padding()
                     }
                     .padding(.horizontal, 32)
                     .padding(.bottom, 8)
                 
-                Button {
-//                    model.addNewDevice(deviceId: deviceIdPlaceholder)
-                } label: {
+                Button(action: addDeviceButtonTapped) {
                     RoundedRectangle(cornerRadius: 27)
                         .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
                         .foregroundColor(Color("customLimeGreen"))
@@ -79,6 +82,43 @@ struct AddDevice: View {
                 
                 Spacer()
             }
+        }
+    }
+    
+    // MARK: - Helper Methods
+    func addDeviceButtonTapped(){
+        ProgressHUD.animate()
+        let successfulBanner = NotificationBanner(title: "Device successfully added.", style: .success)
+        let errorBanner = NotificationBanner(title: "Error occured when adding the device.", style: .danger)
+        let warningBanner = NotificationBanner(title: "Device ID or Title is invalid.", style: .warning)
+        
+        if deviceIdPlaceholder != "" && newNamePlaceholder != "" {
+            Task {
+                do {
+                    let result = try await model.addNewDeviceToUser(deviceId: deviceIdPlaceholder)
+                    if result {
+                        DispatchQueue.main.async {
+                            successfulBanner.show()
+                            self.presentationMode.wrappedValue.dismiss()
+                            refreshManager.triggerRefresh()
+                        }
+                        self.deviceIdPlaceholder = ""
+                        self.newNamePlaceholder = ""
+                    }
+                } catch {
+                    print(error)
+                    DispatchQueue.main.async {
+                        errorBanner.show()
+                    }
+                    self.deviceIdPlaceholder = ""
+                    self.newNamePlaceholder = ""
+                }
+                DispatchQueue.main.async {
+                    ProgressHUD.dismiss()
+                }
+            }
+        } else {
+            warningBanner.show()
         }
     }
 }
