@@ -28,11 +28,9 @@
 		204EE91C2BCF1A450037A2AE /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE91B2BCF1A450037A2AE /* HomeNavigationView.swift */; };
 		204EE91F2BCF1A750037A2AE /* DeviceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE91E2BCF1A750037A2AE /* DeviceList.swift */; };
 		204EE9232BCF1BE90037A2AE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9222BCF1BE90037A2AE /* Device.swift */; };
-		204EE9252BCF1C6D0037A2AE /* devices.json in Resources */ = {isa = PBXBuildFile; fileRef = 204EE9242BCF1C6D0037A2AE /* devices.json */; };
 		204EE9272BCF1D150037A2AE /* DeviceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE9262BCF1D150037A2AE /* DeviceRow.swift */; };
 		204EE92B2BCF2E0A0037A2AE /* DeviceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE92A2BCF2E0A0037A2AE /* DeviceDetail.swift */; };
 		20700B922BCFEEA70029A384 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20700B912BCFEEA70029A384 /* ProfileView.swift */; };
-		20700B942BCFEEC70029A384 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 20700B932BCFEEC70029A384 /* users.json */; };
 		20700B962BCFEED10029A384 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20700B952BCFEED10029A384 /* User.swift */; };
 		209BC5CD2BDB8AF400E4C216 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BC5CC2BDB8AF400E4C216 /* OnboardingView.swift */; };
 		209BC5D22BDBA9EA00E4C216 /* AddWateringEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BC5D12BDBA9EA00E4C216 /* AddWateringEntry.swift */; };
@@ -40,8 +38,6 @@
 		20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27DFF2BC406F2000A8B0A /* LoginView.swift */; };
 		20A27E052BC41355000A8B0A /* PlantRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E042BC41355000A8B0A /* PlantRow.swift */; };
 		20A27E0B2BC426DF000A8B0A /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E0A2BC426DF000A8B0A /* Plant.swift */; };
-		20A27E0F2BC42955000A8B0A /* plants.json in Resources */ = {isa = PBXBuildFile; fileRef = 20A27E0E2BC42955000A8B0A /* plants.json */; };
-		20A27E112BC42AF8000A8B0A /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A27E102BC42AF8000A8B0A /* ModelData.swift */; };
 		20B50A212BBD58A300C78067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A202BBD58A300C78067 /* AppDelegate.swift */; };
 		20B50A232BBD58A300C78067 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A222BBD58A300C78067 /* SceneDelegate.swift */; };
 		20B50A2B2BBD58A300C78067 /* cloudgarden.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20B50A292BBD58A300C78067 /* cloudgarden.xcdatamodeld */; };
@@ -74,11 +70,9 @@
 		204EE91B2BCF1A450037A2AE /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
 		204EE91E2BCF1A750037A2AE /* DeviceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceList.swift; sourceTree = "<group>"; };
 		204EE9222BCF1BE90037A2AE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		204EE9242BCF1C6D0037A2AE /* devices.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = devices.json; sourceTree = "<group>"; };
 		204EE9262BCF1D150037A2AE /* DeviceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRow.swift; sourceTree = "<group>"; };
 		204EE92A2BCF2E0A0037A2AE /* DeviceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetail.swift; sourceTree = "<group>"; };
 		20700B912BCFEEA70029A384 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		20700B932BCFEEC70029A384 /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		20700B952BCFEED10029A384 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		209BC5CC2BDB8AF400E4C216 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		209BC5D12BDBA9EA00E4C216 /* AddWateringEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWateringEntry.swift; sourceTree = "<group>"; };
@@ -86,8 +80,6 @@
 		20A27DFF2BC406F2000A8B0A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		20A27E042BC41355000A8B0A /* PlantRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRow.swift; sourceTree = "<group>"; };
 		20A27E0A2BC426DF000A8B0A /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
-		20A27E0E2BC42955000A8B0A /* plants.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = plants.json; sourceTree = "<group>"; };
-		20A27E102BC42AF8000A8B0A /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		20B50A1D2BBD58A300C78067 /* cloudgarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cloudgarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B50A202BBD58A300C78067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20B50A222BBD58A300C78067 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,16 +195,6 @@
 			path = Plant;
 			sourceTree = "<group>";
 		};
-		20A27E082BC42649000A8B0A /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				20A27E0E2BC42955000A8B0A /* plants.json */,
-				204EE9242BCF1C6D0037A2AE /* devices.json */,
-				20700B932BCFEEC70029A384 /* users.json */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		20A27E092BC426D3000A8B0A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,10 +229,8 @@
 		20B50A1F2BBD58A300C78067 /* cloudgarden */ = {
 			isa = PBXGroup;
 			children = (
-				20A27E102BC42AF8000A8B0A /* ModelData.swift */,
 				0D2C8D072BD940C10075DC39 /* UIComponents */,
 				20A27E092BC426D3000A8B0A /* Models */,
-				20A27E082BC42649000A8B0A /* Resources */,
 				0D4326D22BDE79570008954E /* Views */,
 				0D4326D12BDE793A0008954E /* ModelViews */,
 				20B50A202BBD58A300C78067 /* AppDelegate.swift */,
@@ -362,10 +342,7 @@
 			files = (
 				20B50A302BBD58A600C78067 /* LaunchScreen.storyboard in Resources */,
 				0D0E93892BD970D600728BC7 /* empty.json in Resources */,
-				20A27E0F2BC42955000A8B0A /* plants.json in Resources */,
 				20B50A2D2BBD58A600C78067 /* Assets.xcassets in Resources */,
-				204EE9252BCF1C6D0037A2AE /* devices.json in Resources */,
-				20700B942BCFEEC70029A384 /* users.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,7 +413,6 @@
 				20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */,
 				204EE9232BCF1BE90037A2AE /* Device.swift in Sources */,
 				209BC5CD2BDB8AF400E4C216 /* OnboardingView.swift in Sources */,
-				20A27E112BC42AF8000A8B0A /* ModelData.swift in Sources */,
 				20700B922BCFEEA70029A384 /* ProfileView.swift in Sources */,
 				204EE9172BCF10CB0037A2AE /* PlantDetail.swift in Sources */,
 				0D4326D42BDE83F90008954E /* AddEmptyPlant.swift in Sources */,

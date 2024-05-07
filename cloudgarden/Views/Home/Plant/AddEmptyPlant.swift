@@ -39,7 +39,7 @@ struct AddEmptyPlant: View {
                     .foregroundColor(.white)
                     .shadow(radius: 2, x: 0, y: 0)
                     .overlay{
-                        TextField("Enter Device Name", text: $newNamePlaceholder).padding()
+                        TextField("Enter Plant Name", text: $newNamePlaceholder).padding()
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 8)

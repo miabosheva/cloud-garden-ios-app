@@ -1,4 +1,5 @@
 import SwiftUI
+import NotificationBannerSwift
 
 struct DeviceDetail: View {
     
@@ -8,6 +9,7 @@ struct DeviceDetail: View {
     @State private var goToHome: Bool = false
     private let device: Device
     private var model: DeviceAndPlantModel
+    @State private var plants: [Plant] = []
     
     // MARK: - Init
     init(device: Device, model: DeviceAndPlantModel){
@@ -18,6 +20,7 @@ struct DeviceDetail: View {
     var body: some View {
         
         NavigationView {
+            
             VStack (alignment: .center){
                 
                 Text(device.title)
@@ -63,17 +66,29 @@ struct DeviceDetail: View {
                 
                 Spacer()
                 
-                if (device.plants != nil) {
-                    Text("\(newName)'s Plants")
-                        .font(.title3)
-                        .bold()
-                    List{
-                        ForEach(device.plants!) { plant in
-                            PlantRow(plant: plant)
+                List {
+                    if self.plants.count > 0 {
+                        ForEach(plants) { plant in
+                            NavigationLink {
+//                                PlantDetail(plant: plant, model: model)
+                            } label: {
+                                PlantRow(plant: plant)
+                            }
                         }
+                        .onDelete(perform: deletePlant)
+                    } else {
+                        EmptyLottieView(keyword: "plants")
                     }
-                } else {
-                    
+                }
+                .onAppear {
+                    Task {
+                        await getAllPlants()
+                    }
+                }
+                .refreshable {
+                    Task {
+                        await getAllPlants()
+                    }
                 }
                 
                 Button{
@@ -95,7 +110,45 @@ struct DeviceDetail: View {
         }
         .accentColor(.customDarkGreen) 
         .sheet(isPresented: $goToAddPlant, content:{
-            AddPlant(model: model, deviceId: device.deviceId)
+            AddPlant(model: model, device: device)
         })
+    }
+    
+    // MARK: - Helper Methods
+    func getAllPlants() async {
+        do {
+            let plants = try await model.getAllPlantsByUsername(username: self.model.user.username)
+            self.plants = plants
+        } catch {
+            print("Error loading plants: \(error)")
+            DispatchQueue.main.async {
+                let banner = NotificationBanner(title: "Error occured. Refresh the page.", style: .warning)
+                banner.show()
+            }
+        }
+    }
+    
+    func deletePlant(at offsets: IndexSet) {
+        for index in offsets {
+            let deletedItemId = plants[index].plantId
+            Task {
+                do {
+                    // TODO: - implement function
+                    let result = try await model.deletePlant(plantId: deletedItemId)
+                    if result {
+                        DispatchQueue.main.async {
+                            let banner = NotificationBanner(title: "Sucessfuly deleted Plant \(plants[index].title)", style: .success)
+                            banner.show()
+                        }
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        let banner = NotificationBanner(title: "Failed to delete plant", style: .danger)
+                        banner.show()
+                    }
+                }
+            }
+            print("Deleted plant with ID:", deletedItemId)
+        }
     }
 }

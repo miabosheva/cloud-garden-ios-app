@@ -27,13 +27,13 @@ struct AddDevice: View {
                 Text("Add a New Device")
                     .font(.title)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .padding(.top, 32)
+                    .padding(.top, 16)
                 
                 HStack {
                     Text("Enter Device ID")
                     Spacer()
                 }
-                .padding(.horizontal, 32)
+                .padding(.horizontal, 16)
                 .padding(.top, 16)
                 
                 RoundedRectangle(cornerRadius: 15)
@@ -43,7 +43,7 @@ struct AddDevice: View {
                     .overlay{
                         TextField("Enter Device ID", text: $deviceIdPlaceholder).padding()
                     }
-                    .padding(.horizontal, 32)
+                    .padding(.horizontal, 16)
                 
                 HStack {
                     Text("The device ID can be found written on top of the physical device.")
@@ -51,7 +51,7 @@ struct AddDevice: View {
                         .foregroundColor(Color.secondary)
                         .multilineTextAlignment(.leading)
                 }
-                .padding(.horizontal, 32)
+                .padding(.horizontal, 8)
                 .padding(.top, 4)
                 .padding(.bottom, 8)
                 
@@ -59,7 +59,7 @@ struct AddDevice: View {
                     Text("Device Name")
                     Spacer()
                 }
-                .padding(.horizontal, 32)
+                .padding(.horizontal, 16)
                 .padding(.top, 16)
                 
                 RoundedRectangle(cornerRadius: 15)
@@ -69,7 +69,7 @@ struct AddDevice: View {
                     .overlay{
                         TextField("Enter Device Name", text: $newNamePlaceholder).padding()
                     }
-                    .padding(.horizontal, 32)
+                    .padding(.horizontal, 16)
                     .padding(.bottom, 8)
                 
                 Button(action: addDeviceButtonTapped) {
@@ -81,7 +81,7 @@ struct AddDevice: View {
                                 .foregroundColor(.white)
                         }
                 }
-                .padding(.horizontal, 32)
+                .padding(.horizontal, 16)
                 .padding(.bottom, 16)
                 
                 Spacer()
