@@ -117,7 +117,32 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func deleteDevice(deviceId: Int) async throws -> Bool {
-        // TODO: - Implement after backend implementation
+        guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/Device") else {
+            throw URLError(.badURL)
+        }
+        urlComponents.queryItems = [
+            URLQueryItem(name: "id", value: String(deviceId))
+        ]
+        guard let url = urlComponents.url else {
+            throw URLError(.badURL)
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let (_, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw URLError(.badServerResponse)
+            }
+            guard (200...299).contains(httpResponse.statusCode) else {
+                throw URLError(.unknown)
+            }
+        } catch {
+            print(error)
+            return false
+        }
         return true
     }
     
