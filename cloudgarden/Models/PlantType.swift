@@ -1,6 +1,7 @@
 import Foundation
 
-struct PlantType: Codable {
+struct PlantType: Codable, Identifiable, Hashable {
+    var id = UUID()
     var plantTypeId: Int
     var plantTypeName: String
     var thresholdValue1: Int

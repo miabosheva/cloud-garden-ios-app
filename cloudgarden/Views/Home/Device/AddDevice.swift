@@ -121,12 +121,10 @@ struct AddDevice: View {
                     self.deviceIdPlaceholder = ""
                     self.newNamePlaceholder = ""
                 }
-                DispatchQueue.main.async {
-                    ProgressHUD.dismiss()
-                }
             }
         } else {
             warningBanner.show()
         }
+        ProgressHUD.dismiss()
     }
 }

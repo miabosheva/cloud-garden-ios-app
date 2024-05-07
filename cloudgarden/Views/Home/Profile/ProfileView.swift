@@ -54,10 +54,6 @@ struct ProfileView: View {
                 
                 VStack(alignment: .center) {
                     
-                    Text("Devices connected: \(model.getDeviceCount())")
-                    
-                    Text("Total Plants: \(model.getPlantCount())")
-                    
                     Button("Help"){
                         // TODO: - Go to help screen
                     }

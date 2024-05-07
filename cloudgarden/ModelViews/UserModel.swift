@@ -40,14 +40,6 @@ class UserModel: ObservableObject {
         return
     }
     
-    func getDeviceCount() -> Int {
-        return -1
-    }
-    
-    func getPlantCount() -> Int {
-        return -1
-    }
-    
     func register(username: String, password: String) async throws -> Bool {
         
         let url = URL(string: "https://cloudplant.azurewebsites.net/authentication/signup")!

@@ -18,7 +18,7 @@ struct AddPlant: View {
         
         Button {
             // send form info to model
-            model.addPlant(deviceId: deviceId)
+//            model.addPlant(deviceId: deviceId)
         } label: {
             Text("Submit")
         }
