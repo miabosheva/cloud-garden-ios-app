@@ -8,6 +8,7 @@ struct EnterIDView: View {
     @State var goToNextScreen: Bool = false
     @State var tab: OnboardingTab
     @State var deviceId = ""
+    @State var deviceName = ""
     var progress = 1.0
     
     private let userModel: UserModel
@@ -39,7 +40,7 @@ struct EnterIDView: View {
                 .font(.footnote)
                 .foregroundColor(Color("customDarkGreen"))
                 .padding(.horizontal, 32)
-                .padding(.bottom, 16)
+                .padding(.bottom, 8)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.black)
             
@@ -52,6 +53,25 @@ struct EnterIDView: View {
                 }
                 .padding(.horizontal, 32)
                 .padding(.bottom, 8)
+            HStack{
+                Text("Device Name")
+                    .font(.footnote)
+                    .foregroundColor(Color("customDarkGreen"))
+                    .padding(.horizontal, 32)
+                    .padding(.bottom, 8)
+                    .foregroundColor(.black)
+                Spacer()
+            }
+            
+            RoundedRectangle(cornerRadius: 27)
+                .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
+                .foregroundColor(Colors.white)
+                .shadow(radius: 2, x: 0, y: 0)
+                .overlay{
+                    TextField("Name your device", text: $deviceName).padding()
+                }
+                .padding(.horizontal, 32)
+                .padding(.bottom, 4)
             
             HStack (spacing: 16) {
                 Button {
@@ -117,10 +137,10 @@ struct EnterIDView: View {
     func processAddNewDevice(){
         ProgressHUD.animate()
         let banner = GrowingNotificationBanner(title: "Please Enter a Valid ID", style: .danger)
-        if deviceId != "" {
+        if deviceId != "" && deviceName != "" {
             Task {
                 do {
-                    let result = try await deviceAndPlantModel.addNewDeviceToUser(deviceId: deviceId)
+                    let result = try await deviceAndPlantModel.addNewDeviceToUser(deviceId: deviceId, name: deviceName)
                     if result {
                         DispatchQueue.main.async {
                             ProgressHUD.dismiss()

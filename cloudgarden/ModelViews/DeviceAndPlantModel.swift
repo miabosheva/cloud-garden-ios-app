@@ -18,13 +18,14 @@ class DeviceAndPlantModel: ObservableObject {
         return
     }
     
-    func addNewDeviceToUser(deviceId: String) async throws -> Bool {
+    func addNewDeviceToUser(deviceId: String, name: String) async throws -> Bool {
         
         guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/device/createdevice") else {
             throw URLError(.badURL)
         }
         urlComponents.queryItems = [
-            URLQueryItem(name: "code", value: deviceId)
+            URLQueryItem(name: "code", value: deviceId),
+            URLQueryItem(name: "name", value: name)
         ]
         guard let url = urlComponents.url else {
             throw URLError(.badURL)

@@ -8,12 +8,13 @@ struct Device: Hashable, Codable, Identifiable, Equatable {
 //    var macAddress: String
     var user: String?
     var plants: [Plant]? = []
-    //    var title: String
+    var title: String
     
     enum CodingKeys: String, CodingKey {
         case code
 //        case macAddress
         case user
         case deviceId = "id"
+        case title = "name"
     }
 }

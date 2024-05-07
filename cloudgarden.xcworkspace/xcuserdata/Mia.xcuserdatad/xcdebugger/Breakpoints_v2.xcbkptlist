@@ -14,8 +14,8 @@
             filePath = "cloudgarden/Views/Onboarding/TabViewPages/EnterIDView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "processAddNewDevice()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "cloudgarden/Views/Onboarding/TabViewPages/EnterIDView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "processAddNewDevice()"
             landmarkType = "7">
          </BreakpointContent>
