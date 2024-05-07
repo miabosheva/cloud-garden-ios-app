@@ -1,14 +1,7 @@
 import Foundation
-import SwiftUI
 
-struct Plant: Hashable, Codable, Identifiable, Equatable {
-    var id = UUID()
-    var plantId: Int
-    var title: String
-    var lastWatering: String
-    var nextWatering: String
+struct PlantType: Codable {
     var plantTypeId: Int
-    var deviceId: Int
     var plantTypeName: String
     var thresholdValue1: Int
     var thresholdValue2: Int
@@ -16,12 +9,7 @@ struct Plant: Hashable, Codable, Identifiable, Equatable {
     var thresholdValue4: Int
     
     enum CodingKeys: String, CodingKey {
-        case plantId = "id"
-        case title
-        case lastWatering
-        case nextWatering
-        case plantTypeId
-        case deviceId
+        case plantTypeId = "id"
         case plantTypeName
         case thresholdValue1
         case thresholdValue2

@@ -81,6 +81,7 @@ struct PlantList: View {
         } detail: {
             Text("Plants")
         }
+        .accentColor(.customDarkGreen) 
     }
     
     // MARK: - Helper Methods

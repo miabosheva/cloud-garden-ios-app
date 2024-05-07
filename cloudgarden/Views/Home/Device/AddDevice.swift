@@ -45,12 +45,15 @@ struct AddDevice: View {
                     }
                     .padding(.horizontal, 32)
                 
-                Text("The device ID can be found written on top of the physical device.")
-                    .font(.caption)
-                    .foregroundColor(Color.secondary)
-                    .padding(.horizontal, 8)
-                    .padding(.top, 4)
-                    .padding(.bottom, 8)
+                HStack {
+                    Text("The device ID can be found written on top of the physical device.")
+                        .font(.caption)
+                        .foregroundColor(Color.secondary)
+                        .multilineTextAlignment(.leading)
+                }
+                .padding(.horizontal, 32)
+                .padding(.top, 4)
+                .padding(.bottom, 8)
                 
                 HStack {
                     Text("Device Name")
@@ -87,6 +90,7 @@ struct AddDevice: View {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
         }
+        .accentColor(.customDarkGreen) 
     }
     
     // MARK: - Helper Methods
@@ -99,7 +103,7 @@ struct AddDevice: View {
         if deviceIdPlaceholder != "" && newNamePlaceholder != "" {
             Task {
                 do {
-                    let result = try await model.addNewDeviceToUser(deviceId: deviceIdPlaceholder, name: newNamePlaceholder)
+                    let result = try await model.addDevice(deviceId: deviceIdPlaceholder, name: newNamePlaceholder)
                     if result {
                         DispatchQueue.main.async {
                             successfulBanner.show()

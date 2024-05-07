@@ -18,7 +18,7 @@ class DeviceAndPlantModel: ObservableObject {
         return
     }
     
-    func addNewDeviceToUser(deviceId: String, name: String) async throws -> Bool {
+    func addDevice(deviceId: String, name: String) async throws -> Bool {
         
         guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/device/createdevice") else {
             throw URLError(.badURL)
@@ -108,8 +108,8 @@ class DeviceAndPlantModel: ObservableObject {
                 throw URLError(.unknown)
             }
             let deviceResponse = try decoder.decode([Device].self, from: data)
-//            print(deviceResponse)
-            return deviceResponse
+            self.devices = deviceResponse
+            return self.devices
         } catch {
             print(error)
             return []
@@ -122,7 +122,9 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func getPlantCount(deviceId: Int) -> Optional<Int> {
-        // TODO:
+        if self.plants.count != 0 {
+            return self.plants.filter { $0.deviceId == deviceId }.count
+        }
         return 0
     }
     
@@ -133,12 +135,38 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func getAllPlantsByUsername(username: String) async throws -> [Plant] {
-        // TODO: - implement function when its done on backend
-        if self.plants.count > 0 {
-            // do an api call
-            self.plants = []
+        guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/User/GetPlants") else {
+            throw URLError(.badURL)
         }
-        return self.plants
+        let username = user.username
+        urlComponents.queryItems = [
+            URLQueryItem(name: "username", value: username)
+        ]
+        guard let url = urlComponents.url else {
+            throw URLError(.badURL)
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let decoder = JSONDecoder()
+            
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw URLError(.badServerResponse)
+            }
+            guard (200...299).contains(httpResponse.statusCode) else {
+                throw URLError(.unknown)
+            }
+            let plantsResponse = try decoder.decode([Plant].self, from: data)
+            self.plants = plantsResponse
+            return self.plants
+        } catch {
+            print(error)
+            return []
+        }
     }
     
     func deletePlant(plantId: Int) async throws -> Bool {

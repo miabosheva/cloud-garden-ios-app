@@ -31,7 +31,7 @@ struct PlantRow: View {
                 Text(plant.title)
                     .font(.title2)
                 
-                Text("\(plant.deviceId)")
+                Text("Plant Type: \(plant.plantTypeName)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 

@@ -15,7 +15,7 @@ struct RegisterView: View {
     }
     
     var body: some View {
-        NavigationView{
+        NavigationView {
             
             ZStack {
                 
@@ -88,6 +88,7 @@ struct RegisterView: View {
                 }
             }
         }
+        .accentColor(.customDarkGreen) 
     }
     
     func signUpButtonTapped(){

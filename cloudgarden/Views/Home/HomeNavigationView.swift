@@ -3,7 +3,7 @@ import SwiftUI
 struct HomeNavigationView: View {
     
     // MARK: - Properites
-    @State private var selection = 0
+    @State private var selection = 1
     @StateObject var userModel: UserModel
     @StateObject var deviceAndPlantModel: DeviceAndPlantModel
     
@@ -31,5 +31,6 @@ struct HomeNavigationView: View {
                 }
                 .tag(2)
         }
+        .accentColor(.customDarkGreen) 
     }
 }

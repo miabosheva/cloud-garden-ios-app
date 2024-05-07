@@ -3,7 +3,7 @@ import SwiftUI
 struct DeviceDetail: View {
     
     // MARK: - Properties
-    @State private var newName: String
+    @State private var newName: String = ""
     @State private var goToAddPlant: Bool = false
     @State private var goToHome: Bool = false
     private let device: Device
@@ -13,7 +13,6 @@ struct DeviceDetail: View {
     init(device: Device, model: DeviceAndPlantModel){
         self.device = device
         self.model = model
-        newName = device.code
     }
     
     var body: some View {
@@ -21,7 +20,7 @@ struct DeviceDetail: View {
         NavigationView {
             VStack (alignment: .center){
                 
-                Text(device.code)
+                Text(device.title)
                     .font(.title)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .padding(.top, 8)
@@ -60,6 +59,7 @@ struct DeviceDetail: View {
                 }
                 .padding(.horizontal, 32)
                 .padding(.bottom, 16)
+                .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 
                 Spacer()
                 
@@ -84,7 +84,7 @@ struct DeviceDetail: View {
                         .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                         .foregroundColor(Color("customDarkGreen"))
                         .overlay{
-                            Text("Add a New Plant")
+                            Text("Add a Plant to Device")
                                 .foregroundColor(.white)
                         }
                 }
@@ -93,6 +93,7 @@ struct DeviceDetail: View {
                 
             }
         }
+        .accentColor(.customDarkGreen) 
         .sheet(isPresented: $goToAddPlant, content:{
             AddPlant(model: model, deviceId: device.deviceId)
         })

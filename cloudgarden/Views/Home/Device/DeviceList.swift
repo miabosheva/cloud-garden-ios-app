@@ -88,6 +88,7 @@ struct DeviceList: View {
         } detail: {
             Text("Devices")
         }
+        .accentColor(.customDarkGreen) 
     }
     
     
