@@ -5,34 +5,30 @@ import ProgressHUD
 struct AddEmptyPlant: View {
     // MARK: - Properties
     @Environment(\.presentationMode) var presentationMode
-    private var model: DeviceAndPlantModel
+    @EnvironmentObject var model: DeviceAndPlantModel
+    @Binding var goToAddEmptyPlant: Bool
     @State var newNamePlaceholder: String = ""
     @State private var selectedTypeIndex: Int = 0
     @State private var selectedDeviceIndex: Int = 0
     @State private var devices: [Device] = []
     @State private var types: [PlantType] = []
-
-    // MARK: - Init
-    init(model: DeviceAndPlantModel) {
-        self.model = model
-    }
-
+    
     var body: some View {
         NavigationView {
             VStack (alignment: .center) {
-
+                
                 Text("Add a New Plant")
                     .font(.title)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .padding(.top, 16)
-
+                
                 HStack {
                     Text("Plant Name")
                     Spacer()
                 }
                 .padding(.horizontal, 16)
                 .padding(.top, 8)
-
+                
                 RoundedRectangle(cornerRadius: 15)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .frame(height: 38)
@@ -43,7 +39,7 @@ struct AddEmptyPlant: View {
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 8)
-
+                
                 // MARK: - Picker Plant Type
                 GroupBox{
                     VStack {
@@ -59,14 +55,14 @@ struct AddEmptyPlant: View {
                     .padding(.horizontal, 16)
                 }
                 .padding(.vertical, 4)
-
+                
                 // MARK: - Picker Device
                 VStack {
                     HStack {
                         Text("Select a Device")
                         Spacer()
                     }
-
+                    
                     Picker("Choose a Device", selection: $selectedDeviceIndex) {
                         ForEach(0..<devices.count, id: \.self) { index in
                             Text("\(devices[index].title)").tag(index)
@@ -78,14 +74,14 @@ struct AddEmptyPlant: View {
                 .tint(.black)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 4)
-
+                
                 // MARK: - Picker Sensor
                 VStack {
                     HStack {
                         Text("Select a Sensor")
                         Spacer()
                     }
-
+                    
                     Picker("Choose a Device", selection: $selectedDeviceIndex) {
                         ForEach(0..<devices.count, id: \.self) { index in
                             Text("\(devices[index].code)").tag(index)
@@ -98,9 +94,9 @@ struct AddEmptyPlant: View {
                 .padding(.horizontal, 16)
                 .padding(.top, 4)
                 .padding(.bottom, 4)
-
+                
                 Spacer()
-
+                
                 Button(action: addPlantButtonTapped) {
                     RoundedRectangle(cornerRadius: 27)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -114,10 +110,17 @@ struct AddEmptyPlant: View {
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 16)
-
+                
             }
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Close") {
+                        goToAddEmptyPlant = false
+                    }
+                }
             }
         }
         .onAppear {
@@ -130,16 +133,16 @@ struct AddEmptyPlant: View {
                 print(self.devices)
             }
         }
-        .accentColor(.green)
+        .accentColor(.customGreen)
     }
-
+    
     func addPlantButtonTapped(){
         ProgressHUD.animate()
-
+        
         let successfulBanner = NotificationBanner(title: "Plant successfully added.", style: .success)
         let errorBanner = NotificationBanner(title: "Error occured when adding the plant.", style: .danger)
         let warningBanner = NotificationBanner(title: "Title is invalid.", style: .warning)
-
+        
         if self.newNamePlaceholder != "" {
             Task {
                 do {
@@ -164,7 +167,7 @@ struct AddEmptyPlant: View {
         }
         ProgressHUD.dismiss()
     }
-
+    
     func getAllTypes() async {
         do {
             let types = try await model.getTypes()
@@ -177,7 +180,7 @@ struct AddEmptyPlant: View {
             }
         }
     }
-
+    
     func getAllDevices() async {
         do {
             let devices = try await model.getDevicesByUsernameRequest()

@@ -24,14 +24,18 @@ struct DeviceRow: View {
                 .padding(.trailing, 10)
             
             VStack (alignment: .leading) {
-                
-                // TODO: - When you add a title to the model change this
+    
                 Text(device.title)
+                    .fontWeight(.semibold)
                     .font(.title2)
                 
-                Text("Number of plants: \(model.getPlantCount(deviceId: device.deviceId) ?? 0)")
+                Text("Device ID: \(device.deviceId)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+                    .padding(.bottom, 4)
+                
+                Text("Number of Plants: \(model.getPlantCount(deviceId: device.deviceId))")
+                    .font(.footnote)
             }
         }
         .padding(.vertical, 8)

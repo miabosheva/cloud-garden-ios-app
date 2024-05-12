@@ -25,7 +25,7 @@ struct PlantList: View {
                             NavigationLink {
                                 PlantDetail(plant: plant, model: model)
                             } label: {
-                                PlantRow(plant: plant)
+                                PlantRow(plant: plant, model: model)
                             }
                         }
                         .onDelete(perform: deletePlant)
@@ -76,12 +76,12 @@ struct PlantList: View {
                 }
             }
             .sheet(isPresented: $goToAddEmptyPlant) {
-                AddEmptyPlant(model: model)
+                AddEmptyPlant(goToAddEmptyPlant: $goToAddEmptyPlant).environmentObject(model)
             }
         } detail: {
             Text("Plants")
         }
-        .accentColor(.customDarkGreen) 
+        .accentColor(.customGreen) 
     }
     
     // MARK: - Helper Methods

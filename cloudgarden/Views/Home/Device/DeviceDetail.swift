@@ -72,7 +72,7 @@ struct DeviceDetail: View {
                             NavigationLink {
 //                                PlantDetail(plant: plant, model: model)
                             } label: {
-                                PlantRow(plant: plant)
+                                PlantRow(plant: plant, model: model)
                             }
                         }
                         .onDelete(perform: deletePlant)

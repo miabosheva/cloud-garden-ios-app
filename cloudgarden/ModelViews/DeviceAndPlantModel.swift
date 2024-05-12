@@ -172,6 +172,7 @@ class DeviceAndPlantModel: ObservableObject {
             }
             let plantsResponse = try decoder.decode([Plant].self, from: data)
             self.plants = plantsResponse
+            print(plants)
             return self.plants
         } catch {
             print(error)
@@ -209,7 +210,7 @@ class DeviceAndPlantModel: ObservableObject {
         return true
     }
     
-    func getPlantCount(deviceId: Int) -> Optional<Int> {
+    func getPlantCount(deviceId: Int) -> Int {
         if self.plants.count != 0 {
             return self.plants.filter { $0.deviceId == deviceId }.count
         }
@@ -244,5 +245,11 @@ class DeviceAndPlantModel: ObservableObject {
             print(error)
             return []
         }
+    }
+    
+    func calculatePlantHealth(plantId: Int) async throws -> Double {
+        let value = Double.random(in: 0.0...1.0)
+        print(value)
+        return value
     }
 }

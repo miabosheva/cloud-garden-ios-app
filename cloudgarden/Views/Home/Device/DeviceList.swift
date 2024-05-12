@@ -83,12 +83,12 @@ struct DeviceList: View {
                 }
             }
             .sheet(isPresented: $goToAddDevice) {
-                AddDevice(model: model, refreshManager: refreshManager)
+                AddDevice(goToAddDevice: $goToAddDevice).environmentObject(model)
             }
         } detail: {
             Text("Devices")
         }
-        .accentColor(.customDarkGreen) 
+        .accentColor(.customGreen) 
     }
     
     

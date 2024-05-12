@@ -7,17 +7,11 @@ struct AddDevice: View {
     
     // MARK: - Properites
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var model: DeviceAndPlantModel
+    @Binding var goToAddDevice: Bool
     @State private var titleValue: String = ""
     @State private var codeValue: String = ""
     @State private var goToAddPlant: Bool = false
-    @ObservedObject var refreshManager: RefreshManager
-    private var model: DeviceAndPlantModel
-    
-    // MARK: - Init
-    init(model: DeviceAndPlantModel, refreshManager: RefreshManager){
-        self.model = model
-        self.refreshManager = refreshManager
-    }
     
     // MARK: - Body
     var body: some View {
@@ -90,15 +84,22 @@ struct AddDevice: View {
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
+            .toolbar {
+                ToolbarItem {
+                    Button("Close") {
+                        goToAddDevice = false
+                    }
+                }
+            }
         }
-        .accentColor(.customDarkGreen)
+        .accentColor(.customGreen)
     }
     
     // MARK: - API call
     func addDeviceButtonTapped(){
         ProgressHUD.animate()
         let successfulBanner = NotificationBanner(title: "Device successfully added.", style: .success)
-        let errorBanner = NotificationBanner(title: "Error occured when adding the device.", style: .danger)
+        let errorBanner = NotificationBanner(title: "Incorrect Device ID.", style: .danger)
         let warningBanner = NotificationBanner(title: "Device ID or Title is invalid.", style: .warning)
         
         if codeValue != "" && titleValue != "" {
@@ -108,7 +109,6 @@ struct AddDevice: View {
                     DispatchQueue.main.async {
                         successfulBanner.show()
                         self.presentationMode.wrappedValue.dismiss()
-                        refreshManager.triggerRefresh()
                     }
                     self.titleValue = ""
                     self.codeValue = ""

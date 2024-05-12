@@ -14,6 +14,7 @@ struct Plant: Hashable, Codable, Identifiable, Equatable {
     var thresholdValue2: Int
     var thresholdValue3: Int
     var thresholdValue4: Int
+    var plantHealth: Double? = 0
     
     enum CodingKeys: String, CodingKey {
         case plantId = "id"
