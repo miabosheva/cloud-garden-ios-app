@@ -17,15 +17,16 @@ struct PlantRow: View {
     }
     
     var body: some View {
-        
         HStack {
             
-            Image(imageName)
-                .resizable()
-                .frame(width: 80, height: 80)
-                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+            RoundedRectangle(cornerRadius: 15)
+                .frame(width: 75, height: 75)
+                .foregroundColor(.customOffWhite)
+                .overlay {
+                    Text("🌱")
+                        .font(.system(size:33))
+                }
                 .padding(.trailing, 10)
-            
             
             VStack (alignment: .leading) {
                 
@@ -74,5 +75,6 @@ struct PlantRow: View {
                 }
             }
         }
+        .presentationBackground(.regularMaterial)
     }
 }

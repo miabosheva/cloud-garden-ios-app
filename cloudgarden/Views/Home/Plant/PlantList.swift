@@ -23,7 +23,7 @@ struct PlantList: View {
                     if plants.count > 0 {
                         ForEach(plants) { plant in
                             NavigationLink {
-                                PlantDetail(plant: plant, model: model)
+                                PlantDetail(plant: plant, model: model).navigationBarBackButtonHidden()
                             } label: {
                                 PlantRow(plant: plant, model: model)
                             }
