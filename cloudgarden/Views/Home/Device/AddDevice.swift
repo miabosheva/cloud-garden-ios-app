@@ -7,8 +7,8 @@ struct AddDevice: View {
     
     // MARK: - Properites
     @Environment(\.presentationMode) var presentationMode
-    @State private var newNamePlaceholder: String = ""
-    @State private var deviceIdPlaceholder: String = ""
+    @State private var titleValue: String = ""
+    @State private var codeValue: String = ""
     @State private var goToAddPlant: Bool = false
     @ObservedObject var refreshManager: RefreshManager
     private var model: DeviceAndPlantModel
@@ -19,6 +19,7 @@ struct AddDevice: View {
         self.refreshManager = refreshManager
     }
     
+    // MARK: - Body
     var body: some View {
         
         NavigationView {
@@ -41,7 +42,7 @@ struct AddDevice: View {
                     .foregroundColor(.white)
                     .shadow(radius: 2, x: 0, y: 0)
                     .overlay{
-                        TextField("Enter Device ID", text: $deviceIdPlaceholder).padding()
+                        TextField("Enter Device ID", text: $codeValue).padding()
                     }
                     .padding(.horizontal, 16)
                 
@@ -67,7 +68,7 @@ struct AddDevice: View {
                     .foregroundColor(.white)
                     .shadow(radius: 2, x: 0, y: 0)
                     .overlay{
-                        TextField("Enter Device Name", text: $newNamePlaceholder).padding()
+                        TextField("Enter Device Name", text: $titleValue).padding()
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 8)
@@ -90,36 +91,34 @@ struct AddDevice: View {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
         }
-        .accentColor(.customDarkGreen) 
+        .accentColor(.customDarkGreen)
     }
     
-    // MARK: - Helper Methods
+    // MARK: - API call
     func addDeviceButtonTapped(){
         ProgressHUD.animate()
         let successfulBanner = NotificationBanner(title: "Device successfully added.", style: .success)
         let errorBanner = NotificationBanner(title: "Error occured when adding the device.", style: .danger)
         let warningBanner = NotificationBanner(title: "Device ID or Title is invalid.", style: .warning)
         
-        if deviceIdPlaceholder != "" && newNamePlaceholder != "" {
+        if codeValue != "" && titleValue != "" {
             Task {
                 do {
-                    let result = try await model.addDevice(deviceId: deviceIdPlaceholder, name: newNamePlaceholder)
-                    if result {
-                        DispatchQueue.main.async {
-                            successfulBanner.show()
-                            self.presentationMode.wrappedValue.dismiss()
-                            refreshManager.triggerRefresh()
-                        }
-                        self.deviceIdPlaceholder = ""
-                        self.newNamePlaceholder = ""
+                    let _ = try await model.addUserToDevice(code: codeValue, title: titleValue)
+                    DispatchQueue.main.async {
+                        successfulBanner.show()
+                        self.presentationMode.wrappedValue.dismiss()
+                        refreshManager.triggerRefresh()
                     }
+                    self.titleValue = ""
+                    self.codeValue = ""
                 } catch {
                     print(error)
                     DispatchQueue.main.async {
                         errorBanner.show()
                     }
-                    self.deviceIdPlaceholder = ""
-                    self.newNamePlaceholder = ""
+                    self.codeValue = ""
+                    self.titleValue = ""
                 }
             }
         } else {
