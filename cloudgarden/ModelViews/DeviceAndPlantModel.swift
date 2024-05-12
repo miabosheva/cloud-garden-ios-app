@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 import UIKit
 
 class DeviceAndPlantModel: ObservableObject {
@@ -113,7 +114,7 @@ class DeviceAndPlantModel: ObservableObject {
         return true
     }
     
-//     MARK: - Plant Methods
+    //     MARK: - Plant Methods
     func addPlant(title: String, deviceId: Int, plantTypeId: Int) async throws -> Bool {
         guard let urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/Plant") else {
             throw URLError(.badURL)
@@ -172,7 +173,6 @@ class DeviceAndPlantModel: ObservableObject {
             }
             let plantsResponse = try decoder.decode([Plant].self, from: data)
             self.plants = plantsResponse
-            print(plants)
             return self.plants
         } catch {
             print(error)
@@ -247,9 +247,87 @@ class DeviceAndPlantModel: ObservableObject {
         }
     }
     
+    func getLastTenMeasurements(plantId: Int) async throws -> [MeasurementResponse] {
+        guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/Plant/GetMeasurements") else {
+            throw URLError(.badURL)
+        }
+        urlComponents.queryItems = [
+            URLQueryItem(name: "id", value: String(plantId))
+        ]
+        guard let url = urlComponents.url else {
+            throw URLError(.badURL)
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let decoder = JSONDecoder()
+            
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw URLError(.badServerResponse)
+            }
+            guard (200...299).contains(httpResponse.statusCode) else {
+                throw URLError(.unknown)
+            }
+            let measurements = try decoder.decode([MeasurementResponse].self, from: data)
+            return measurements
+        } catch {
+            print(error)
+            return []
+        }
+    }
+    
+    func calculateAverage(of property: KeyPath<MeasurementResponse, Int>, in list: [MeasurementResponse]) -> Double {
+        let total = list.reduce(0.0) { $0 + Double($1[keyPath: property]) }
+        return total / Double(list.count)
+    }
+    
     func calculatePlantHealth(plantId: Int) async throws -> Double {
-        let value = Double.random(in: 0.0...1.0)
-        print(value)
-        return value
+        
+        let measurements = try await getLastTenMeasurements(plantId: plantId)
+        
+        let plant: Plant = self.plants.filter{$0.plantId == plantId}[0]
+        
+        //        let lightIntensityThreshold = Double(plant.thresholdValue1)
+        //        let temperatureThreshold = Double(plant.thresholdValue2)
+        //        let humidityThreshold = Double(plant.thresholdValue3)
+        //        let moistureThreshold = Double(plant.thresholdValue4)
+        
+        // test values
+        let lightIntensityThreshold = 5.0
+        let temperatureThreshold = 4.0
+        let humidityThreshold = 8.0
+        let moistureThreshold = 8.0
+        
+        print("lightIntensityThreshold: \(lightIntensityThreshold)")
+        print("temperatureThreshold: \(temperatureThreshold)")
+        print("humidityThreshold: \(humidityThreshold)")
+        print("moistureThreshold: \(moistureThreshold)")
+        
+        var plantHealth = 1.0
+        
+        let temperatureMeasurement = calculateAverage(of: \.temperatureMeasurement, in: measurements)
+        let humidityMeasurement = calculateAverage(of: \.humidityMeasurement, in: measurements)
+        let moistureMeasurement = calculateAverage(of: \.soilMeasurement, in: measurements)
+        print("temperatureMeasurement: \(temperatureMeasurement)")
+        print("humidityMeasurement: \(humidityMeasurement)")
+        print("moistureMeasurement: \(moistureMeasurement)")
+        
+        // Factors that affect the plant health calculated here
+        
+        if temperatureMeasurement < temperatureThreshold {
+            plantHealth *= 0.6
+        }
+        if humidityMeasurement < humidityThreshold {
+            plantHealth *= 0.5
+        }
+        if moistureMeasurement < moistureThreshold {
+            plantHealth *= 0.8
+        }
+        print(plantHealth)
+        return plantHealth
     }
 }
