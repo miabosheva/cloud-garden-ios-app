@@ -42,7 +42,7 @@ class UserModel: ObservableObject {
     
     func register(username: String, password: String) async throws -> Bool {
         
-        let url = URL(string: "https://cloudplant.azurewebsites.net/authentication/signup")!
+        let url = URL(string: "https://ictfinal.azurewebsites.net/authentication/signup")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -83,7 +83,7 @@ class UserModel: ObservableObject {
     
     func logIn(username: String, password: String) async throws -> Bool {
         
-        let url = URL(string: "https://cloudplant.azurewebsites.net/authentication/signin")!
+        let url = URL(string: "https://ictfinal.azurewebsites.net/authentication/signin")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

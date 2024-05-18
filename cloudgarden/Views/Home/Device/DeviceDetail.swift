@@ -70,7 +70,6 @@ struct DeviceDetail: View {
                     if self.plants.count > 0 {
                         ForEach(plants) { plant in
                             NavigationLink {
-//                                PlantDetail(plant: plant, model: model)
                             } label: {
                                 PlantRow(plant: plant, model: model)
                             }
@@ -118,7 +117,7 @@ struct DeviceDetail: View {
     func getAllPlants() async {
         do {
             let plants = try await model.getAllPlantsByUsername(username: self.model.user.username)
-            self.plants = plants
+            self.plants = plants.filter{$0.deviceId == self.device.deviceId}
         } catch {
             print("Error loading plants: \(error)")
             DispatchQueue.main.async {

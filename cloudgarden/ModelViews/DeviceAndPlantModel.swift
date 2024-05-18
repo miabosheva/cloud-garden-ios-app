@@ -8,8 +8,8 @@ class DeviceAndPlantModel: ObservableObject {
     
     private weak var window: UIWindow!
     public var user: User
-    public var devices: [Device] = []
-    public var plants: [Plant] = []
+    @Published var devices: [Device] = []
+    @Published var plants: [Plant] = []
     
     // MARK: - Init
     
@@ -24,20 +24,23 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func addUserToDevice(code: String, title: String) async throws -> () {
-        guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/Device/AddUserToDevice") else {
+        guard let urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/Device") else {
             throw URLError(.badURL)
         }
-        let username = user.username
-        urlComponents.queryItems = [
-            URLQueryItem(name: "code", value: code),
-            URLQueryItem(name: "username", value: username)
-        ]
         guard let url = urlComponents.url else {
             throw URLError(.badURL)
         }
+        let body : [String: Any] = [
+            "code": code,
+            "name": title,
+            "username": self.user.username
+        ]
+        let jsonData = try? JSONSerialization.data(withJSONObject: body)
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
+        request.setValue("\(String(describing: jsonData?.count))", forHTTPHeaderField: "Content-Length")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
         
         let (_, response) = try await URLSession.shared.data(for: request)
         
@@ -50,7 +53,7 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func getDevicesByUsernameRequest() async throws -> [Device] {
-        guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/User/GetDevices") else {
+        guard var urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/User/GetDevices") else {
             throw URLError(.badURL)
         }
         let username = user.username
@@ -85,7 +88,7 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func deleteDevice(deviceId: Int) async throws -> Bool {
-        guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/Device") else {
+        guard var urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/Device") else {
             throw URLError(.badURL)
         }
         urlComponents.queryItems = [
@@ -116,7 +119,7 @@ class DeviceAndPlantModel: ObservableObject {
     
     //     MARK: - Plant Methods
     func addPlant(title: String, deviceId: Int, plantTypeId: Int) async throws -> Bool {
-        guard let urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/Plant") else {
+        guard let urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/Plant") else {
             throw URLError(.badURL)
         }
         guard let url = urlComponents.url else {
@@ -146,7 +149,7 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func getAllPlantsByUsername(username: String) async throws -> [Plant] {
-        guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/User/GetPlants") else {
+        guard var urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/User/GetPlants") else {
             throw URLError(.badURL)
         }
         let username = user.username
@@ -181,7 +184,7 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func deletePlant(plantId: Int) async throws -> Bool {
-        guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/Plant") else {
+        guard var urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/Plant") else {
             throw URLError(.badURL)
         }
         urlComponents.queryItems = [
@@ -218,7 +221,7 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func getTypes() async throws -> [PlantType] {
-        guard let urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/PlantType/GetAllPlantTypes") else {
+        guard let urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/PlantType/GetAllPlantTypes") else {
             throw URLError(.badURL)
         }
         guard let url = urlComponents.url else {
@@ -248,7 +251,7 @@ class DeviceAndPlantModel: ObservableObject {
     }
     
     func getLastTenMeasurements(plantId: Int) async throws -> [MeasurementResponse] {
-        guard var urlComponents = URLComponents(string: "https://cloudplant.azurewebsites.net/Plant/GetMeasurements") else {
+        guard var urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/Plant/GetMeasurements") else {
             throw URLError(.badURL)
         }
         urlComponents.queryItems = [
@@ -302,19 +305,19 @@ class DeviceAndPlantModel: ObservableObject {
         let humidityThreshold = 8.0
         let moistureThreshold = 8.0
         
-        print("lightIntensityThreshold: \(lightIntensityThreshold)")
-        print("temperatureThreshold: \(temperatureThreshold)")
-        print("humidityThreshold: \(humidityThreshold)")
-        print("moistureThreshold: \(moistureThreshold)")
+//        print("lightIntensityThreshold: \(lightIntensityThreshold)")
+//        print("temperatureThreshold: \(temperatureThreshold)")
+//        print("humidityThreshold: \(humidityThreshold)")
+//        print("moistureThreshold: \(moistureThreshold)")
         
         var plantHealth = 1.0
         
         let temperatureMeasurement = calculateAverage(of: \.temperatureMeasurement, in: measurements)
         let humidityMeasurement = calculateAverage(of: \.humidityMeasurement, in: measurements)
         let moistureMeasurement = calculateAverage(of: \.soilMeasurement, in: measurements)
-        print("temperatureMeasurement: \(temperatureMeasurement)")
-        print("humidityMeasurement: \(humidityMeasurement)")
-        print("moistureMeasurement: \(moistureMeasurement)")
+//        print("temperatureMeasurement: \(temperatureMeasurement)")
+//        print("humidityMeasurement: \(humidityMeasurement)")
+//        print("moistureMeasurement: \(moistureMeasurement)")
         
         // Factors that affect the plant health calculated here
         
@@ -327,7 +330,7 @@ class DeviceAndPlantModel: ObservableObject {
         if moistureMeasurement < moistureThreshold {
             plantHealth *= 0.8
         }
-        print(plantHealth)
+//        print(plantHealth)
         return plantHealth
     }
 }

@@ -5,8 +5,7 @@ struct Plant: Hashable, Codable, Identifiable, Equatable {
     var id = UUID()
     var plantId: Int
     var title: String
-    var lastWatering: String
-    var nextWatering: String
+    var lastWatering: String?
     var plantTypeId: Int
     var deviceId: Int
     var plantTypeName: String
@@ -20,7 +19,6 @@ struct Plant: Hashable, Codable, Identifiable, Equatable {
         case plantId = "id"
         case title
         case lastWatering
-        case nextWatering
         case plantTypeId
         case deviceId
         case plantTypeName

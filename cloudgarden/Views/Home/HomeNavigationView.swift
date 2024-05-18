@@ -31,6 +31,6 @@ struct HomeNavigationView: View {
                 }
                 .tag(2)
         }
-        .accentColor(.customDarkGreen) 
+        .accentColor(.customDarkGreen)
     }
 }

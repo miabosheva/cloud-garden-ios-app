@@ -36,6 +36,9 @@ struct PlantList: View {
                 .onAppear {
                     Task {
                         await getAllPlants()
+                        if model.devices.count == 0 {
+                            model.devices = try await model.getDevicesByUsernameRequest()
+                        }
                     }
                 }
                 .refreshable {

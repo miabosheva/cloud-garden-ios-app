@@ -9,6 +9,7 @@ struct PlantDetail: View {
     private let status: String = "well watered"
     @State private var date = Date()
     @State private var showSheet = true
+    @State var deviceTitle: String = ""
     private var model: DeviceAndPlantModel
     
 //    let measurements: [MeasurementResponse]
@@ -27,6 +28,17 @@ struct PlantDetail: View {
                 .scaledToFill()
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         }
+//        .onAppear{
+//            Task {
+//                do {
+//                    self.deviceTitle = try model.getDevicesByUsernameRequest()
+//                } catch {
+//                    DispatchQueue.main.async {
+//                        self.deviceTitle = "Unkown"
+//                    }
+//                }
+//            }
+//        }
         .sheet(isPresented: $showSheet) {
             ScrollView(.vertical, showsIndicators: false) {
                 // Sheet Header
