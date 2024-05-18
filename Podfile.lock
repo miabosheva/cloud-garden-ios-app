@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (5.9.1)
   - KeychainAccess (4.2.2)
   - lottie-ios (4.4.3)
   - MarqueeLabel (4.0.5)
@@ -10,7 +9,6 @@ PODS:
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
-  - Alamofire
   - KeychainAccess
   - lottie-ios
   - NotificationBannerSwift (~> 3.0.0)
@@ -18,7 +16,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - KeychainAccess
     - lottie-ios
     - MarqueeLabel
@@ -27,7 +24,6 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   lottie-ios: fcb5e73e17ba4c983140b7d21095c834b3087418
   MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
@@ -35,6 +31,6 @@ SPEC CHECKSUMS:
   ProgressHUD: abb9136ae23c85204236828562cb9a8ec98efb44
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 624b8c0bb658c9c31dd50baf2c06364ecb2d2349
+PODFILE CHECKSUM: ecd154a5104995c499d12887396899d9bd537f28
 
 COCOAPODS: 1.15.2

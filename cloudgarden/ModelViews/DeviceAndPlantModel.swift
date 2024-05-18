@@ -8,8 +8,8 @@ class DeviceAndPlantModel: ObservableObject {
     
     private weak var window: UIWindow!
     public var user: User
-    @Published var devices: [Device] = []
-    @Published var plants: [Plant] = []
+    public var devices: [Device] = []
+    public var plants: [Plant] = []
     
     // MARK: - Init
     
@@ -305,22 +305,21 @@ class DeviceAndPlantModel: ObservableObject {
         let humidityThreshold = 8.0
         let moistureThreshold = 8.0
         
-//        print("lightIntensityThreshold: \(lightIntensityThreshold)")
-//        print("temperatureThreshold: \(temperatureThreshold)")
-//        print("humidityThreshold: \(humidityThreshold)")
-//        print("moistureThreshold: \(moistureThreshold)")
+        //        print("lightIntensityThreshold: \(lightIntensityThreshold)")
+        //        print("temperatureThreshold: \(temperatureThreshold)")
+        //        print("humidityThreshold: \(humidityThreshold)")
+        //        print("moistureThreshold: \(moistureThreshold)")
         
         var plantHealth = 1.0
         
         let temperatureMeasurement = calculateAverage(of: \.temperatureMeasurement, in: measurements)
         let humidityMeasurement = calculateAverage(of: \.humidityMeasurement, in: measurements)
         let moistureMeasurement = calculateAverage(of: \.soilMeasurement, in: measurements)
-//        print("temperatureMeasurement: \(temperatureMeasurement)")
-//        print("humidityMeasurement: \(humidityMeasurement)")
-//        print("moistureMeasurement: \(moistureMeasurement)")
+        //        print("temperatureMeasurement: \(temperatureMeasurement)")
+        //        print("humidityMeasurement: \(humidityMeasurement)")
+        //        print("moistureMeasurement: \(moistureMeasurement)")
         
         // Factors that affect the plant health calculated here
-        
         if temperatureMeasurement < temperatureThreshold {
             plantHealth *= 0.6
         }
@@ -330,7 +329,42 @@ class DeviceAndPlantModel: ObservableObject {
         if moistureMeasurement < moistureThreshold {
             plantHealth *= 0.8
         }
-//        print(plantHealth)
+        //        print(plantHealth)
         return plantHealth
+    }
+    
+    func setLastWateringEntry(plantId: Int, date: Date) async throws {
+        // format example of date: 2024-05-18 20:18:03 +0000
+        // format in backend: 2024-05-18 20:18:03
+        guard var urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/Plant/UpdateLastWatering") else {
+            throw URLError(.badURL)
+        }
+        
+        // Format date to string and into wanted format
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let formattedDate = dateFormatter.string(from: date)
+        
+        urlComponents.queryItems = [
+            URLQueryItem(name: "plantId", value: String(plantId)),
+            URLQueryItem(name: "lastWatering", value: formattedDate)
+        ]
+        
+        guard let url = urlComponents.url else {
+            throw URLError(.badURL)
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let (_, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw URLError(.badServerResponse)
+        }
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw URLError(.unknown)
+        }
     }
 }

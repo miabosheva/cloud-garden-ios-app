@@ -1,4 +1,5 @@
 import SwiftUI
+import NotificationBannerSwift
 
 struct PlantDetail: View {
     
@@ -10,14 +11,17 @@ struct PlantDetail: View {
     @State private var date = Date()
     @State private var showSheet = true
     @State var deviceTitle: String = ""
+    @State var daysSinceLastWatering: Int = 0
+    @State var plantHealthPercentage: Int = 0
     private var model: DeviceAndPlantModel
     
-//    let measurements: [MeasurementResponse]
+    //    let measurements: [MeasurementResponse]
     
     // MARK: - Init
     init(plant: Plant, model: DeviceAndPlantModel) {
         self.plant = plant
         self.model = model
+        print(plant.lastWatering)
     }
     
     var body: some View {
@@ -28,17 +32,6 @@ struct PlantDetail: View {
                 .scaledToFill()
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         }
-//        .onAppear{
-//            Task {
-//                do {
-//                    self.deviceTitle = try model.getDevicesByUsernameRequest()
-//                } catch {
-//                    DispatchQueue.main.async {
-//                        self.deviceTitle = "Unkown"
-//                    }
-//                }
-//            }
-//        }
         .sheet(isPresented: $showSheet) {
             ScrollView(.vertical, showsIndicators: false) {
                 // Sheet Header
@@ -81,16 +74,15 @@ struct PlantDetail: View {
                     HStack {
                         Spacer()
                         VStack {
-                            Text("\(getLastWateringEntry())d ago")
+                            Text("\(daysSinceLastWatering)d ago")
                                 .font(.system(size: 24, weight: .medium))
                             Text("Last Watering")
                                 .font(.system(size: 16, weight: .regular))
                                 .foregroundColor(.gray)
-                            
                         }
                         Spacer()
                         VStack {
-                            Text("\(getHealth())%")
+                            Text("\(plantHealthPercentage)%")
                                 .font(.system(size: 24, weight: .medium))
                             Text("Avg. Health")
                                 .font(.system(size: 16, weight: .regular))
@@ -119,14 +111,15 @@ struct PlantDetail: View {
                 .datePickerStyle(.graphical)
                 
                 Button {
-                    print(date)
+                    scheduleLocalNotification()
+                    addWateringEntry()
                 } label: {
                     RoundedRectangle(cornerRadius: 27)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 44)
                         .foregroundColor(.green)
                         .overlay{
-                            Text("Add watering Entry")
+                            Text("Add a Watering Entry")
                                 .foregroundColor(.white)
                         }
                 }
@@ -136,38 +129,52 @@ struct PlantDetail: View {
             .interactiveDismissDisabled()
             .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
         }
-//        .modifier(SwipeToDismissModifier {
-//            print("im Here")
-//            showSheet = false
-//        })
+        .onAppear {
+            self.daysSinceLastWatering = getLastWateringEntry()
+            self.plantHealthPercentage = getHealth()
+        }
         .navigationBarBackButtonHidden()
     }
     
     func addWateringEntry() {
+        if date > Date() {
+            let banner = NotificationBanner(title: "Please choose a Date before today.", style: .warning)
+            banner.show()
+            return
+        }
         
+        Task {
+            do {
+                let _ = try await model.setLastWateringEntry(plantId: self.plant.plantId, date: date)
+            } catch {
+                DispatchQueue.main.async {
+                    let banner = NotificationBanner(title: "Error while adding a new watering entry.", subtitle: "Please try again.", style: .danger)
+                    banner.show()
+                }
+            }
+        }
     }
     
     func getHealth() -> Int {
         let plantHealth = plant.plantHealth!
         let percentage = plantHealth * 100
-        let formattedPercentage = String(format: "%.2f%%", percentage)
         return Int(percentage)
     }
     
     func getLastWateringEntry() -> Int {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        
-//        if let startDate = dateFormatter.date(from: date) {
-//            if let days = daysSinceDate(startDate) {
-//                print("Days since the start date: \(days)")
-//                return days
-//            } else {
-//                print("Failed to calculate the number of days.")
-//            }
-//        } else {
-//            print("Invalid start date format.")
-//        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        if let startDate = dateFormatter.date(from: self.plant.lastWatering!) {
+            if let days = daysSinceDate(startDate) {
+                print("Days since the start date: \(days)")
+                return days
+            } else {
+                print("Failed to calculate the number of days.")
+            }
+        } else {
+            print("Invalid start date format.")
+        }
         return 0
     }
     
@@ -176,5 +183,24 @@ struct PlantDetail: View {
         let currentDate = Date()
         let components = calendar.dateComponents([.day], from: date, to: currentDate)
         return components.day
+    }
+    
+    private func scheduleLocalNotification() {
+        
+        let content = UNMutableNotificationContent()
+        content.title = "CloudGarden"
+        content.body = "\(self.plant.title) needs watering!"
+        content.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                print("Notification scheduled")
+            }
+        }
     }
 }
