@@ -16,7 +16,7 @@ struct DeviceList: View {
     @StateObject private var refreshManager = RefreshManager()
     @State private var goToAddDevice: Bool = false
     @State private var devices: [Device] = []
-
+    
     // MARK: - Init
     init(model: DeviceAndPlantModel){
         self.model = model
@@ -83,12 +83,14 @@ struct DeviceList: View {
                 }
             }
             .sheet(isPresented: $goToAddDevice) {
-                AddDevice(goToAddDevice: $goToAddDevice).environmentObject(model)
+                NavigationStack {
+                    AddDevice(goToAddDevice: $goToAddDevice).environmentObject(model)
+                }
             }
         } detail: {
             Text("Devices")
         }
-        .accentColor(.customGreen) 
+        .accentColor(.customGreen)
     }
     
     

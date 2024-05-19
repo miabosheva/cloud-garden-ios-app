@@ -1,4 +1,5 @@
 import SwiftUI
+import ProgressHUD
 import NotificationBannerSwift
 
 struct DeviceDetail: View {
@@ -34,45 +35,42 @@ struct DeviceDetail: View {
                 
                 HStack {
                     Text("Device Name")
+                        .font(.headline)
+                        .fontWeight(.semibold)
                     Spacer()
                 }
-                .padding(.horizontal, 32)
+                .padding(.horizontal, 16)
                 .padding(.top, 16)
                 
                 RoundedRectangle(cornerRadius: 15)
-                    .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
+                    .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                     .foregroundColor(.white)
                     .shadow(radius: 2, x: 0, y: 0)
                     .overlay{
-                        TextField("\(newName)", text: $newName).padding()
+                        TextField("Device Name", text: $newName).padding()
                     }
-                    .padding(.horizontal, 32)
+                    .padding(.horizontal, 16)
                     .padding(.bottom, 8)
                 
-                Button {
-                    model.changeDeviceName(title: newName)
-                } label: {
+                Button(action: saveName) {
                     RoundedRectangle(cornerRadius: 27)
-                        .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
+                        .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                         .foregroundColor(Color("customLimeGreen"))
                         .overlay{
                             Text("Save Name")
                                 .foregroundColor(.white)
+                                .fontWeight(.semibold)
                         }
                 }
-                .padding(.horizontal, 32)
+                .padding(.horizontal, 16)
                 .padding(.bottom, 16)
-                .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 
                 Spacer()
                 
                 List {
                     if self.plants.count > 0 {
                         ForEach(plants) { plant in
-                            NavigationLink {
-                            } label: {
-                                PlantRow(plant: plant, model: model)
-                            }
+                            PlantRow(plant: plant, model: model)
                         }
                         .onDelete(perform: deletePlant)
                     } else {
@@ -102,14 +100,16 @@ struct DeviceDetail: View {
                                 .foregroundColor(.white)
                         }
                 }
-                .padding(.horizontal, 32)
+                .padding(.horizontal, 16)
                 .padding(.vertical, 8)
                 
             }
         }
-        .accentColor(.customDarkGreen) 
-        .sheet(isPresented: $goToAddPlant, content:{
-            AddPlant(model: model, device: device)
+        .accentColor(.customDarkGreen)
+        .sheet(isPresented: $goToAddPlant, content: {
+            NavigationStack {
+                AddPlant(model: model, device: device)
+            }
         })
     }
     
@@ -125,6 +125,32 @@ struct DeviceDetail: View {
                 banner.show()
             }
         }
+    }
+    
+    func saveName() {
+        if newName != "" {
+            ProgressHUD.animate()
+            Task {
+                do {
+                    let _ = try await model.addUserToDevice(code: self.device.code, title: newName)
+                } catch {
+                    DispatchQueue.main.async {
+                        let banner = NotificationBanner(title: "Error updating name.", style: .danger)
+                        banner.show()
+                        ProgressHUD.dismiss()
+                        newName = ""
+                    }
+                    return
+                }
+            }
+            let banner = NotificationBanner(title: "Successfully changed \(device.title)'s name to \(newName).", style: .success)
+            banner.show()
+            ProgressHUD.dismiss()
+        } else {
+            let banner = NotificationBanner(title: "Please enter a valid name.", style: .warning)
+            banner.show()
+        }
+        newName = ""
     }
     
     func deletePlant(at offsets: IndexSet) {

@@ -19,10 +19,6 @@ class DeviceAndPlantModel: ObservableObject {
     
     // MARK: - Device Methods
     
-    func changeDeviceName(title: String) {
-        return
-    }
-    
     func addUserToDevice(code: String, title: String) async throws -> () {
         guard let urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/Device") else {
             throw URLError(.badURL)

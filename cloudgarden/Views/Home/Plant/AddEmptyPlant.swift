@@ -71,7 +71,6 @@ struct AddEmptyPlant: View {
                         Text("A device can monitor up to 3 plants.")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
-                            .padding(.bottom)
                         Spacer()
                     }
                 }
@@ -95,7 +94,7 @@ struct AddEmptyPlant: View {
                 RoundedRectangle(cornerRadius: 27)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .frame(height: 44)
-                    .foregroundColor(.customGreen)
+                    .foregroundColor(.customLimeGreen)
                     .overlay{
                         Text("Submit")
                             .foregroundColor(.white)
@@ -119,7 +118,7 @@ struct AddEmptyPlant: View {
                 } label: {
                     Text("Close")
                         .bold()
-                        .foregroundColor(.customGreen)
+                        .foregroundColor(.customLimeGreen)
                 }
             }
         }
@@ -133,7 +132,7 @@ struct AddEmptyPlant: View {
                 print(self.devices)
             }
         }
-        .accentColor(.customGreen)
+        .accentColor(.customLimeGreen)
     }
     
     func addPlantButtonTapped(){

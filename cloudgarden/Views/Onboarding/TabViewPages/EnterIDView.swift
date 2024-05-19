@@ -6,20 +6,13 @@ struct EnterIDView: View {
     
     // MARK: - Properties
     @State var goToNextScreen: Bool = false
-    @State var tab: OnboardingTab
+    @Binding var tab: OnboardingTab
     @State var deviceId = ""
     @State var deviceName = ""
     var progress = 1.0
     
-    private let userModel: UserModel
-    private let deviceAndPlantModel: DeviceAndPlantModel
-    
-    // MARK: - Init
-    init(tab: OnboardingTab, userModel: UserModel){
-        self.tab = tab
-        self.userModel = userModel
-        self.deviceAndPlantModel = DeviceAndPlantModel(user: userModel.user!)
-    }
+    @EnvironmentObject private var userModel: UserModel
+    @EnvironmentObject private var deviceAndPlantModel: DeviceAndPlantModel
     
     var body: some View {
         
@@ -34,7 +27,7 @@ struct EnterIDView: View {
                 .padding(.bottom, 8)
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color("customDarkGreen"))
-                .padding(.top, 70)
+                .padding(.top, 50)
             
             Text("Your device comes with a unique ID. You can find it written on the device. Enter the ID below.")
                 .font(.footnote)
@@ -44,9 +37,17 @@ struct EnterIDView: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(.black)
             
+            HStack{
+                Text("Device ID")
+                    .font(.headline)
+                    .padding(.horizontal, 32)
+                    .padding(.bottom, 4)
+                    .foregroundColor(.black)
+                Spacer()
+            }
+            
             RoundedRectangle(cornerRadius: 27)
-                .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
-                .foregroundColor(Colors.white)
+                .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                 .shadow(radius: 2, x: 0, y: 0)
                 .overlay{
                     TextField("Device ID", text: $deviceId).padding()
@@ -55,23 +56,21 @@ struct EnterIDView: View {
                 .padding(.bottom, 8)
             HStack{
                 Text("Device Name")
-                    .font(.footnote)
-                    .foregroundColor(Color("customDarkGreen"))
+                    .font(.headline)
                     .padding(.horizontal, 32)
-                    .padding(.bottom, 8)
+                    .padding(.bottom, 4)
                     .foregroundColor(.black)
                 Spacer()
             }
             
             RoundedRectangle(cornerRadius: 27)
-                .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
-                .foregroundColor(Colors.white)
+                .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                 .shadow(radius: 2, x: 0, y: 0)
                 .overlay{
                     TextField("Name your device", text: $deviceName).padding()
                 }
                 .padding(.horizontal, 32)
-                .padding(.bottom, 4)
+                .padding(.bottom, 16)
             
             HStack (spacing: 16) {
                 Button {

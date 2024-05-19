@@ -10,81 +10,88 @@ struct AddPlant: View {
     @State private var selectedTypeIndex: Int = 0
     @State private var types: [PlantType] = []
     private var device: Device
-
+    
     // MARK: - Init
     init(model: DeviceAndPlantModel, device: Device) {
         self.model = model
         self.device = device
     }
-
+    
     var body: some View {
-        NavigationView {
-            VStack (alignment: .center) {
-                VStack (spacing: -2){
-                    Text("Add a Plant to Device:")
-                        .multilineTextAlignment(.center)
-                        .font(.title)
-                        .padding(.top, 16)
-                    Text("\(self.device.title)")
-                        .multilineTextAlignment(.center)
-                        .font(.title)
-                        .fontWeight(.semibold)
-                }
-
-                HStack {
-                    Text("Plant Name")
-                    Spacer()
-                }
-                .padding(.horizontal, 16)
-                .padding(.top, 8)
-
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .frame(height: 38)
-                    .foregroundColor(.white)
-                    .shadow(radius: 2, x: 0, y: 0)
-                    .overlay{
-                        TextField("Enter Plant Name", text: $newNamePlaceholder).padding()
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 8)
-
-                // MARK: - Picker Plant Type
-                GroupBox{
-                    VStack {
-                        Picker("Choose a Plant Type", selection: $selectedTypeIndex) {
-                            ForEach(0..<types.count, id: \.self) { index in
-                                Text("\(types[index].plantTypeName)").tag(index)
-                            }
-                        }
-                        .pickerStyle(.navigationLink)
-                        .frame(maxWidth: .infinity)
-                    }
-                    .tint(.black)
-                    .padding(.horizontal, 16)
-                }
-                .padding(.vertical, 4)
-
+        VStack (alignment: .center) {
+            Divider()
+            
+            HStack {
+                Text("Plant Name")
+                    .font(.headline)
+                    .fontWeight(.semibold)
                 Spacer()
-
-                Button(action: addPlantButtonTapped) {
-                    RoundedRectangle(cornerRadius: 27)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: 38)
-                        .foregroundColor(.green)
-                        .overlay{
-                            Text("Submit")
-                                .foregroundColor(.white)
-                                .bold()
-                        }
+            }
+            .padding(.horizontal, 16)
+            .padding(.top, 8)
+            
+            RoundedRectangle(cornerRadius: 15)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .frame(height: 44)
+                .foregroundColor(.white)
+                .shadow(radius: 2, x: 0, y: 0)
+                .overlay{
+                    TextField("Enter Plant Name", text: $newNamePlaceholder).padding()
                 }
                 .padding(.horizontal, 16)
-                .padding(.vertical, 16)
-
+                .padding(.bottom, 8)
+            
+            Divider()
+            
+            // MARK: - Picker Plant Type
+                VStack {
+                    Picker("Plant Type", selection: $selectedTypeIndex) {
+                        ForEach(0..<types.count, id: \.self) { index in
+                            Text("\(types[index].plantTypeName)")
+                                .tag(index)
+                        }
+                    }
+                    .pickerStyle(.navigationLink)
+                    .frame(maxWidth: .infinity)
+                }
+                .fontWeight(.semibold)
+                .tint(.black)
+                .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            
+            Divider()
+            
+            Button(action: addPlantButtonTapped) {
+                RoundedRectangle(cornerRadius: 27)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .frame(height: 44)
+                    .foregroundColor(.customGreen)
+                    .overlay{
+                        Text("Submit")
+                            .foregroundColor(.white)
+                            .bold()
+                    }
             }
-            .onTapGesture {
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 16)
+            
+            Spacer()
+        }
+        .navigationTitle("Add a Plant to Device: \(device.title)")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button{
+                    self.presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Text("Close")
+                        .bold()
+                        .foregroundColor(.customGreen)
+                }
             }
+        }
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
         .onAppear {
             Task {
@@ -92,16 +99,16 @@ struct AddPlant: View {
                 print(self.types)
             }
         }
-        .accentColor(.green)
+        .accentColor(.customGreen)
     }
-
+    
     func addPlantButtonTapped(){
         ProgressHUD.animate()
-
+        
         let successfulBanner = NotificationBanner(title: "Plant successfully added.", style: .success)
         let errorBanner = NotificationBanner(title: "Error occured when adding the plant.", style: .danger)
         let warningBanner = NotificationBanner(title: "Title is invalid.", style: .warning)
-
+        
         if self.newNamePlaceholder != "" {
             Task {
                 do {
@@ -126,7 +133,7 @@ struct AddPlant: View {
         }
         ProgressHUD.dismiss()
     }
-
+    
     func getAllTypes() async {
         do {
             let types = try await model.getTypes()

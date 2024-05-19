@@ -16,83 +16,91 @@ struct AddDevice: View {
     // MARK: - Body
     var body: some View {
         
-        NavigationView {
-            VStack (alignment: .center) {
-                
-                Text("Add a New Device")
-                    .font(.title)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .padding(.top, 16)
-                
+        VStack (alignment: .center) {
+            
+            Divider()
+            
+            VStack {
                 HStack {
                     Text("Enter Device ID")
+                        .font(.headline)
+                        .fontWeight(.semibold)
                     Spacer()
                 }
-                .padding(.horizontal, 16)
-                .padding(.top, 16)
                 
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
-                    .foregroundColor(.white)
-                    .shadow(radius: 2, x: 0, y: 0)
-                    .overlay{
-                        TextField("Enter Device ID", text: $codeValue).padding()
-                    }
-                    .padding(.horizontal, 16)
+                Text("The device ID can be found written on top of the physical device.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.leading)
                 
-                HStack {
-                    Text("The device ID can be found written on top of the physical device.")
-                        .font(.caption)
-                        .foregroundColor(Color.secondary)
-                        .multilineTextAlignment(.leading)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            
+            RoundedRectangle(cornerRadius: 15)
+                .frame(maxWidth: .infinity,
+                       maxHeight: 44,
+                       alignment: .center)
+                .foregroundColor(.white)
+                .shadow(radius: 2, x: 0, y: 0)
+                .overlay{
+                    TextField("Enter Device ID", text: $codeValue).padding()
                 }
-                .padding(.horizontal, 8)
-                .padding(.top, 4)
+                .padding(.horizontal, 16)
                 .padding(.bottom, 8)
-                
-                HStack {
-                    Text("Device Name")
-                    Spacer()
-                }
-                .padding(.horizontal, 16)
-                .padding(.top, 16)
-                
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
-                    .foregroundColor(.white)
-                    .shadow(radius: 2, x: 0, y: 0)
-                    .overlay{
-                        TextField("Enter Device Name", text: $titleValue).padding()
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 8)
-                
-                Button(action: addDeviceButtonTapped) {
-                    RoundedRectangle(cornerRadius: 27)
-                        .frame(maxWidth: .infinity, maxHeight: 38, alignment: .center)
-                        .foregroundColor(Color("customLimeGreen"))
-                        .overlay{
-                            Text("Submit")
-                                .foregroundColor(.white)
-                        }
-                }
-                .padding(.horizontal, 16)
-                .padding(.bottom, 16)
-                
+            
+            Divider()
+            
+            HStack {
+                Text("Device Name")
+                    .font(.headline)
+                    .fontWeight(.semibold)
                 Spacer()
             }
-            .onTapGesture {
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-            }
-            .toolbar {
-                ToolbarItem {
-                    Button("Close") {
-                        goToAddDevice = false
-                    }
+            .padding(.horizontal, 16)
+            .padding(.top, 8)
+            
+            RoundedRectangle(cornerRadius: 15)
+                .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
+                .foregroundColor(.white)
+                .shadow(radius: 2, x: 0, y: 0)
+                .overlay{
+                    TextField("Enter Device Name", text: $titleValue)
+                        .padding()
                 }
+                .padding(.horizontal, 16)
+                .padding(.bottom, 8)
+            
+            Divider()
+            
+            Button(action: addDeviceButtonTapped) {
+                RoundedRectangle(cornerRadius: 27)
+                    .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
+                    .foregroundColor(.customLimeGreen)
+                    .overlay{
+                        Text("Submit")
+                            .foregroundColor(.white)
+                    }
+            }
+            .padding(.horizontal, 16)
+            .padding(.bottom, 16)
+            
+            Spacer()
+        }
+        .navigationTitle("Add a Device")
+        .navigationBarTitleDisplayMode(.inline)
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+        .toolbar {
+            ToolbarItem {
+                Button("Close") {
+                    goToAddDevice = false
+                }
+                .bold()
+                .foregroundColor(.customLimeGreen)
             }
         }
-        .accentColor(.customGreen)
     }
     
     // MARK: - API call

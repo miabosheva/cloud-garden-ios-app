@@ -33,7 +33,9 @@ struct OnboardingView: View {
                 .tag(OnboardingTab.step2)
             ClickOnTheLinkView(tab: $selection)
                 .tag(OnboardingTab.step3)
-            EnterIDView(tab: selection, userModel: userModel)
+            EnterIDView(tab: $selection)
+                .environmentObject(userModel)
+                .environmentObject(deviceAndPlantModel)
                 .tag(OnboardingTab.step4)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))

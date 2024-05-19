@@ -17,6 +17,7 @@ struct ProfileView: View {
     
     var body: some View {
         ZStack {
+            Colors.appBackground.ignoresSafeArea()
             ZStack {
                 VStack {
                     Spacer()
@@ -112,7 +113,7 @@ struct ProfileView: View {
                                 .frame(height: 140)
                             Circle()
                                 .foregroundColor(.customOffWhite)
-                                .frame(height: 130)
+                                .frame(height: 134)
                             Text("👤")
                                 .font(.system(size: 50))
                         }
@@ -128,6 +129,5 @@ struct ProfileView: View {
             self.deviceCount = deviceAndPlantModel.devices.count
             self.plantCount = deviceAndPlantModel.plants.count
         }
-        .background(.customDarkGreen)
     }
 }

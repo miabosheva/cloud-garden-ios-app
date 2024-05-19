@@ -155,7 +155,9 @@ struct LoginView: View {
     
     func logInButtonTapped(){
         ProgressHUD.animate()
-        let bannerFailed = NotificationBanner(title: "Login Failed. Try Again", style: .danger)
+        let bannerFailed = NotificationBanner(title: "Login credentials invalid", style: .danger)
+        
+        let bannerError = NotificationBanner(title: "Please input valid credentials", style: .warning)
         
         if username != "" && password != "" {
             Task {
@@ -182,7 +184,7 @@ struct LoginView: View {
         } else {
             DispatchQueue.main.async {
                 ProgressHUD.dismiss()
-                bannerFailed.show()
+                bannerError.show()
             }
         }
     }

@@ -7,7 +7,7 @@ struct PlantRow: View {
     private var model: DeviceAndPlantModel
     private var imageName = "defaultPlant"
     @State private var plantHealthPlacehoder = 0.0
-    @State private var plantHealthBarDescription = "In good health"
+    @State private var plantHealthBarDescription = ""
     @State private var barColor = Color(.customRed)
     
     // MARK: - Init
@@ -55,15 +55,15 @@ struct PlantRow: View {
                         self.plantHealthPlacehoder = plantHealth
                         if plantHealth <= 0.3 {
                             barColor = .customRed
-                            plantHealthBarDescription = "In bad health"
+                            plantHealthBarDescription = "Bad Health"
                         }
                         if plantHealth > 0.3 && plantHealth <= 0.6 {
                             barColor = .customLemon
-                            plantHealthBarDescription = "In moderate health"
+                            plantHealthBarDescription = "Moderate Health"
                         }
                         if plantHealth > 0.6 {
-                            barColor = .customGreen
-                            plantHealthBarDescription = "In good health"
+                            barColor = .customLimeGreen
+                            plantHealthBarDescription = "Good Health"
                         }
                     }
                 } catch {

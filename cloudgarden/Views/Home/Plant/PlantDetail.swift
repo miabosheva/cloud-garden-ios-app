@@ -43,8 +43,8 @@ struct PlantDetail: View {
                             HStack{
                                 Image(systemName: "chevron.left")
                                     .font(.system(size: 20, weight: .semibold))
-                                    .foregroundColor(.customGreen)
-                                Text("Back").foregroundColor(.customGreen)
+                                    .foregroundColor(.customLimeGreen)
+                                Text("Back").foregroundColor(.customLimeGreen)
                             }
                         }
                     }
@@ -114,10 +114,10 @@ struct PlantDetail: View {
                                 y: .value("Light Intensity", measurement.lightIntensity),
                                 series: .value("Light", "1")
                             )
-                            .foregroundStyle(.customGreen)
+                            .foregroundStyle(.customLimeGreen)
                             .symbol {
                                 Circle()
-                                    .fill(Color.customGreen)
+                                    .fill(Color.customLimeGreen)
                                     .frame(width: 8)
                             }
                         }
@@ -158,10 +158,10 @@ struct PlantDetail: View {
                                 y: .value("Humidity Intensity", measurement.humidityMeasurement),
                                 series: .value("Humidity", "2")
                             )
-                            .foregroundStyle(.customGreen)
+                            .foregroundStyle(.customLimeGreen)
                             .symbol {
                                 Circle()
-                                    .fill(Color.customGreen)
+                                    .fill(Color.customLimeGreen)
                                     .frame(width: 8)
                             }
                         }
@@ -201,10 +201,10 @@ struct PlantDetail: View {
                                 y: .value("Soil moisture", measurement.soilMeasurement),
                                 series: .value("Soil", "3")
                             )
-                            .foregroundStyle(.customGreen)
+                            .foregroundStyle(.customLimeGreen)
                             .symbol {
                                 Circle()
-                                    .fill(Color.customGreen)
+                                    .fill(Color.customLimeGreen)
                                     .frame(width: 8)
                             }
                         }
@@ -246,10 +246,10 @@ struct PlantDetail: View {
                                 y: .value("Temperature", measurement.temperatureMeasurement),
                                 series: .value("Temperature", "4")
                             )
-                            .foregroundStyle(.customGreen)
+                            .foregroundStyle(.customLimeGreen)
                             .symbol {
                                 Circle()
-                                    .fill(Color.customGreen)
+                                    .fill(Color.customLimeGreen)
                                     .frame(width: 8)
                             }
                         }
@@ -276,7 +276,7 @@ struct PlantDetail: View {
                     selection: $date,
                     displayedComponents: [.date]
                 )
-                .tint(.customGreen)
+                .tint(.customLimeGreen)
                 .datePickerStyle(.graphical)
                 
                 Button {
@@ -286,7 +286,7 @@ struct PlantDetail: View {
                     RoundedRectangle(cornerRadius: 27)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 44)
-                        .foregroundColor(.customGreen)
+                        .foregroundColor(.customLimeGreen)
                         .overlay{
                             Text("Add a Watering Entry")
                                 .foregroundColor(.white)
