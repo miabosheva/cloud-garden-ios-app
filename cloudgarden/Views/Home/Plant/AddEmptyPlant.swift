@@ -14,92 +14,112 @@ struct AddEmptyPlant: View {
     @State private var types: [PlantType] = []
     
     var body: some View {
-        NavigationView {
-            VStack (alignment: .center) {
-                
-                Text("Add a New Plant")
-                    .font(.title)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .padding(.top, 16)
-                
-                HStack {
-                    Text("Plant Name")
-                    Spacer()
+        VStack (alignment: .center) {
+            Divider()
+            
+            HStack {
+                Text("Plant Name")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                Spacer()
+            }
+            .padding(.horizontal, 16)
+            .padding(.top, 8)
+            
+            RoundedRectangle(cornerRadius: 15)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .frame(height: 44)
+                .foregroundColor(.white)
+                .shadow(radius: 2, x: 0, y: 0)
+                .overlay{
+                    TextField("Enter Plant Name", text: $newNamePlaceholder)
+                        .padding()
                 }
                 .padding(.horizontal, 16)
-                .padding(.top, 8)
-                
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .frame(height: 38)
-                    .foregroundColor(.white)
-                    .shadow(radius: 2, x: 0, y: 0)
-                    .overlay{
-                        TextField("Enter Plant Name", text: $newNamePlaceholder).padding()
+                .padding(.bottom, 8)
+            
+            Divider()
+            
+            // MARK: - Picker Plant Type
+            VStack {
+                Picker("Plant Type", selection: $selectedTypeIndex) {
+                    ForEach(0..<types.count, id: \.self) { index in
+                        Text("\(types[index].plantTypeName)")
+                            .tag(index)
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 8)
-                
-                // MARK: - Picker Plant Type
-                GroupBox{
-                    VStack {
-                        Picker("Choose a Plant Type", selection: $selectedTypeIndex) {
-                            ForEach(0..<types.count, id: \.self) { index in
-                                Text("\(types[index].plantTypeName)").tag(index)
-                            }
-                        }
-                        .pickerStyle(.navigationLink)
-                        .frame(maxWidth: .infinity)
-                    }
-                    .tint(.black)
-                    .padding(.horizontal, 16)
                 }
-                .padding(.vertical, 4)
-                
-                // MARK: - Picker Device
+                .pickerStyle(.navigationLink)
+                .frame(maxWidth: .infinity)
+            }
+            .fontWeight(.semibold)
+            .tint(.black)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            
+            Divider()
+            
+            // MARK: - Picker Device
+            VStack {
                 VStack {
                     HStack {
                         Text("Select a Device")
+                            .font(.headline)
+                            .fontWeight(.semibold)
                         Spacer()
                     }
-                    
-                    Picker("Choose a Device", selection: $selectedDeviceIndex) {
-                        ForEach(0..<devices.count, id: \.self) { index in
-                            Text("\(devices[index].title)").tag(index)
-                        }
+                    HStack {
+                        Text("A device can monitor up to 3 plants.")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .padding(.bottom)
+                        Spacer()
                     }
-                    .pickerStyle(.segmented)
-                    .frame(maxWidth: .infinity)
                 }
-                .tint(.black)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 4)
                 
-                Spacer()
-                
-                Button(action: addPlantButtonTapped) {
-                    RoundedRectangle(cornerRadius: 27)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: 38)
-                        .foregroundColor(.green)
-                        .overlay{
-                            Text("Submit")
-                                .foregroundColor(.white)
-                                .bold()
-                        }
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 16)
-                
-            }
-            .onTapGesture {
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-            }
-            .toolbar{
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Close") {
-                        goToAddEmptyPlant = false
+                Picker("Choose a Device", selection: $selectedDeviceIndex) {
+                    ForEach(0..<devices.count, id: \.self) { index in
+                        Text("\(devices[index].title)")
+                            .tag(index)
                     }
+                }
+                .font(.title3)
+                .fontWeight(.semibold)
+                .pickerStyle(.segmented)
+                .frame(maxWidth: .infinity)
+            }
+            .tint(.black)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            
+            Button(action: addPlantButtonTapped) {
+                RoundedRectangle(cornerRadius: 27)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .frame(height: 44)
+                    .foregroundColor(.customGreen)
+                    .overlay{
+                        Text("Submit")
+                            .foregroundColor(.white)
+                            .bold()
+                    }
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 16)
+            
+            Spacer()
+        }
+        .navigationTitle("Add a Plant")
+        .navigationBarTitleDisplayMode(.inline)
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+        .toolbar{
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button{
+                    goToAddEmptyPlant = false
+                } label: {
+                    Text("Close")
+                        .bold()
+                        .foregroundColor(.customGreen)
                 }
             }
         }

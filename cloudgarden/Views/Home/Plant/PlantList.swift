@@ -79,7 +79,10 @@ struct PlantList: View {
                 }
             }
             .sheet(isPresented: $goToAddEmptyPlant) {
-                AddEmptyPlant(goToAddEmptyPlant: $goToAddEmptyPlant).environmentObject(model)
+                NavigationStack {
+                    AddEmptyPlant(goToAddEmptyPlant: $goToAddEmptyPlant)
+                        .environmentObject(model)
+                }
             }
         } detail: {
             Text("Plants")
