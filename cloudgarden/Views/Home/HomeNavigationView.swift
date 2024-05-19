@@ -36,7 +36,7 @@ struct HomeNavigationView: View {
                 }
                 .tag(1)
             
-            ProfileView(model: userModel)
+            ProfileView(userModel: userModel, deviceAndPlantModel: deviceAndPlantModel)
                 .tabItem {
                     Text("")
                     Image(selection == 2 ? "user-active" : "user")

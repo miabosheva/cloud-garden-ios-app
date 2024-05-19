@@ -99,7 +99,8 @@ struct PlantDetail: View {
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading) {
                         Text("Light Intensity")
-                            .font(.title3).bold()
+                            .font(.title3)
+                            .bold()
                         Text("Last \(measurements.count) days")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
@@ -137,12 +138,13 @@ struct PlantDetail: View {
                 
                 Divider()
                     .padding(.vertical,10)
-                
-                // MARK: - Humidity
+                 
+                // MARK: - Humidity Chart
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading) {
                         Text("Humidity")
-                            .font(.title3).bold()
+                            .font(.title3)
+                            .bold()
                         Text("Last \(measurements.count) days")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
@@ -180,11 +182,12 @@ struct PlantDetail: View {
                 Divider()
                     .padding(.vertical,10)
                 
-                // MARK: - Soil Moisture
+                // MARK: - Soil Moisture Chart
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading) {
                         Text("Soil Moisture")
-                            .font(.title3).bold()
+                            .font(.title3)
+                            .bold()
                         Text("Last \(measurements.count) days")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
@@ -222,12 +225,13 @@ struct PlantDetail: View {
                 Divider()
                     .padding(.vertical,10)
                 
-                // MARK: - Temperature
+                // MARK: - Temperature Chart
                 VStack(alignment: .leading) {
                     
                     VStack(alignment: .leading) {
                         Text("Temperature")
-                            .font(.title3).bold()
+                            .font(.title3)
+                            .bold()
                         Text("Last \(measurements.count) days")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
@@ -272,7 +276,7 @@ struct PlantDetail: View {
                     selection: $date,
                     displayedComponents: [.date]
                 )
-                .tint(.green)
+                .tint(.customGreen)
                 .datePickerStyle(.graphical)
                 
                 Button {
@@ -282,7 +286,7 @@ struct PlantDetail: View {
                     RoundedRectangle(cornerRadius: 27)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 44)
-                        .foregroundColor(.green)
+                        .foregroundColor(.customGreen)
                         .overlay{
                             Text("Add a Watering Entry")
                                 .foregroundColor(.white)
