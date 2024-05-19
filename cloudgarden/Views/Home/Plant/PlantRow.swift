@@ -3,7 +3,7 @@ import SwiftUI
 struct PlantRow: View {
     
     // MARK: - Properties
-    private var plant: Plant
+    @State private var plant: Plant
     private var model: DeviceAndPlantModel
     private var imageName = "defaultPlant"
     @State private var plantHealthPlacehoder = 0.0

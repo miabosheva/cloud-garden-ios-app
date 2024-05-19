@@ -325,6 +325,8 @@ class DeviceAndPlantModel: ObservableObject {
         if lightMeasurement < lightIntensityThreshold {
             plantHealth *= 0.8
         }
+        let index = self.plants.firstIndex(where: { $0.plantId == plantId })
+        self.plants[index!].plantHealth = plantHealth
         return plantHealth
     }
     

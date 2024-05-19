@@ -6,7 +6,7 @@ struct PlantDetail: View {
     
     // MARK: - Properties
     @Environment(\.presentationMode) var presentationMode
-    private let plant: Plant
+    @State private var plant: Plant
     private let imageName: String = "defaultPlant"
     private let status: String = "well watered"
     @State private var date = Date()
@@ -296,9 +296,9 @@ struct PlantDetail: View {
         }
         .onAppear {
             self.daysSinceLastWatering = getLastWateringEntry()
-            self.plantHealthPercentage = getHealth()
             Task {
                 await getLastTenMeasurements()
+                self.plantHealthPercentage = await getHealth()
             }
         }
         .navigationBarBackButtonHidden()
@@ -323,10 +323,15 @@ struct PlantDetail: View {
         }
     }
     
-    private func getHealth() -> Int {
-        let plantHealth = plant.plantHealth!
+    private func getHealth() async -> Int {
+        var plantHealth = 0
+        do {
+            plantHealth = Int(try await model.calculatePlantHealth(plantId: self.plant.plantId))
+        } catch {
+            print(error)
+        }
         let percentage = plantHealth * 100
-        return Int(percentage)
+        return percentage
     }
     
     private func getLastWateringEntry() -> Int {
