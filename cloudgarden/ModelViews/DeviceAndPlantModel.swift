@@ -294,30 +294,23 @@ class DeviceAndPlantModel: ObservableObject {
         
         let plant: Plant = self.plants.filter{$0.plantId == plantId}[0]
         
-        //        let lightIntensityThreshold = Double(plant.thresholdValue1)
-        //        let temperatureThreshold = Double(plant.thresholdValue2)
-        //        let humidityThreshold = Double(plant.thresholdValue3)
-        //        let moistureThreshold = Double(plant.thresholdValue4)
+        let lightIntensityThreshold = Double(plant.thresholdValue1)
+        let temperatureThreshold = Double(plant.thresholdValue2)
+        let humidityThreshold = Double(plant.thresholdValue3)
+        let moistureThreshold = Double(plant.thresholdValue4)
         
-        // test values
-        let lightIntensityThreshold = 5.0
-        let temperatureThreshold = 4.0
-        let humidityThreshold = 8.0
-        let moistureThreshold = 8.0
-        
-        //        print("lightIntensityThreshold: \(lightIntensityThreshold)")
-        //        print("temperatureThreshold: \(temperatureThreshold)")
-        //        print("humidityThreshold: \(humidityThreshold)")
-        //        print("moistureThreshold: \(moistureThreshold)")
+        //        // test values
+        //        let lightIntensityThreshold = 5.0
+        //        let temperatureThreshold = 4.0
+        //        let humidityThreshold = 8.0
+        //        let moistureThreshold = 8.0
         
         var plantHealth = 1.0
         
         let temperatureMeasurement = calculateAverage(of: \.temperatureMeasurement, in: measurements)
         let humidityMeasurement = calculateAverage(of: \.humidityMeasurement, in: measurements)
         let moistureMeasurement = calculateAverage(of: \.soilMeasurement, in: measurements)
-        //        print("temperatureMeasurement: \(temperatureMeasurement)")
-        //        print("humidityMeasurement: \(humidityMeasurement)")
-        //        print("moistureMeasurement: \(moistureMeasurement)")
+        let lightMeasurement = calculateAverage(of: \.lightIntensity, in: measurements)
         
         // Factors that affect the plant health calculated here
         if temperatureMeasurement < temperatureThreshold {
@@ -329,7 +322,9 @@ class DeviceAndPlantModel: ObservableObject {
         if moistureMeasurement < moistureThreshold {
             plantHealth *= 0.8
         }
-        //        print(plantHealth)
+        if lightMeasurement < lightIntensityThreshold {
+            plantHealth *= 0.8
+        }
         return plantHealth
     }
     

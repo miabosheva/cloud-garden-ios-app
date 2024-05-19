@@ -13,15 +13,13 @@ struct PlantDetail: View {
     @State var deviceTitle: String = ""
     @State var daysSinceLastWatering: Int = 0
     @State var plantHealthPercentage: Int = 0
+    @State var measurements: [MeasurementResponse] = []
     private var model: DeviceAndPlantModel
-    
-    //    let measurements: [MeasurementResponse]
     
     // MARK: - Init
     init(plant: Plant, model: DeviceAndPlantModel) {
         self.plant = plant
         self.model = model
-        print(plant.lastWatering)
     }
     
     var body: some View {
@@ -96,6 +94,7 @@ struct PlantDetail: View {
                 Divider()
                     .padding(.vertical,10)
                 
+                // MARK: - Chart
                 Text("The chart is under construction")
                 
                 Divider()
@@ -132,11 +131,14 @@ struct PlantDetail: View {
         .onAppear {
             self.daysSinceLastWatering = getLastWateringEntry()
             self.plantHealthPercentage = getHealth()
+            Task {
+                await getLastTenMeasurements()
+            }
         }
         .navigationBarBackButtonHidden()
     }
     
-    func addWateringEntry() {
+    private func addWateringEntry() {
         if date > Date() {
             let banner = NotificationBanner(title: "Please choose a Date before today.", style: .warning)
             banner.show()
@@ -155,34 +157,50 @@ struct PlantDetail: View {
         }
     }
     
-    func getHealth() -> Int {
+    private func getHealth() -> Int {
         let plantHealth = plant.plantHealth!
         let percentage = plantHealth * 100
         return Int(percentage)
     }
     
-    func getLastWateringEntry() -> Int {
+    private func getLastWateringEntry() -> Int {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        var startDate = Date()
         
-        if let startDate = dateFormatter.date(from: self.plant.lastWatering!) {
-            if let days = daysSinceDate(startDate) {
-                print("Days since the start date: \(days)")
-                return days
-            } else {
-                print("Failed to calculate the number of days.")
-            }
+        if let lastWatering = plant.lastWatering {
+            startDate = dateFormatter.date(from: self.plant.lastWatering!) ?? Date()
+        }
+        
+        if let days = daysSinceDate(startDate) {
+            print("Days since the start date: \(days)")
+            return days
         } else {
-            print("Invalid start date format.")
+            print("Failed to calculate the number of days.")
         }
         return 0
     }
     
-    func daysSinceDate(_ date: Date) -> Int? {
+    private func daysSinceDate(_ date: Date) -> Int? {
         let calendar = Calendar.current
         let currentDate = Date()
         let components = calendar.dateComponents([.day], from: date, to: currentDate)
         return components.day
+    }
+    
+    private func getLastTenMeasurements() async {
+        do {
+            let measurements = try await model.getLastTenMeasurements(plantId: self.plant.plantId)
+            DispatchQueue.main.async {
+                self.measurements = measurements
+                print(measurements[0].date!)
+            }
+        } catch {
+            DispatchQueue.main.async {
+                let banner = NotificationBanner(title: "Error loading measurements", style: .warning)
+                banner.show()
+            }
+        }
     }
     
     private func scheduleLocalNotification() {

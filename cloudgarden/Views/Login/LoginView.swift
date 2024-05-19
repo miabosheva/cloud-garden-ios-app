@@ -129,9 +129,20 @@ struct LoginView: View {
                                     ProgressHUD.dismiss()
                                     userModel.setupViews(user: User(username: authInfo.username, password: authInfo.password))
                                 }
+                            } else {
+                                DispatchQueue.main.async {
+                                    ProgressHUD.dismiss()
+                                    let banner = NotificationBanner(title: "Login with FaceID unavailable. Please input your credentials.", style: .warning)
+                                    banner.show()
+                                }
                             }
                         } catch {
-                            print(error)
+                            DispatchQueue.main.async {
+                                ProgressHUD.dismiss()
+                                let banner = NotificationBanner(title: "Invalid credentials. Please try again.", style: .danger)
+                                banner.show()
+                                print(error)
+                            }
                         }
                     }
                 }

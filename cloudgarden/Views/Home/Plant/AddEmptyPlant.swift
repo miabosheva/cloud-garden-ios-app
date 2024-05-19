@@ -75,26 +75,6 @@ struct AddEmptyPlant: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 4)
                 
-                // MARK: - Picker Sensor
-                VStack {
-                    HStack {
-                        Text("Select a Sensor")
-                        Spacer()
-                    }
-                    
-                    Picker("Choose a Device", selection: $selectedDeviceIndex) {
-                        ForEach(0..<devices.count, id: \.self) { index in
-                            Text("\(devices[index].code)").tag(index)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .frame(maxWidth: .infinity)
-                }
-                .tint(.black)
-                .padding(.horizontal, 16)
-                .padding(.top, 4)
-                .padding(.bottom, 4)
-                
                 Spacer()
                 
                 Button(action: addPlantButtonTapped) {

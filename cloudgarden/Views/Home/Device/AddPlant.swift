@@ -65,26 +65,6 @@ struct AddPlant: View {
                 }
                 .padding(.vertical, 4)
 
-                // MARK: - Picker Sensor
-                VStack {
-                    HStack {
-                        Text("Select a Sensor")
-                        Spacer()
-                    }
-
-                    Picker("Choose a Device", selection: $selectedTypeIndex) {
-                        ForEach(0..<types.count, id: \.self) { index in
-                            Text("\(types[index].plantTypeName)").tag(index)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .frame(maxWidth: .infinity)
-                }
-                .tint(.black)
-                .padding(.horizontal, 16)
-                .padding(.top, 4)
-                .padding(.bottom, 4)
-
                 Spacer()
 
                 Button(action: addPlantButtonTapped) {
