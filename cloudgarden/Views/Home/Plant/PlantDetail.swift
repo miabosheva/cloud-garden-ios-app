@@ -1,5 +1,6 @@
 import SwiftUI
 import NotificationBannerSwift
+import Charts
 
 struct PlantDetail: View {
     
@@ -94,8 +95,173 @@ struct PlantDetail: View {
                 Divider()
                     .padding(.vertical,10)
                 
-                // MARK: - Chart
-                Text("The chart is under construction")
+                // MARK: - Light Intensity Chart
+                VStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
+                        Text("Light Intensity")
+                            .font(.title3).bold()
+                        Text("Last \(measurements.count) days")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .padding(.bottom)
+                    }
+                    Chart {
+                        // Light intensity
+                        ForEach(self.measurements, id: \.id) { measurement in
+                            LineMark(
+                                x: .value("Date", measurement.date),
+                                y: .value("Light Intensity", measurement.lightIntensity),
+                                series: .value("Light", "1")
+                            )
+                            .foregroundStyle(.customGreen)
+                            .symbol {
+                                Circle()
+                                    .fill(Color.customGreen)
+                                    .frame(width: 8)
+                            }
+                        }
+                        RuleMark(
+                            y: .value("Threshold Value", self.plant.thresholdValue1)
+                        )
+                        .foregroundStyle(.customRed)
+                        .foregroundStyle(.customRed)
+                        .lineStyle(StrokeStyle(lineWidth: 0.8, dash: [10]))
+                        .annotation(alignment: .topTrailing) {
+                            Text("Threshold Value")
+                                .font(.subheadline).bold()
+                                .padding(.trailing, 32)
+                                .foregroundStyle(Color.secondary)
+                        }
+                    }
+                }
+                
+                Divider()
+                    .padding(.vertical,10)
+                
+                // MARK: - Humidity
+                VStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
+                        Text("Humidity")
+                            .font(.title3).bold()
+                        Text("Last \(measurements.count) days")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .padding(.bottom)
+                    }
+                    Chart {
+                        // Humidity intensity
+                        ForEach(self.measurements, id: \.id) { measurement in
+                            LineMark(
+                                x: .value("Date", measurement.date),
+                                y: .value("Humidity Intensity", measurement.humidityMeasurement),
+                                series: .value("Humidity", "2")
+                            )
+                            .foregroundStyle(.customGreen)
+                            .symbol {
+                                Circle()
+                                    .fill(Color.customGreen)
+                                    .frame(width: 8)
+                            }
+                        }
+                        RuleMark(
+                            y: .value("Threshold Value", self.plant.thresholdValue2)
+                        )
+                        .foregroundStyle(.customRed)
+                        .lineStyle(StrokeStyle(lineWidth: 0.8, dash: [10]))
+                        .annotation(alignment: .topTrailing) {
+                            Text("Threshold Value")
+                                .font(.subheadline).bold()
+                                .padding(.trailing, 32)
+                                .foregroundStyle(Color.secondary)
+                        }
+                    }
+                }
+                
+                Divider()
+                    .padding(.vertical,10)
+                
+                // MARK: - Soil Moisture
+                VStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
+                        Text("Soil Moisture")
+                            .font(.title3).bold()
+                        Text("Last \(measurements.count) days")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .padding(.bottom)
+                    }
+                    Chart {
+                        // Soil moisture
+                        ForEach(self.measurements, id: \.id) { measurement in
+                            LineMark(
+                                x: .value("Date", measurement.date),
+                                y: .value("Soil moisture", measurement.soilMeasurement),
+                                series: .value("Soil", "3")
+                            )
+                            .foregroundStyle(.customGreen)
+                            .symbol {
+                                Circle()
+                                    .fill(Color.customGreen)
+                                    .frame(width: 8)
+                            }
+                        }
+                        RuleMark(
+                            y: .value("Threshold", 2)
+                        )
+                        .foregroundStyle(.customRed)
+                        .lineStyle(StrokeStyle(lineWidth: 0.8, dash: [10]))
+                        .annotation(alignment: .topTrailing) {
+                            Text("Threshold Value")
+                                .font(.subheadline).bold()
+                                .padding(.trailing, 32)
+                                .foregroundStyle(Color.secondary)
+                        }
+                    }
+                }
+                
+                Divider()
+                    .padding(.vertical,10)
+                
+                // MARK: - Temperature
+                VStack(alignment: .leading) {
+                    
+                    VStack(alignment: .leading) {
+                        Text("Temperature")
+                            .font(.title3).bold()
+                        Text("Last \(measurements.count) days")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .padding(.bottom)
+                    }
+                    
+                    Chart {
+                        // Temperature
+                        ForEach(self.measurements, id: \.id) { measurement in
+                            LineMark(
+                                x: .value("Date", measurement.date),
+                                y: .value("Temperature", measurement.temperatureMeasurement),
+                                series: .value("Temperature", "4")
+                            )
+                            .foregroundStyle(.customGreen)
+                            .symbol {
+                                Circle()
+                                    .fill(Color.customGreen)
+                                    .frame(width: 8)
+                            }
+                        }
+                        RuleMark(
+                            y: .value("Threshold", 2)
+                        )
+                        .foregroundStyle(.customRed)
+                        .lineStyle(StrokeStyle(lineWidth: 0.8, dash: [10]))
+                        .annotation(alignment: .topTrailing) {
+                            Text("Threshold Value")
+                                .font(.subheadline).bold()
+                                .padding(.trailing, 32)
+                                .foregroundStyle(Color.secondary)
+                        }
+                    }
+                }
                 
                 Divider()
                     .padding(.vertical,10)
@@ -193,7 +359,6 @@ struct PlantDetail: View {
             let measurements = try await model.getLastTenMeasurements(plantId: self.plant.plantId)
             DispatchQueue.main.async {
                 self.measurements = measurements
-                print(measurements[0].date!)
             }
         } catch {
             DispatchQueue.main.async {

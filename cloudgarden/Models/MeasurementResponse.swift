@@ -10,11 +10,11 @@ struct MeasurementResponse: Codable, Identifiable, Hashable {
     var plantId: Int
     var dateRaw: String
     // Date string from backend comes in a different format
-    var date: Date? {
+    var date: Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         let formattedDateRaw = String(dateRaw.prefix(dateRaw.count - 8))
-        return dateFormatter.date(from: formattedDateRaw)
+        return dateFormatter.date(from: formattedDateRaw) ?? Date()
     }
     
     enum CodingKeys: String, CodingKey {
