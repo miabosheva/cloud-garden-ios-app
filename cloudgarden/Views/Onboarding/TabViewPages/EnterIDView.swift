@@ -50,8 +50,10 @@ struct EnterIDView: View {
                 .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                 .shadow(radius: 2, x: 0, y: 0)
                 .overlay{
-                    TextField("Device ID", text: $deviceId).padding()
+                    TextField("Device ID", text: $deviceId)
+                        .padding()
                 }
+                .foregroundColor(.white)
                 .padding(.horizontal, 32)
                 .padding(.bottom, 8)
             HStack{
@@ -67,8 +69,10 @@ struct EnterIDView: View {
                 .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
                 .shadow(radius: 2, x: 0, y: 0)
                 .overlay{
-                    TextField("Name your device", text: $deviceName).padding()
+                    TextField("Name your device", text: $deviceName)
+                        .padding()
                 }
+                .foregroundColor(.white)
                 .padding(.horizontal, 32)
                 .padding(.bottom, 16)
             

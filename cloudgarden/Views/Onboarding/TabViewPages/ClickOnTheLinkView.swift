@@ -32,7 +32,7 @@ struct ClickOnTheLinkView: View {
                 .foregroundColor(.black)
             
             Button {
-                if let url = URL(string: "https://www.google.com") {
+                if let url = URL(string: "http://192.168.4.1") {
                     openURL(url)
                 }
             } label: {
