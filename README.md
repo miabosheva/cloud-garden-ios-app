@@ -9,9 +9,9 @@ System consists of:
 - Discord Bot
 
 App Screenshots:
-![IMG_4261](https://github.com/miabosheva/cloud-garden-ios-app/assets/80326100/00f892c2-99cc-4581-9a9a-fc74bffb0fc7)
-![IMG_4260](https://github.com/miabosheva/cloud-garden-ios-app/assets/80326100/b39cdac2-3a79-492b-abc4-eb8417eeac1a)
-![IMG_4259](https://github.com/miabosheva/cloud-garden-ios-app/assets/80326100/414db8d0-98b0-4227-a42e-d40031caf70c)
+![IMG_4261](https://github.com/miabosheva/cloud-garden-ios-app/assets/80326100/5a7d3fed-0a12-4a4a-b613-202421c1c72e)
+![IMG_4260](https://github.com/miabosheva/cloud-garden-ios-app/assets/80326100/54431915-4f64-427e-a9d5-9a88fcc5802e)
+![IMG_4259](https://github.com/miabosheva/cloud-garden-ios-app/assets/80326100/f0ffa7c8-c4af-450e-8d35-3220b95dd800)
 
 Features:
 - Login & Register (Save credentials to keychain/use FaceID);
