@@ -8,9 +8,12 @@ System consists of:
 - Frontend in iOS (UIKit + SwiftUI)
 - Discord Bot
 
-App Screenshots:
+## App Screenshots:
+
 ![IMG_4261](https://github.com/miabosheva/cloud-garden-ios-app/assets/80326100/5a7d3fed-0a12-4a4a-b613-202421c1c72e)
+
 ![IMG_4260](https://github.com/miabosheva/cloud-garden-ios-app/assets/80326100/54431915-4f64-427e-a9d5-9a88fcc5802e)
+
 ![IMG_4259](https://github.com/miabosheva/cloud-garden-ios-app/assets/80326100/f0ffa7c8-c4af-450e-8d35-3220b95dd800)
 
 Features:
