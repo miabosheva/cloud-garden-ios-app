@@ -7,7 +7,7 @@ struct PlantList: View {
     @StateObject private var refreshManager = RefreshManager()
     @State private var plants: [Plant] = []
     @State private var goToAddEmptyPlant: Bool = false
-    private var model: DeviceAndPlantModel
+    @ObservedObject private var model: DeviceAndPlantModel
     
     
     // MARK: - Init
@@ -37,7 +37,7 @@ struct PlantList: View {
                     Task {
                         await getAllPlants()
                         if model.devices.count == 0 {
-                            model.devices = try await model.getDevicesByUsernameRequest()
+                            try await model.getDevicesByUsername()
                         }
                     }
                 }
@@ -93,8 +93,8 @@ struct PlantList: View {
     // MARK: - Helper Methods
     func getAllPlants() async {
         do {
-            let plants = try await model.getAllPlantsByUsername(username: self.model.user.username)
-            self.plants = plants
+            try await model.getAllPlantsByUsername(username: self.model.user.username)
+            self.plants = model.plants
         } catch {
             print("Error loading plants: \(error)")
             DispatchQueue.main.async {

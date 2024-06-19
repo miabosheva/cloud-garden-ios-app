@@ -10,7 +10,6 @@ struct AddEmptyPlant: View {
     @State var newNamePlaceholder: String = ""
     @State private var selectedTypeIndex: Int = 0
     @State private var selectedDeviceIndex: Int = 0
-    @State private var devices: [Device] = []
     @State private var types: [PlantType] = []
     
     var body: some View {
@@ -76,8 +75,8 @@ struct AddEmptyPlant: View {
                 }
                 
                 Picker("Choose a Device", selection: $selectedDeviceIndex) {
-                    ForEach(0..<devices.count, id: \.self) { index in
-                        Text("\(devices[index].title)")
+                    ForEach(0..<model.devices.count, id: \.self) { index in
+                        Text("\(model.devices[index].title)")
                             .tag(index)
                     }
                 }
@@ -125,11 +124,9 @@ struct AddEmptyPlant: View {
         .onAppear {
             Task {
                 await getAllTypes()
-                print(self.types)
             }
             Task {
                 await getAllDevices()
-                print(self.devices)
             }
         }
         .accentColor(.customLimeGreen)
@@ -145,7 +142,7 @@ struct AddEmptyPlant: View {
         if self.newNamePlaceholder != "" {
             Task {
                 do {
-                    let result = try await model.addPlant(title: newNamePlaceholder, deviceId: devices[selectedDeviceIndex].deviceId, plantTypeId: types[selectedTypeIndex].plantTypeId)
+                    let result = try await model.addPlant(title: newNamePlaceholder, deviceId: model.devices[selectedDeviceIndex].deviceId, plantTypeId: types[selectedTypeIndex].plantTypeId)
                     if result {
                         DispatchQueue.main.async {
                             successfulBanner.show()
@@ -182,8 +179,7 @@ struct AddEmptyPlant: View {
     
     func getAllDevices() async {
         do {
-            let devices = try await model.getDevicesByUsernameRequest()
-            self.devices = devices
+            try await model.getDevicesByUsername()
         } catch {
             print("Error loading devices: \(error)")
             DispatchQueue.main.async {

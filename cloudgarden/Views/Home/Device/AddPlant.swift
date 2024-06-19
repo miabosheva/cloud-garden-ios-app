@@ -5,7 +5,7 @@ import ProgressHUD
 struct AddPlant: View {
     // MARK: - Properties
     @Environment(\.presentationMode) var presentationMode
-    private var model: DeviceAndPlantModel
+    @ObservedObject private var model: DeviceAndPlantModel
     @State var newNamePlaceholder: String = ""
     @State private var selectedTypeIndex: Int = 0
     @State private var types: [PlantType] = []

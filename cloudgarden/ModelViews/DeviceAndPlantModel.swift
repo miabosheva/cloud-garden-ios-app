@@ -7,9 +7,9 @@ class DeviceAndPlantModel: ObservableObject {
     // MARK: - Properties
     
     private weak var window: UIWindow!
-    public var user: User
-    public var devices: [Device] = []
-    public var plants: [Plant] = []
+    @Published public var user: User
+    @Published public var devices: [Device] = []
+    @Published public var plants: [Plant] = []
     
     // MARK: - Init
     
@@ -19,7 +19,7 @@ class DeviceAndPlantModel: ObservableObject {
     
     // MARK: - Device Methods
     
-    func addUserToDevice(code: String, title: String) async throws -> () {
+    func addUserToDevice(code: String, title: String) async throws {
         guard let urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/Device") else {
             throw URLError(.badURL)
         }
@@ -48,7 +48,7 @@ class DeviceAndPlantModel: ObservableObject {
         }
     }
     
-    func getDevicesByUsernameRequest() async throws -> [Device] {
+    func getDevicesByUsername() async throws {
         guard var urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/User/GetDevices") else {
             throw URLError(.badURL)
         }
@@ -76,14 +76,13 @@ class DeviceAndPlantModel: ObservableObject {
             }
             let deviceResponse = try decoder.decode([Device].self, from: data)
             self.devices = deviceResponse
-            return self.devices
         } catch {
             print(error)
-            return []
+            throw URLError(.unknown)
         }
     }
     
-    func deleteDevice(deviceId: Int) async throws -> Bool {
+    func deleteDevice(deviceId: Int) async throws {
         guard var urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/Device") else {
             throw URLError(.badURL)
         }
@@ -108,9 +107,8 @@ class DeviceAndPlantModel: ObservableObject {
             }
         } catch {
             print(error)
-            return false
+            throw URLError(.unknown)
         }
-        return true
     }
     
     //     MARK: - Plant Methods
@@ -144,7 +142,7 @@ class DeviceAndPlantModel: ObservableObject {
         return true
     }
     
-    func getAllPlantsByUsername(username: String) async throws -> [Plant] {
+    func getAllPlantsByUsername(username: String) async throws {
         guard var urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/User/GetPlants") else {
             throw URLError(.badURL)
         }
@@ -172,10 +170,9 @@ class DeviceAndPlantModel: ObservableObject {
             }
             let plantsResponse = try decoder.decode([Plant].self, from: data)
             self.plants = plantsResponse
-            return self.plants
         } catch {
             print(error)
-            return []
+            throw URLError(.unknown)
         }
     }
     

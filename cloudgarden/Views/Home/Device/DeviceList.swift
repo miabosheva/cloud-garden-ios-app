@@ -12,10 +12,9 @@ class RefreshManager: ObservableObject {
 struct DeviceList: View {
     
     // MARK: - Properties
-    private var model: DeviceAndPlantModel
+    @ObservedObject private var model: DeviceAndPlantModel
     @StateObject private var refreshManager = RefreshManager()
     @State private var goToAddDevice: Bool = false
-    @State private var devices: [Device] = []
     
     // MARK: - Init
     init(model: DeviceAndPlantModel){
@@ -27,8 +26,8 @@ struct DeviceList: View {
         NavigationSplitView {
             ZStack {
                 List{
-                    if devices.count > 0 {
-                        ForEach(devices) { device in
+                    if model.devices.count > 0 {
+                        ForEach(model.devices) { device in
                             NavigationLink {
                                 DeviceDetail(device: device, model: model)
                             } label: {
@@ -97,8 +96,7 @@ struct DeviceList: View {
     // MARK: - Helper Methods
     func getAllDevices() async {
         do {
-            let devices = try await model.getDevicesByUsernameRequest()
-            self.devices = devices
+            try await model.getDevicesByUsername()
         } catch {
             print("Error loading devices: \(error)")
             DispatchQueue.main.async {
@@ -110,17 +108,16 @@ struct DeviceList: View {
     
     func deleteDevice(at offsets: IndexSet) {
         for index in offsets {
-            let deletedItemId = devices[index].deviceId
+            let deletedItemId = model.devices[index].deviceId
             Task {
                 do {
-                    // TODO: - implement function
-                    let result = try await model.deleteDevice(deviceId: deletedItemId)
-                    if result {
-                        DispatchQueue.main.async {
-                            let banner = NotificationBanner(title: "Sucessfuly deleted Device \(devices[index].code)", style: .success)
-                            banner.show()
-                        }
+                    let deviceCode = model.devices[index].code
+                    try await model.deleteDevice(deviceId: deletedItemId)
+                    DispatchQueue.main.async {
+                        let banner = NotificationBanner(title: "Sucessfuly deleted Device \(deviceCode)", style: .success)
+                        banner.show()
                     }
+                    
                 } catch {
                     DispatchQueue.main.async {
                         let banner = NotificationBanner(title: "Failed to delete device.", style: .danger)
@@ -128,6 +125,16 @@ struct DeviceList: View {
                     }
                 }
             }
+            
+            Task {
+                do {
+                    try await model.getDevicesByUsername()
+                } catch {
+                    let banner = NotificationBanner(title: "Error occured while loading devices.", style: .danger)
+                    banner.show()
+                }
+            }
+            
             print("Deleted device with ID:", deletedItemId)
         }
     }

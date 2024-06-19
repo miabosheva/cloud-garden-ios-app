@@ -5,7 +5,7 @@ struct DeviceRow: View {
     // MARK: - Properties
     private var imageName = "defaultPlant"
     private var device: Device
-    private var model: DeviceAndPlantModel
+    @ObservedObject private var model: DeviceAndPlantModel
     
     // MARK: - Init
     init(device: Device, model: DeviceAndPlantModel){

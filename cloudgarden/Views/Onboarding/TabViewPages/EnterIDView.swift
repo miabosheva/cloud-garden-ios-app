@@ -53,7 +53,6 @@ struct EnterIDView: View {
                     TextField("Device ID", text: $deviceId)
                         .padding()
                 }
-                .foregroundColor(.white)
                 .padding(.horizontal, 32)
                 .padding(.bottom, 8)
             HStack{
@@ -72,7 +71,6 @@ struct EnterIDView: View {
                     TextField("Name your device", text: $deviceName)
                         .padding()
                 }
-                .foregroundColor(.white)
                 .padding(.horizontal, 32)
                 .padding(.bottom, 16)
             
@@ -143,7 +141,7 @@ struct EnterIDView: View {
         if deviceId != "" && deviceName != "" {
             Task {
                 do {
-                    let _ = try await deviceAndPlantModel.addUserToDevice(code: deviceId, title: deviceName)
+                    try await deviceAndPlantModel.addUserToDevice(code: deviceId, title: deviceName)
                     DispatchQueue.main.async {
                         ProgressHUD.dismiss()
                         userModel.dismissView()

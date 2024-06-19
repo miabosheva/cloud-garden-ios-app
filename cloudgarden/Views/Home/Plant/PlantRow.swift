@@ -4,7 +4,7 @@ struct PlantRow: View {
     
     // MARK: - Properties
     @State private var plant: Plant
-    private var model: DeviceAndPlantModel
+    @ObservedObject private var model: DeviceAndPlantModel
     private var imageName = "defaultPlant"
     @State private var plantHealthPlacehoder = 0.0
     @State private var plantHealthBarDescription = ""

@@ -15,7 +15,7 @@ struct PlantDetail: View {
     @State var daysSinceLastWatering: Int = 0
     @State var plantHealthPercentage: Int = 0
     @State var measurements: [MeasurementResponse] = []
-    private var model: DeviceAndPlantModel
+    @ObservedObject private var model: DeviceAndPlantModel
     
     // MARK: - Init
     init(plant: Plant, model: DeviceAndPlantModel) {
@@ -396,3 +396,4 @@ struct PlantDetail: View {
         }
     }
 }
+

@@ -113,7 +113,7 @@ struct AddDevice: View {
         if codeValue != "" && titleValue != "" {
             Task {
                 do {
-                    let _ = try await model.addUserToDevice(code: codeValue, title: titleValue)
+                    try await model.addUserToDevice(code: codeValue, title: titleValue)
                     DispatchQueue.main.async {
                         successfulBanner.show()
                         self.presentationMode.wrappedValue.dismiss()

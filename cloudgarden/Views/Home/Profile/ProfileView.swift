@@ -5,7 +5,7 @@ struct ProfileView: View {
     // MARK: - Properites
     @State private var newPassword: String = ""
     
-    private var userModel: UserModel
+    @ObservedObject private var userModel: UserModel
     private var deviceAndPlantModel: DeviceAndPlantModel
     @State private var deviceCount: Int = 0
     @State private var plantCount: Int = 0

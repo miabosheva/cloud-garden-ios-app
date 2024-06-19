@@ -9,7 +9,7 @@ struct DeviceDetail: View {
     @State private var goToAddPlant: Bool = false
     @State private var goToHome: Bool = false
     private let device: Device
-    private var model: DeviceAndPlantModel
+    @ObservedObject private var model: DeviceAndPlantModel
     @State private var plants: [Plant] = []
     
     // MARK: - Init
@@ -116,8 +116,8 @@ struct DeviceDetail: View {
     // MARK: - Helper Methods
     func getAllPlants() async {
         do {
-            let plants = try await model.getAllPlantsByUsername(username: self.model.user.username)
-            self.plants = plants.filter{$0.deviceId == self.device.deviceId}
+            try await model.getAllPlantsByUsername(username: self.model.user.username)
+            self.plants = model.plants.filter{$0.deviceId == self.device.deviceId}
         } catch {
             print("Error loading plants: \(error)")
             DispatchQueue.main.async {
@@ -132,7 +132,7 @@ struct DeviceDetail: View {
             ProgressHUD.animate()
             Task {
                 do {
-                    let _ = try await model.addUserToDevice(code: self.device.code, title: newName)
+                    try await model.addUserToDevice(code: self.device.code, title: newName)
                 } catch {
                     DispatchQueue.main.async {
                         let banner = NotificationBanner(title: "Error updating name.", style: .danger)
@@ -166,6 +166,7 @@ struct DeviceDetail: View {
                             banner.show()
                         }
                     }
+                    try await getAllPlants()
                 } catch {
                     DispatchQueue.main.async {
                         let banner = NotificationBanner(title: "Failed to delete plant", style: .danger)
