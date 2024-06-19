@@ -9,6 +9,7 @@ struct LoginView: View {
     var userModel: UserModel
     @State var username = ""
     @State var password = ""
+    @State var attempts: Int = 0
     
     init(userModel: UserModel){
         self.userModel = userModel
@@ -84,6 +85,9 @@ struct LoginView: View {
                                     .foregroundColor(.white)
                             }
                     }
+                    //                    .offset(x: isShaking ? -5 : 0)
+                    //                    .animation(Animation.default.repeatCount(8, autoreverses: true).speed(13))
+                    .modifier(Shake(animatableData: CGFloat(attempts)))
                     .padding(.horizontal, 16)
                     .padding(.bottom, 4)
                     
@@ -153,21 +157,35 @@ struct LoginView: View {
         if username != "" && password != "" {
             Task { @MainActor in
                 do {
-                    let success = try await userModel.logIn(username: self.username, password: self.password)
-                    if success {
-                        userModel.setupViews(user: User(username: username, password: password))
-                    } else {
-                        ProgressHUD.dismiss()
-                        loginFailedBanner.show()
-                    }
+                    let _ = try await userModel.logIn(username: self.username, password: self.password)
+                    userModel.setupViews(user: User(username: username, password: password))
                 } catch {
+                    withAnimation(.default) {
+                        self.attempts += 1
+                    }
                     loginFailedBanner.show()
                 }
                 ProgressHUD.dismiss()
             }
         } else {
+            withAnimation(.default) {
+                self.attempts += 1
+            }
             ProgressHUD.dismiss()
             invalidCredentialsBanner.show()
         }
+    }
+}
+
+// MARK: - Shake Effect for TextField
+struct Shake: GeometryEffect {
+    var amount: CGFloat = 10
+    var shakesPerUnit = 3
+    var animatableData: CGFloat
+    
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(CGAffineTransform(translationX:
+                                                amount * sin(animatableData * .pi * CGFloat(shakesPerUnit)),
+                                              y: 0))
     }
 }

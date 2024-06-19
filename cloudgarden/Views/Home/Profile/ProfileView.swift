@@ -10,8 +10,8 @@ struct ProfileView: View {
     @State private var deviceCount: Int = 0
     @State private var plantCount: Int = 0
     
-    @State private var selectedImage: UIImage?
-    @State private var isImagePickerPresented = false
+    @State private var imageTaken: UIImage?
+    @State private var isCameraViewShown = false
     
     init(userModel: UserModel, deviceAndPlantModel: DeviceAndPlantModel) {
         self.userModel = userModel
@@ -111,7 +111,7 @@ struct ProfileView: View {
                 VStack {
                     ZStack {
                         ZStack{
-                            Image(uiImage: selectedImage ?? .defaultPlant)
+                            Image(uiImage: imageTaken ?? .defaultPlant)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 140, height: 140)
@@ -126,7 +126,7 @@ struct ProfileView: View {
                                 HStack {
                                     
                                     Button {
-                                        self.isImagePickerPresented.toggle()
+                                        self.isCameraViewShown.toggle()
                                     } label: {
                                         RoundedRectangle(cornerRadius: 20)
                                             .frame(width: 80, height: 44, alignment: .center)
@@ -152,8 +152,9 @@ struct ProfileView: View {
                 
             }
         }
-        .sheet(isPresented: $isImagePickerPresented) {
-            ImagePicker(selectedImage: $selectedImage)
+        .fullScreenCover(isPresented: $isCameraViewShown) {
+            AccessCameraView(selectedImage: $imageTaken)
+                .ignoresSafeArea()
         }
         .onAppear {
             self.deviceCount = deviceAndPlantModel.devices.count
@@ -162,40 +163,39 @@ struct ProfileView: View {
     }
 }
 
-struct ImagePicker: UIViewControllerRepresentable {
+struct AccessCameraView: UIViewControllerRepresentable {
+    
     @Binding var selectedImage: UIImage?
-    @Environment(\.presentationMode) private var presentationMode
-    
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        let parent: ImagePicker
-        
-        init(parent: ImagePicker) {
-            self.parent = parent
-        }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let image = info[.originalImage] as? UIImage {
-                parent.selectedImage = image
-            }
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-        
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(parent: self)
-    }
+    @Environment(\.presentationMode) var isPresented
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
-        let picker = UIImagePickerController()
-        picker.delegate = context.coordinator
-        return picker
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = context.coordinator
+        return imagePicker
     }
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
         
+    }
+
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(picker: self)
+    }
+}
+
+// Coordinator will help to preview the selected image in the View.
+class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    var picker: AccessCameraView
+    
+    init(picker: AccessCameraView) {
+        self.picker = picker
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.originalImage] as? UIImage else { return }
+        self.picker.selectedImage = selectedImage
+        self.picker.isPresented.wrappedValue.dismiss()
     }
 }

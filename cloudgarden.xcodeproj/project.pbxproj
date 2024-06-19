@@ -595,6 +595,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cloudgarden/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CloudGarden;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to capture an image to show in the app.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Use face ID for authentication";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show your current city in the background.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show your current city";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -626,6 +630,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cloudgarden/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CloudGarden;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to capture an image to show in the app.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Use face ID for authentication";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show your current city in the background.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show your current city";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
