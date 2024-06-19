@@ -7,8 +7,8 @@ struct PlantList: View {
     @StateObject private var refreshManager = RefreshManager()
     @State private var plants: [Plant] = []
     @State private var goToAddEmptyPlant: Bool = false
+    @State private var goToMap: Bool = false
     @ObservedObject private var model: DeviceAndPlantModel
-    
     
     // MARK: - Init
     init(model: DeviceAndPlantModel){
@@ -34,7 +34,7 @@ struct PlantList: View {
                     }
                 }
                 .onAppear {
-                    Task {
+                    Task { @MainActor in
                         await getAllPlants()
                         if model.devices.count == 0 {
                             try await model.getDevicesByUsername()
@@ -84,20 +84,34 @@ struct PlantList: View {
                         .environmentObject(model)
                 }
             }
+            .sheet(isPresented: $goToMap) {
+                NavigationStack {
+                    MapView(goToMap: $goToMap)
+                }
+            }
+            .toolbar {
+                ToolbarItem {
+                    Button("View Map") {
+                        self.goToMap.toggle()
+                    }
+                    .foregroundColor(.customLimeGreen)
+                    .bold()
+                }
+            }
         } detail: {
             Text("Plants")
         }
-        .accentColor(.customGreen) 
+        .accentColor(.customGreen)
     }
     
     // MARK: - Helper Methods
     func getAllPlants() async {
-        do {
-            try await model.getAllPlantsByUsername(username: self.model.user.username)
-            self.plants = model.plants
-        } catch {
-            print("Error loading plants: \(error)")
-            DispatchQueue.main.async {
+        Task { @MainActor in
+            do {
+                try await model.getAllPlantsByUsername(username: self.model.user.username)
+                self.plants = model.plants
+            } catch {
+                print("Error loading plants: \(error)")
                 let banner = NotificationBanner(title: "Error occured. Refresh the page.", style: .warning)
                 banner.show()
             }

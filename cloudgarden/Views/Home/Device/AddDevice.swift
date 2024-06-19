@@ -111,20 +111,16 @@ struct AddDevice: View {
         let warningBanner = NotificationBanner(title: "Device ID or Title is invalid.", style: .warning)
         
         if codeValue != "" && titleValue != "" {
-            Task {
+            Task { @MainActor in
                 do {
                     try await model.addUserToDevice(code: codeValue, title: titleValue)
-                    DispatchQueue.main.async {
-                        successfulBanner.show()
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
+                    successfulBanner.show()
+                    self.presentationMode.wrappedValue.dismiss()
                     self.titleValue = ""
                     self.codeValue = ""
                 } catch {
                     print(error)
-                    DispatchQueue.main.async {
-                        errorBanner.show()
-                    }
+                    errorBanner.show()
                     self.codeValue = ""
                     self.titleValue = ""
                 }

@@ -115,12 +115,12 @@ struct DeviceDetail: View {
     
     // MARK: - Helper Methods
     func getAllPlants() async {
-        do {
-            try await model.getAllPlantsByUsername(username: self.model.user.username)
-            self.plants = model.plants.filter{$0.deviceId == self.device.deviceId}
-        } catch {
-            print("Error loading plants: \(error)")
-            DispatchQueue.main.async {
+        Task { @MainActor in
+            do {
+                try await model.getAllPlantsByUsername(username: self.model.user.username)
+                self.plants = model.plants.filter{$0.deviceId == self.device.deviceId}
+            } catch {
+                print("Error loading plants: \(error)")
                 let banner = NotificationBanner(title: "Error occured. Refresh the page.", style: .warning)
                 banner.show()
             }
@@ -130,22 +130,19 @@ struct DeviceDetail: View {
     func saveName() {
         if newName != "" {
             ProgressHUD.animate()
-            Task {
+            Task { @MainActor in
                 do {
                     try await model.addUserToDevice(code: self.device.code, title: newName)
+                    let banner = NotificationBanner(title: "Successfully changed \(device.title)'s name to \(newName).", style: .success)
+                    banner.show()
+                    
                 } catch {
-                    DispatchQueue.main.async {
-                        let banner = NotificationBanner(title: "Error updating name.", style: .danger)
-                        banner.show()
-                        ProgressHUD.dismiss()
-                        newName = ""
-                    }
-                    return
+                    let banner = NotificationBanner(title: "Error updating name.", style: .danger)
+                    banner.show()
+                    newName = ""
                 }
+                ProgressHUD.dismiss()
             }
-            let banner = NotificationBanner(title: "Successfully changed \(device.title)'s name to \(newName).", style: .success)
-            banner.show()
-            ProgressHUD.dismiss()
         } else {
             let banner = NotificationBanner(title: "Please enter a valid name.", style: .warning)
             banner.show()
@@ -166,7 +163,7 @@ struct DeviceDetail: View {
                             banner.show()
                         }
                     }
-                    try await getAllPlants()
+                    await getAllPlants()
                 } catch {
                     DispatchQueue.main.async {
                         let banner = NotificationBanner(title: "Failed to delete plant", style: .danger)

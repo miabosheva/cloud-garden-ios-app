@@ -139,19 +139,14 @@ struct EnterIDView: View {
         ProgressHUD.animate()
         let banner = GrowingNotificationBanner(title: "Please Enter a Valid ID", style: .danger)
         if deviceId != "" && deviceName != "" {
-            Task {
+            Task { @MainActor in
                 do {
                     try await deviceAndPlantModel.addUserToDevice(code: deviceId, title: deviceName)
-                    DispatchQueue.main.async {
-                        ProgressHUD.dismiss()
-                        userModel.dismissView()
-                    }
+                    userModel.dismissView()
                 } catch {
-                    DispatchQueue.main.async {
-                        banner.show()
-                        ProgressHUD.dismiss()
-                    }
+                    banner.show()
                 }
+                ProgressHUD.dismiss()
             }
         } else {
             banner.show()

@@ -95,11 +95,11 @@ struct DeviceList: View {
     
     // MARK: - Helper Methods
     func getAllDevices() async {
-        do {
-            try await model.getDevicesByUsername()
-        } catch {
-            print("Error loading devices: \(error)")
-            DispatchQueue.main.async {
+        Task { @MainActor in
+            do {
+                try await model.getDevicesByUsername()
+            } catch {
+                print("Error loading devices: \(error)")
                 let banner = NotificationBanner(title: "Error occured. Refresh the page.", style: .warning)
                 banner.show()
             }
@@ -109,24 +109,19 @@ struct DeviceList: View {
     func deleteDevice(at offsets: IndexSet) {
         for index in offsets {
             let deletedItemId = model.devices[index].deviceId
-            Task {
+            Task { @MainActor in
                 do {
                     let deviceCode = model.devices[index].code
                     try await model.deleteDevice(deviceId: deletedItemId)
-                    DispatchQueue.main.async {
-                        let banner = NotificationBanner(title: "Sucessfuly deleted Device \(deviceCode)", style: .success)
-                        banner.show()
-                    }
-                    
+                    let banner = NotificationBanner(title: "Sucessfuly deleted Device \(deviceCode)", style: .success)
+                    banner.show()
                 } catch {
-                    DispatchQueue.main.async {
-                        let banner = NotificationBanner(title: "Failed to delete device.", style: .danger)
-                        banner.show()
-                    }
+                    let banner = NotificationBanner(title: "Failed to delete device.", style: .danger)
+                    banner.show()
                 }
             }
             
-            Task {
+            Task { @MainActor in
                 do {
                     try await model.getDevicesByUsername()
                 } catch {

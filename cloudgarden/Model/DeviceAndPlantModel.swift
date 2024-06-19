@@ -5,20 +5,17 @@ import UIKit
 class DeviceAndPlantModel: ObservableObject {
     
     // MARK: - Properties
-    
     private weak var window: UIWindow!
     @Published public var user: User
     @Published public var devices: [Device] = []
     @Published public var plants: [Plant] = []
     
     // MARK: - Init
-    
     init(user: User){
         self.user = user
     }
     
     // MARK: - Device Methods
-    
     func addUserToDevice(code: String, title: String) async throws {
         guard let urlComponents = URLComponents(string: "https://ictfinal.azurewebsites.net/Device") else {
             throw URLError(.badURL)

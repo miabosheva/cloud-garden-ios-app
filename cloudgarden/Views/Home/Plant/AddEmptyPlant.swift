@@ -178,11 +178,11 @@ struct AddEmptyPlant: View {
     }
     
     func getAllDevices() async {
-        do {
-            try await model.getDevicesByUsername()
-        } catch {
-            print("Error loading devices: \(error)")
-            DispatchQueue.main.async {
+        Task { @MainActor in
+            do {
+                try await model.getDevicesByUsername()
+            } catch {
+                print("Error loading devices: \(error)")
                 let banner = NotificationBanner(title: "Error occured. Refresh the page.", style: .warning)
                 banner.show()
             }

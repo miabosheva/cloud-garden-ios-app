@@ -121,71 +121,53 @@ struct LoginView: View {
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason){ success, authenticationError in
                 if success {
                     ProgressHUD.animate()
-                    Task {
+                    Task { @MainActor in
                         do {
                             let success = try await userModel.logIn(username: authInfo.username, password: authInfo.password)
                             if success {
-                                DispatchQueue.main.async {
-                                    ProgressHUD.dismiss()
-                                    userModel.setupViews(user: User(username: authInfo.username, password: authInfo.password))
-                                }
+                                userModel.setupViews(user: User(username: authInfo.username, password: authInfo.password))
                             } else {
-                                DispatchQueue.main.async {
-                                    ProgressHUD.dismiss()
-                                    let banner = NotificationBanner(title: "Login with FaceID unavailable. Please input your credentials.", style: .warning)
-                                    banner.show()
-                                }
+                                let banner = NotificationBanner(title: "Login with FaceID unavailable. Please input your credentials.", style: .warning)
+                                banner.show()
                             }
                         } catch {
-                            DispatchQueue.main.async {
-                                ProgressHUD.dismiss()
-                                let banner = NotificationBanner(title: "Invalid credentials. Please try again.", style: .danger)
-                                banner.show()
-                                print(error)
-                            }
+                            let banner = NotificationBanner(title: "Invalid credentials. Please try again.", style: .danger)
+                            banner.show()
+                            print(error)
                         }
+                        ProgressHUD.dismiss()
                     }
                 }
             }
         } else {
-            print("Biometric authentication unavailable")
+            let banner = NotificationBanner(title: "Biometric authentication unavailable.", style: .warning)
+            banner.show()
         }
-        ProgressHUD.dismiss()
     }
     
     func logInButtonTapped(){
         ProgressHUD.animate()
-        let bannerFailed = NotificationBanner(title: "Login credentials invalid", style: .danger)
-        
-        let bannerError = NotificationBanner(title: "Please input valid credentials", style: .warning)
+        let loginFailedBanner = NotificationBanner(title: "Login credentials invalid", style: .danger)
+        let invalidCredentialsBanner = NotificationBanner(title: "Please input valid credentials", style: .warning)
         
         if username != "" && password != "" {
-            Task {
+            Task { @MainActor in
                 do {
                     let success = try await userModel.logIn(username: self.username, password: self.password)
                     if success {
-                        DispatchQueue.main.async {
-                            ProgressHUD.dismiss()
-                            userModel.setupViews(user: User(username: username, password: password))
-                        }
+                        userModel.setupViews(user: User(username: username, password: password))
                     } else {
-                        DispatchQueue.main.async {
-                            ProgressHUD.dismiss()
-                            bannerFailed.show()
-                        }
+                        ProgressHUD.dismiss()
+                        loginFailedBanner.show()
                     }
                 } catch {
-                    DispatchQueue.main.async {
-                        ProgressHUD.dismiss()
-                        bannerFailed.show()
-                    }
+                    loginFailedBanner.show()
                 }
+                ProgressHUD.dismiss()
             }
         } else {
-            DispatchQueue.main.async {
-                ProgressHUD.dismiss()
-                bannerError.show()
-            }
+            ProgressHUD.dismiss()
+            invalidCredentialsBanner.show()
         }
     }
 }
