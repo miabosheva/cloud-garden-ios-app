@@ -85,8 +85,6 @@ struct LoginView: View {
                                     .foregroundColor(.white)
                             }
                     }
-                    //                    .offset(x: isShaking ? -5 : 0)
-                    //                    .animation(Animation.default.repeatCount(8, autoreverses: true).speed(13))
                     .modifier(Shake(animatableData: CGFloat(attempts)))
                     .padding(.horizontal, 16)
                     .padding(.bottom, 4)
