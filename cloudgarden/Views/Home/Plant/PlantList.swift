@@ -86,7 +86,7 @@ struct PlantList: View {
             }
             .sheet(isPresented: $goToMap) {
                 NavigationStack {
-                    MapView(goToMap: $goToMap)
+                    WeatherView(goToMap: $goToMap)
                 }
             }
             .toolbar {

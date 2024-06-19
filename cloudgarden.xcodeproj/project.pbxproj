@@ -15,11 +15,11 @@
 		0D0E93862BD9708600728BC7 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0E93852BD9708600728BC7 /* LottieView.swift */; };
 		0D0E93892BD970D600728BC7 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D0E93882BD970D600728BC7 /* empty.json */; };
 		0D0E938B2BD9791F00728BC7 /* AddPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0E938A2BD9791F00728BC7 /* AddPlant.swift */; };
-		0D200D7D2C2373A800A63129 /* OpenMeteoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D200D7C2C2373A800A63129 /* OpenMeteoModel.swift */; };
-		0D200D802C23748B00A63129 /* OpenMeteoSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 0D200D7F2C23748B00A63129 /* OpenMeteoSdk */; };
+		0D200D7D2C2373A800A63129 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D200D7C2C2373A800A63129 /* WeatherModel.swift */; };
+		0D200D822C2384A100A63129 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D200D812C2384A100A63129 /* WeatherResponse.swift */; };
 		0D2C8D092BD940D20075DC39 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C8D082BD940D20075DC39 /* Colors.swift */; };
 		0D4326D42BDE83F90008954E /* AddEmptyPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4326D32BDE83F90008954E /* AddEmptyPlant.swift */; };
-		0D71D8FE2C23627100D5DCE9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D71D8FD2C23627100D5DCE9 /* MapView.swift */; };
+		0D71D8FE2C23627100D5DCE9 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D71D8FD2C23627100D5DCE9 /* WeatherView.swift */; };
 		0D93EB7A2BDD86A600C32C8E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93EB792BDD86A600C32C8E /* UserModel.swift */; };
 		0D93EB7C2BDD874500C32C8E /* DeviceAndPlantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93EB7B2BDD874500C32C8E /* DeviceAndPlantModel.swift */; };
 		0D93EB832BDD8D6D00C32C8E /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93EB822BDD8D6D00C32C8E /* UserResponse.swift */; };
@@ -59,10 +59,11 @@
 		0D0E93852BD9708600728BC7 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		0D0E93882BD970D600728BC7 /* empty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		0D0E938A2BD9791F00728BC7 /* AddPlant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlant.swift; sourceTree = "<group>"; };
-		0D200D7C2C2373A800A63129 /* OpenMeteoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMeteoModel.swift; sourceTree = "<group>"; };
+		0D200D7C2C2373A800A63129 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		0D200D812C2384A100A63129 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		0D2C8D082BD940D20075DC39 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0D4326D32BDE83F90008954E /* AddEmptyPlant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmptyPlant.swift; sourceTree = "<group>"; };
-		0D71D8FD2C23627100D5DCE9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		0D71D8FD2C23627100D5DCE9 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		0D8887708AEFFC5C6E7AD6BE /* Pods-cloudgarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cloudgarden.debug.xcconfig"; path = "Target Support Files/Pods-cloudgarden/Pods-cloudgarden.debug.xcconfig"; sourceTree = "<group>"; };
 		0D93EB792BDD86A600C32C8E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		0D93EB7B2BDD874500C32C8E /* DeviceAndPlantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAndPlantModel.swift; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D200D802C23748B00A63129 /* OpenMeteoSdk in Frameworks */,
 				EE9BEADF888DA33745DEC71F /* Pods_cloudgarden.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,7 +127,7 @@
 			children = (
 				0D93EB7B2BDD874500C32C8E /* DeviceAndPlantModel.swift */,
 				0D93EB792BDD86A600C32C8E /* UserModel.swift */,
-				0D200D7C2C2373A800A63129 /* OpenMeteoModel.swift */,
+				0D200D7C2C2373A800A63129 /* WeatherModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,7 +145,7 @@
 		0D71D8FC2C23625E00D5DCE9 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				0D71D8FD2C23627100D5DCE9 /* MapView.swift */,
+				0D71D8FD2C23627100D5DCE9 /* WeatherView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -211,6 +211,7 @@
 				0D93EB842BDD8D7500C32C8E /* AuthInfo.swift */,
 				0D09F2AA2BEA95C20031ED5B /* PlantType.swift */,
 				0DC1A4322BF0D3E900BB4596 /* MeasurementResponse.swift */,
+				0D200D812C2384A100A63129 /* WeatherResponse.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -307,7 +308,6 @@
 			);
 			name = cloudgarden;
 			packageProductDependencies = (
-				0D200D7F2C23748B00A63129 /* OpenMeteoSdk */,
 			);
 			productName = cloudgarden;
 			productReference = 20B50A1D2BBD58A300C78067 /* cloudgarden.app */;
@@ -416,7 +416,7 @@
 				0D2C8D092BD940D20075DC39 /* Colors.swift in Sources */,
 				0DCA43FB2BE9362E0030C433 /* EmptyLottieView.swift in Sources */,
 				20BE7F812BD541B900442B7F /* RegisterView.swift in Sources */,
-				0D71D8FE2C23627100D5DCE9 /* MapView.swift in Sources */,
+				0D71D8FE2C23627100D5DCE9 /* WeatherView.swift in Sources */,
 				0D93EB832BDD8D6D00C32C8E /* UserResponse.swift in Sources */,
 				20B50A2B2BBD58A300C78067 /* cloudgarden.xcdatamodeld in Sources */,
 				204EE9272BCF1D150037A2AE /* DeviceRow.swift in Sources */,
@@ -425,11 +425,12 @@
 				20A27E0B2BC426DF000A8B0A /* Plant.swift in Sources */,
 				0D93EB7C2BDD874500C32C8E /* DeviceAndPlantModel.swift in Sources */,
 				20A27E002BC406F2000A8B0A /* LoginView.swift in Sources */,
-				0D200D7D2C2373A800A63129 /* OpenMeteoModel.swift in Sources */,
+				0D200D7D2C2373A800A63129 /* WeatherModel.swift in Sources */,
 				204EE9232BCF1BE90037A2AE /* Device.swift in Sources */,
 				209BC5CD2BDB8AF400E4C216 /* OnboardingView.swift in Sources */,
 				20700B922BCFEEA70029A384 /* ProfileView.swift in Sources */,
 				204EE9172BCF10CB0037A2AE /* PlantDetail.swift in Sources */,
+				0D200D822C2384A100A63129 /* WeatherResponse.swift in Sources */,
 				0D4326D42BDE83F90008954E /* AddEmptyPlant.swift in Sources */,
 				204EE9152BCF0C160037A2AE /* PlantList.swift in Sources */,
 				0D93EB7A2BDD86A600C32C8E /* UserModel.swift in Sources */,
@@ -676,14 +677,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0D200D7F2C23748B00A63129 /* OpenMeteoSdk */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0D200D7E2C23748B00A63129 /* XCRemoteSwiftPackageReference "sdk" */;
-			productName = OpenMeteoSdk;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		20B50A292BBD58A300C78067 /* cloudgarden.xcdatamodeld */ = {
